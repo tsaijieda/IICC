@@ -1,0 +1,68 @@
+# 基本資訊與敘述
+play_id: "T005"
+title: "題型 5：華麗的空間魔術"
+description: "邊鋒在底線發動倒三角傳球。前鋒在禁區前沿執行故意漏球，球滾向後方的中場球員，中場迎球得分。"
+
+# 評分檢核點
+evaluation_points:
+  倒三角傳球: "由 zone 20/半空間交集傳向 zone 14。"
+  故意漏球: "站在軌跡上（如 zone 14 前端）的前鋒是否完全沒碰到球？"
+  得分: "中場是否在軌跡後方（如 zone 14 後端或 zone 11）接獲漏球並得分？"
+
+# 畫布與座標設定
+y_label: "Field Depth (m)"
+x_label: "Time (seconds)"
+x_limits: [0.0, 5.0]
+y_limits: [50, 110]
+
+# 實體時空軌跡 (x-t data)
+entities:
+  - id: "W"
+    label: "Winger (W)"
+    color: "#F6B746"  # 黃色
+    linestyle: "-"
+    trajectory:
+      - [0.0, 75]     # 邊鋒在邊線持球
+      - [2.0, 100]    # 高速下底，抵達 Zone 20 邊緣
+      - [5.0, 100]    # 傳中後留在底線
+
+  - id: "ST"
+    label: "Striker (ST)"
+    color: "#4A85F6"  # 藍色
+    linestyle: "-"
+    trajectory:
+      - [0.0, 75]     # 前鋒在中路同步啟動
+      - [2.0, 89]     # 跑到 Zone 14 前端 (前點) 吸引防守
+      - [2.8, 89]     # t=2.8 故意漏球！(不觸球，任由球穿過自己的座標)
+      - [4.5, 96]     # 漏球後繼續往小禁區深處衝刺，帶走後衛
+
+  - id: "CM"
+    label: "Midfielder (CM)"
+    color: "#74DB7A"  # 綠色
+    linestyle: "-"
+    trajectory:
+      - [0.0, 55]     # 中場球員從較深的位置 (Zone 11) 後排插上
+      - [2.0, 65]     # 觀察局勢，控制跑動節奏
+      - [3.6, 78]     # t=3.6 準確抵達 Zone 14 後端，迎球
+      - [4.5, 80]     # 完成射門後的緩衝
+
+  - id: "Ball"
+    label: "Ball"
+    color: "#F26974"  # 亮紅色
+    linestyle: "-"
+    trajectory:
+      - [0.0, 75]     # 球在邊鋒腳下
+      - [2.0, 100]    # 跟隨邊鋒抵達底線
+      - [2.8, 89]     # 倒三角傳出！t=2.8 剛好經過 ST 的座標 (x=89)，但沒被攔截
+      - [3.6, 78]     # t=3.6 順利滾到後方 CM 的腳下 (x=78)
+      - [4.1, 105]    # CM 迎球怒射，球高速飛入球門
+
+  - id: "Offside"
+    label: "Offside Line"
+    color: "#EAC2CE"  # 粉白色
+    linestyle: "--"
+    trajectory:
+      - [0.0, 80]     # 初始防線
+      - [2.0, 92]     # 被邊鋒與前鋒壓退
+      - [3.0, 95]     # 看到倒三角傳球，防守者重心被騙，防線稍微混亂
+      - [5.0, 95]

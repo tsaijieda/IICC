@@ -1,0 +1,81 @@
+# 基本資訊與敘述
+play_id: "T008"
+title: "題型 8：極限壓迫破解 (修正直塞球軌跡)"
+description: "面對防線，中場盤帶推進吸引圓柱防守。右邊鋒執行誘餌跑動往中路擠。右後衛趁機執行套邊插上，中場將球分邊傳球給右後衛，右後衛立刻傳中，前鋒得分。"
+
+# 評分檢核點
+evaluation_points:
+  盤帶推進: "中場是否帶球安全移動一格（如 zone 11 到 14）？"
+  誘餌跑動: "右邊鋒是否往 zone 14 或 20 跑且未接球？"
+  套邊插上: "右後衛是否從外側 (zone 17) 衝向底線 (zone 19)？"
+  傳中: "球由 zone 19 傳入 zone 20。"
+
+# 畫布與座標設定
+y_label: "Field Depth (m)"
+x_label: "Time (seconds)"
+x_limits: [0.0, 7.0]
+y_limits: [40, 110]
+
+# 實體時空軌跡 (x-t data)
+entities:
+  - id: "RW"
+    label: "Winger (RW)"
+    color: "#F6B746"  # 黃色
+    linestyle: "-"
+    trajectory:
+      - [0.0, 81]     # 貼齊防線
+      - [1.0, 81]     # 準備啟動
+      - [4.0, 95]     # 誘餌跑動：強行把防線壓到深處
+      - [7.0, 95]     
+
+  - id: "CM"
+    label: "Midfielder (CM)"
+    color: "#B48EAD"  # 紫色
+    linestyle: "-"
+    trajectory:
+      - [0.0, 60]     # 後場持球
+      - [2.0, 70]     # 推進到 70m 處吸引防守
+      - [7.0, 70]     # t=4.0 送出傳球後，留在原地
+
+  - id: "RB"
+    label: "Right Back (RB)"
+    color: "#74DB7A"  # 綠色
+    linestyle: "-"
+    trajectory:
+      - [0.0, 50]     # 從最深處啟動
+      - [1.0, 50]     
+      - [4.0, 75]     # t=4.0 時，RB 已經跑過 70m，正式「超車 (Overlap)」了 CM
+      - [5.0, 95]     # t=5.0 抵達底線空位 (x=95) 接獲傳球
+      - [7.0, 95]     
+
+  - id: "ST"
+    label: "Striker (ST)"
+    color: "#4A85F6"  # 藍色
+    linestyle: "-"
+    trajectory:
+      - [0.0, 81]     # 中路牽制
+      - [4.0, 81]     # 看到傳球出現，開始前插
+      - [5.5, 95]     # 抵達落點
+      - [7.0, 95]     
+
+  - id: "Ball"
+    label: "Ball"
+    color: "#F26974"  # 亮紅色
+    linestyle: "-"
+    trajectory:
+      - [0.0, 60]     
+      - [2.0, 70]     # 球在 CM 腳下
+      - [4.0, 70]     # t=4.0，CM 看到 RB 已經超車 (x=75)，立刻送出直塞！
+      - [5.0, 95]     # 球以極快的速度 (高斜率) 滾動，在 t=5.0 準確交給跑到底線的 RB
+      - [6.0, 95]     # RB 橫向傳中 (深度 95 不變)，傳給 ST
+      - [6.5, 105]    # ST 射門進球
+
+  - id: "Offside"
+    label: "Offside Line"
+    color: "#EAC2CE"  # 粉白色
+    linestyle: "--"
+    trajectory:
+      - [0.0, 82]     
+      - [1.0, 82]     
+      - [4.0, 95]     # 防線被 RW 帶走
+      - [7.0, 95]

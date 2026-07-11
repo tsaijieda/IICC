@@ -1,0 +1,69 @@
+# 基本資訊與敘述
+play_id: "T003"
+title: "題型 3：大範圍撕裂與倒三角"
+description: "中場球員發動強弱邊轉移至左路。左邊鋒接球後盤帶推進至底線，接著發動倒三角傳球。前鋒跟進接球後得分。"
+
+# 評分檢核點
+evaluation_points:
+  強弱邊轉移: "球是否精準由 zone 16/17 橫跨至 zone 12/18（或相反）？"
+  盤帶推進: "球與人是否安全從 zone 18 推進至 zone 20 外緣？"
+  倒三角傳球: "球是否由 zone 20/邊緣往回傳至 zone 14？"
+
+# 畫布與座標設定
+y_label: "Field Depth (m)"
+x_label: "Time (seconds)"
+x_limits: [0.0, 5.2]
+y_limits: [50, 110]
+
+# 實體時空軌跡 (x-t data)
+entities:
+  - id: "CM"
+    label: "Midfielder (CM)"
+    color: "#B48EAD"  # 紫色
+    linestyle: "-"
+    trajectory:
+      - [0.0, 60]     # 中場持球觀察
+      - [1.0, 60]     # 發動大範圍長傳
+      - [5.0, 65]     # 傳球後緩步跟進
+
+  - id: "LW"
+    label: "Left Winger (LW)"
+    color: "#F6B746"  # 黃色
+    linestyle: "-"
+    trajectory:
+      - [0.0, 70]     # 邊鋒在遠端待命
+      - [2.0, 70]     # t=2.0 停下長傳球
+      - [3.5, 100]    # 盤帶到底線 (斜率陡峭，表示快速推進)
+      - [5.0, 100]    # 傳出倒三角後留在底線
+
+  - id: "ST"
+    label: "Striker (ST)"
+    color: "#4A85F6"  # 藍色
+    linestyle: "-"
+    trajectory:
+      - [0.0, 75]     # 牽制防線
+      - [2.0, 75]     # 看到邊鋒突破，開始啟動
+      - [4.0, 85]     # 抵達大禁區前沿 (Zone 14) 迎球
+      - [5.0, 85]     # 完成射門動作
+
+  - id: "Ball"
+    label: "Ball"
+    color: "#F26974"  # 亮紅色
+    linestyle: "-"
+    trajectory:
+      - [0.0, 60]     # 與中場重疊
+      - [1.0, 60]     # 球傳出
+      - [2.0, 70]     # 到達邊鋒腳下 (這是一次橫向長傳，推進深度變化不大)
+      - [3.5, 100]    # 與邊鋒一起推進到底線
+      - [4.0, 85]     # 發動倒三角！球往回傳，深度從 100 降到 85
+      - [4.5, 105]    # 前鋒一腳觸球射門，球飛入球門
+
+  - id: "Offside"
+    label: "Offside Line"
+    color: "#EAC2CE"  # 粉白色
+    linestyle: "--"
+    trajectory:
+      - [0.0, 78]     # 防線原先的深度
+      - [2.0, 78]     # 邊鋒接球不越位
+      - [3.5, 95]     # 被邊鋒逼退，整個防線後撤
+      - [5.0, 95]

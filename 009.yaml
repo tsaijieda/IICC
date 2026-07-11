@@ -1,0 +1,81 @@
+# 基本資訊與敘述
+play_id: "T009"
+title: "題型 9：誘敵深入與大逃亡 (修正反越位軌跡)"
+description: "後腰在受壓下將球傳球給回撤的中後衛。中後衛接球後立刻執行回做球給另一側接應的邊後衛。邊後衛迎球不猶豫，直接發動強弱邊轉移至前場另一側完全空檔的邊鋒，完成突圍。"
+
+# 評分檢核點
+evaluation_points:
+  傳球: "後腰由 Zone 8 向後傳至 Zone 5。"
+  回做球: "中後衛背向敵方球門，一腳觸球敲給面向前方的邊後衛 (Zone 4 或 6)。"
+  強弱邊轉移: "邊後衛起腳長傳，邊鋒反越位成功，球直接跨越半場飛至對角線的 Zone 17 或 19 且精準找到邊鋒。"
+
+# 畫布與座標設定
+y_label: "Field Depth (m)"
+x_label: "Time (seconds)"
+x_limits: [0.0, 8.5]
+y_limits: [10, 100]
+
+# 實體時空軌跡 (x-t data)
+entities:
+  - id: "DM"
+    label: "Def. Mid (DM)"
+    color: "#B48EAD"  
+    linestyle: "-"
+    trajectory:
+      - [0.0, 30]     
+      - [1.0, 30]     # 回傳
+      - [8.0, 40]     
+
+  - id: "CB"
+    label: "Center Back (CB)"
+    color: "#74DB7A"  
+    linestyle: "-"
+    trajectory:
+      - [0.0, 15]     
+      - [2.0, 15]     
+      - [2.5, 15]     # 一腳回做
+      - [8.0, 30]     
+
+  - id: "FB"
+    label: "Fullback (FB)"
+    color: "#F6B746"  
+    linestyle: "-"
+    trajectory:
+      - [0.0, 20]     
+      - [2.5, 20]     # 接獲做球
+      - [3.5, 20]     # 傳出過頂長傳！
+      - [8.0, 35]     
+
+  - id: "W"
+    label: "Winger (W)"
+    color: "#4A85F6"  
+    linestyle: "-"
+    trajectory:
+      - [0.0, 44]     # 修正：老實地待在 44m 處（越位線後方 1 公尺）
+      - [3.5, 44]     # 緊盯 FB，傳球瞬間不越位！
+      - [7.5, 85]     # 爆發衝刺！在 4 秒內狂奔 41 公尺 (約 10m/s 的極速)
+      - [8.5, 90]     # 完美卸下高空球
+
+  - id: "Ball"
+    label: "Ball"
+    color: "#F26974"  
+    linestyle: "-"
+    trajectory:
+      - [0.0, 30]     
+      - [1.0, 30]     
+      - [2.0, 15]     
+      - [2.5, 20]     
+      - [3.5, 20]     # 長傳起飛！
+      - [7.5, 85]     # 經過 4 秒的空中飛行，球跨越 65 公尺，與全速衝刺的邊鋒完美交會
+      - [8.5, 90]     
+
+  - id: "Opp_Line"
+    label: "Offside Line"
+    color: "#EAC2CE"  
+    linestyle: "--"
+    trajectory:
+      - [0.0, 50]     # 對手壓迫得很深
+      - [2.0, 45]     # 被 DM 的回傳誘騙，整條防線往前壓
+      - [3.5, 45]     # 傳球瞬間，防線卡在 45m
+      - [7.5, 70]     # 發現被打穿，轉身回追，但速度完全跟不上邊鋒
+      - [8.5, 75]
