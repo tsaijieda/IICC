@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>解防守題</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css?v=40" />
+</head>
+<body>
+  <div class="app">
+    <aside class="rail">
+      <p class="brand">解防守題</p>
+      <p class="brand-sub">7×8 · 跑位拉扯 · 傳球後防守跟上</p>
+      <nav id="puzzle-list" class="puzzle-list"></nav>
+      <div class="rail-foot">
+        <button type="button" id="btn-hint" class="ghost">提示</button>
+        <button type="button" id="btn-demo" class="ghost demo">正解示範</button>
+        <button type="button" id="btn-reset" class="ghost">重開本關</button>
+      </div>
+    </aside>
+
+    <main class="stage">
+      <header class="hud">
+        <div>
+          <h1 id="title">—</h1>
+          <p id="desc" class="desc"></p>
+        </div>
+        <div class="meters">
+          <div class="meter"><span>回合</span><strong id="turn">0/10</strong></div>
+          <div class="meter"><span>持球</span><strong id="holder">—</strong></div>
+                    <div class="meter"><span>分數</span><strong id="score">—</strong></div>
+        </div>
+      </header>
+
+      <div class="board-wrap">
+        <div class="goal-label">球門邊（短邊）</div>
+        <div id="board" class="board" role="grid" aria-label="球場棋盤"></div>
+        <div class="legend">
+          <span><i class="dot atk ball"></i>持球</span>
+          <span><i class="dot atk"></i>進攻</span>
+          <span><i class="dot def"></i>防守</span>
+          <span><i class="dot goal"></i>球門格</span>
+        </div>
+      </div>
+
+      <section class="actions" aria-label="行動">
+        <p id="prompt" class="prompt">選擇行動，再點棋盤上的目標。</p>
+        <div class="action-row">
+          <button type="button" class="act" data-act="move">移動球員</button>
+          <button type="button" class="act" data-act="dribble">盤帶</button>
+          <button type="button" class="act primary" data-act="pass">地滾傳球</button>
+          <button type="button" class="act loft" data-act="lob">高空傳球</button>
+          <button type="button" class="act shoot" data-act="shoot">射門</button>
+          <button type="button" class="act end" id="btn-end">結束回合</button>
+        </div>
+        <p class="hint-line" id="tools-hint">本關可用的手段會依防守壓力改變；灰色按鈕表示此關鎖死。</p>
+      </section>
+    </main>
+
+    <aside class="log-panel">
+      <h2>戰報</h2>
+      <ul id="log" class="log"></ul>
+    </aside>
+  </div>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <h2 id="modal-title"></h2>
+      <p id="modal-body"></p>
+      <button type="button" id="modal-ok" class="modal-btn">繼續</button>
+    </div>
+  </div>
+
+  <script src="/app.js?v=40"></script>
+</body>
+</html>

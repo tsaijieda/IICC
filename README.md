@@ -1,61 +1,58 @@
 # 1st_half
 
-First-half tactical play templates for football (soccer) coaching and evaluation.
+First-half tactical templates and a turn-based **解防守題** board game.
 
-Each YAML file defines a named attacking pattern with player/ball trajectories over time (field depth vs seconds), plus evaluation checkpoints used for scoring. Use `plot.py` to visualize any play as an x–t diagram.
+## 解防守題（推薦用網頁 UI）
 
-## Plays
-
-| File | Play | Summary |
-|------|------|---------|
-| `001.yaml` | 邊路經典爆破 | Fullback overlap → cross → finish |
-| `002.yaml` | 肋部切割器 | Winger through-ball to cutting AM → shot |
-| `003.yaml` | 大範圍撕裂與倒三角 | Switch of play → cutback → finish |
-| `004.yaml` | 中路三人過度 | DM → ST layoff → AM → second ST shot |
-| `005.yaml` | 華麗的空間魔術 | Cutback → intentional miss → midfielder finish |
-| `006.yaml` | 高空作業與做牆 | Long ball → wall pass → finish |
-| `008.yaml` | 極限壓迫破解 | Press break via decoy run + overlap + cross |
-| `009.yaml` | 誘敵深入與大逃亡 | Drop, layoff, diagonal switch over the top |
-
-## Setup
+- 棋盤 **7×8**：短邊（寬 7）是球門邊，長邊（深 8）是進攻方向
+- 回合制，每關最多 10 回合；越快進球分數越高
+- **無球跑位／盤帶後同回合**：可繼續跑位或傳球；不能射門（盤帶後也不能再盤帶）。防守者都等結束回合／傳球後才移動
+- **影子盯人**：回合結束或傳球後才朝「人—門之間」走 1 格
+- **地滾傳球**：路線格子有防守者 → 被斷
+- **高空傳球**：飛越地面攔截
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate
+python play_web.py
+```
+
+瀏覽器會打開 `http://127.0.0.1:8765/`：選關 → 選行動 → 點棋盤目標。
+
+| 關卡 | 戰術單元 | 正解概念（5 回合） |
+|------|----------|-------------------|
+| D1 | Break the Press | 傳出壓力區 → 換邊 → 推進射門 |
+| D2 | Overlap | 邊衛無球套邊 → 接球下底遠柱 |
+| D3 | Underlap | 前腰肋部內切 → 直塞 → 遠柱 |
+| D4 | Cut-back | 邊路推進 → 前鋒插上倒三角 → 射門 |
+| D5 | Wall Pass | 傳牆 → 插上接回傳 → 傳邊射門 |
+| D6 | Beat the DM | 撞牆繞后腰 → 高空吊前鋒 → 射門 |
+
+**防守體系**（第二類關卡）：
+
+| 關卡 | 防守類型 | 正解概念（5 回合） |
+|------|----------|-------------------|
+| S1 | 高位逼搶 | 傳出雙逼搶 → 換邊 → 回傳射門 |
+| S2 | 擺大巴 | 邊路下底 → 倒三角 → 射門 |
+| S3 | 四人盯人＋大閘 | 換邊 → 假跑拉開門側盯人 → 傳空當射門 |
+| S4 | 中位防守 | 撞牆繞后腰 → 高空吊前鋒 → 射門 |
+| S5 | 雙防中 | 撞牆繞雙后腰 → 高空吊前鋒 → 射門 |
+
+CLI：
+
+```bash
+python play_defense.py D4
+python play_defense.py D2 --demo
+# lob A2   ← 高空傳球
+# pass A2  ← 地滾傳球
+```
+
+## x–t 戰術軌跡 YAML
+
+```bash
 pip install -r requirements.txt
-```
-
-## Plot a play
-
-```bash
 python plot.py 001.yaml
-```
-
-Replace `001.yaml` with any play file. The chart shows each entity’s field depth (m) against time (s), including the ball and offside line when defined.
-
-## YAML schema
-
-```yaml
-play_id: "T001"
-title: "..."
-description: "..."
-evaluation_points:
-  key: "checkpoint description"
-y_label: "Field Depth (m)"
-x_label: "Time (seconds)"
-x_limits: [0.0, 4.2]
-y_limits: [50, 100]
-entities:
-  - id: "ST"
-    label: "Striker (ST)"
-    color: "#4A85F6"
-    linestyle: "-"
-    trajectory:
-      - [0.0, 80]   # [time_s, field_depth_m]
-      - [4.0, 95]
 ```
 
 ## Requirements
 
-- Python 3.10+
-- `PyYAML`, `matplotlib`
+- Python 3.10+（網頁 UI 僅需標準庫）
+- `PyYAML` / `matplotlib` 僅給 `plot.py` 用
