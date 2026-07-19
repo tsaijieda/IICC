@@ -1,0 +1,30 @@
+---
+description: 解防守題引擎與關卡的現行規則（改 game/defenders/puzzles 時必讀）
+globs: defense_game/**/*.{py,js,html,md}
+alwaysApply: false
+---
+
+# 解防守題 — 現行規則
+
+## 場地
+- 7×8；短邊球門；`GOAL_CELLS = (2,7)(3,7)(4,7)`；`MIN_SHOOT_Y = 4`
+
+## 回合時序
+- `MOVE` / `DRIBBLE`：軟階段，**防守不動**
+- `END_TURN` / `PASS` / `LOB`：`react="full"`，防守跟上
+- 盤帶後同回合不可再盤／不可射；已無球跑動則不可盤／射，須先 end 或傳
+
+## 傳射
+- 地滾：中途格**任一**防守者都截（`_intercepts_pass` 對所有 kind）
+- 高空：飛越；射門線有人則擋／門將撲
+
+## 防守 AI 要點
+- Block：鎖 `block_max_y` 橫移對齊球→門走廊；`anchored` 定點不動（格保留，他人不可佔）
+- Shadow：永遠門側（mark→goal 之間），不站 mark 本人格／球側
+- GK：每拍朝球的 x 在球門線滑 1 格（無「太遠就不動」）
+- Presser：2 格逼近；`press_linger` 貼身可斷
+- **重疊結算（硬性）**：全體非定點先離格 → 門將→大閘→逼搶員→攔截者→影子（同角色按 id）依序佔格；替代格必須在本次步數與角色區域內，禁止瞬移跨區。細節見 `GAME_RULES.md` / `PHYSICAL_GAME_RULES.md` 第八章。
+
+## 關卡／示範
+- 改佈局後必須更新 `solutions.py`（actions **與** labels 等長），並跑通 `solution_actions` + `/api/solution` frames
+- S2 教學解：下底 → 倒三角 → 橫傳對側；勿再引入右路一傳就射的捷徑

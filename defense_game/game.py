@@ -11,6 +11,7 @@ from .grid import (
     COLS,
     GOAL_CELLS,
     GOAL_CENTRE_X,
+    MIN_SHOOT_Y,
     Pos,
     ROWS,
     cells_on_segment,
@@ -95,6 +96,7 @@ class DefenseGame:
             "cols": COLS,
             "rows": ROWS,
             "goal_cells": [list(c) for c in GOAL_CELLS],
+            "min_shoot_y": MIN_SHOOT_Y,
             "turn": self.turn,
             "max_turns": self.max_turns,
             "ball_holder_id": self.ball_holder_id,
@@ -479,6 +481,10 @@ class DefenseGame:
 
     def _do_shoot(self, action: Action, logs: list[str]) -> TurnResult:
         carrier = self.attacker(self.ball_holder_id)
+        if carrier.pos.y < MIN_SHOOT_Y:
+            raise ValueError(
+                f"距離太遠——至少推進到 y≥{MIN_SHOOT_Y}（前場）才能射門。"
+            )
         if action.dest is not None:
             if (action.dest.x, action.dest.y) not in GOAL_CELLS:
                 raise ValueError("射門目標必須是球門三格之一。")
@@ -523,16 +529,8 @@ class DefenseGame:
         return any(d.pos == dest for d in self.defenders)
 
     def _intercepts_pass(self, d: Player) -> bool:
-        """Who can jump a ground-pass lane."""
-        if d.kind == DefenderKind.INTERCEPTOR:
-            return True
-        if d.kind == DefenderKind.SHADOW:
-            return True  # sticky body still occupies the lane
-        if d.kind == DefenderKind.PRESSER:
-            return False  # ball-watching, not cutting
-        if d.kind == DefenderKind.BLOCK:
-            return False  # set in the shot channel, not jumping passes
-        return False
+        """Any defender standing on a ground-pass mid-path cell cuts the lane."""
+        return d.kind is not None
 
     def _blocked(self, dest: Pos, ignore_id: str) -> bool:
         return self._occupied_by_teammate(

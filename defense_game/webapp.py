@@ -148,10 +148,8 @@ class Handler(BaseHTTPRequestHandler):
         if not str(file_path).startswith(str(WEB_DIR)) or not file_path.is_file():
             self.send_error(404)
             return
-        # Opening the page always starts a fresh D1 so a stuck finished game
-        # from a previous tab doesn't brick the UI.
-        if rel == "index.html":
-            _set_game(DefenseGame(get_puzzle("D1")))
+        # Opening the page must NOT reset the shared game — that races with
+        # an in-progress 正解示範 in another tab / soft refresh.
         data = file_path.read_bytes()
         ctype = mimetypes.guess_type(str(file_path))[0] or "application/octet-stream"
         if ctype.startswith("text/") or ctype in (
@@ -189,42 +187,85 @@ class Handler(BaseHTTPRequestHandler):
             pid = data.get("puzzle_id") or _game().puzzle.id
             try:
                 steps = solution_steps(pid)
-            except KeyError as e:
+            except (KeyError, RuntimeError) as e:
                 self._json(400, {"ok": False, "message": str(e)})
                 return
-            # Fresh board so the demo always starts from kickoff
+            # Run the whole clear on a private board so a page reload / other
+            # tab cannot clobber the shared session mid-demo.
+            from .solutions import solution_actions
+
             game = DefenseGame(get_puzzle(pid))
-            _set_game(game)
+            frames: list[dict] = []
+            won = False
+            for meta, action in zip(steps, solution_actions(pid)):
+                result = game.apply(action)
+                frames.append(
+                    {
+                        **meta,
+                        "ok": result.ok,
+                        "message": result.message,
+                        "goal": result.goal,
+                        "turnover": result.turnover,
+                        "logs": result.logs,
+                        "state": game.to_dict(),
+                    }
+                )
+                if not result.ok or (result.turnover and not result.goal):
+                    self._json(
+                        400,
+                        {
+                            "ok": False,
+                            "message": f"示範腳本失敗：{result.message}",
+                            "puzzle_id": pid.upper(),
+                            "frames": frames,
+                            "state": game.to_dict(),
+                        },
+                    )
+                    return
+                if result.goal:
+                    won = True
+                    break
+            _set_game(DefenseGame(get_puzzle(pid)))
+            kickoff = _game().to_dict()
             self._json(
                 200,
                 {
                     "ok": True,
                     "puzzle_id": pid.upper(),
                     "steps": steps,
-                    "state": game.to_dict(),
+                    "frames": frames,
+                    "won": won,
+                    "state": kickoff,
+                    "final_state": game.to_dict(),
                 },
             )
             return
 
         if path == "/api/action":
-            game = _game()
-            try:
-                action = _parse_action(data)
-                result = game.apply(action)
-            except (ValueError, KeyError, StopIteration) as e:
-                self._json(400, {"ok": False, "message": str(e), "state": game.to_dict()})
-                return
-            self._json(
-                200,
-                {
+            with _lock:
+                game = _game()
+                try:
+                    action = _parse_action(data)
+                    result = game.apply(action)
+                except (ValueError, KeyError, StopIteration) as e:
+                    self._json(
+                        400,
+                        {
+                            "ok": False,
+                            "message": str(e),
+                            "state": game.to_dict(),
+                        },
+                    )
+                    return
+                payload = {
                     "ok": result.ok,
                     "message": result.message,
                     "goal": result.goal,
                     "turnover": result.turnover,
                     "logs": result.logs,
                     "state": game.to_dict(),
-                },
-            )
+                }
+            self._json(200, payload)
             return
 
         self._json(404, {"ok": False, "message": "Not found"})
