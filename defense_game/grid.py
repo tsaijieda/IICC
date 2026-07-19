@@ -18,6 +18,8 @@ ROWS = 8  # depth toward goal
 GOAL_CELLS: tuple[tuple[int, int], ...] = ((2, 7), (3, 7), (4, 7))
 GOAL_LINE_Y = 7
 GOAL_CENTRE_X = 3
+# Must reach this depth (or beyond) before a shot is legal — no half-pitch cheese.
+MIN_SHOOT_Y = 4
 
 
 @dataclass(frozen=True, slots=True)

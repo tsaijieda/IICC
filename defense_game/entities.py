@@ -14,20 +14,20 @@ class Side(str, Enum):
 
 
 class DefenderKind(str, Enum):
-    PRESSER = "presser"  # 瘋狗逼搶員 — 只逼搶，不擋射／不截傳
-    BLOCK = "block"  # 區域大閘 — 擋射門走廊，不跳傳切線
-    SHADOW = "shadow"  # 影子盯人 — 只擋「自己盯的人」的射門
-    INTERCEPTOR = "interceptor"  # 路線攔截 — 截地滾；站在射門線上也擋射
-    GOALKEEPER = "goalkeeper"  # 守門員 — 球門線撲救
+    PRESSER = "presser"  # 瘋狗逼搶員 — 2 格逼搶；站線也可截傳／擋射
+    BLOCK = "block"  # 區域大閘 — 橫線守走廊；截傳／擋射
+    SHADOW = "shadow"  # 影子盯人 — 門側黏人；站線也可截傳／擋射
+    INTERCEPTOR = "interceptor"  # 路線攔截 — 主動卡傳切；站射門線也擋
+    GOALKEEPER = "goalkeeper"  # 守門員 — 球門線追球縱向撲救
 
 
 # Short copy for UI / tooltips — what each role uniquely does.
 ROLE_BLURB: dict[DefenderKind, str] = {
-    DefenderKind.PRESSER: "朝持球者猛衝 2 格；已貼身時硬盤／拖時間會被斷——用傳球甩掉。站在射門線上也擋射。",
-    DefenderKind.BLOCK: "卡球→門走廊，只沿橫線橫移；地滾可穿過——要拉邊再倒三角。站在射門線上擋射。",
-    DefenderKind.SHADOW: "黏一名進攻者；回合結束／傳球後朝「人與球門之間」走 1 格，卡在門側跟著，不站到人前面（遠離球門那一側）。站在射門線上擋射。",
-    DefenderKind.INTERCEPTOR: "卡地滾傳切；站在射門線上擋射——拉開角度或高空過頂。",
-    DefenderKind.GOALKEEPER: "球門線橫移撲救——打他另一邊門柱。",
+    DefenderKind.PRESSER: "朝持球者猛衝 2 格；已貼身時硬盤／拖時間會被斷——用傳球甩掉。站在傳球線或射門線上會斷球／擋射。",
+    DefenderKind.BLOCK: "卡球→門走廊，只沿橫線橫移；站在傳球線或射門線上會斷球／擋射——要拉邊、倒三角或高空過頂。",
+    DefenderKind.SHADOW: "黏一名進攻者；結束回合／傳球後朝「人與球門之間」走 1 格（門側），不站到人前面。站在傳球線或射門線上會斷球／擋射。",
+    DefenderKind.INTERCEPTOR: "卡最危險的地滾傳切；站在射門線上擋射——拉開角度或高空過頂。",
+    DefenderKind.GOALKEEPER: "球門三格上每拍朝球的縱向滑 1 格——遠近都追，打另一邊門柱。",
 }
 
 

@@ -295,6 +295,9 @@ function paintHud() {
     const tools = (state.puzzle && state.puzzle.tools) || {};
     const moved = (state.moved_ids || []).length > 0;
     const afterCarry = !!state.after_carry;
+    const holder = state.attackers && state.attackers.find((a) => a.id === state.ball_holder_id);
+    const minShootY = state.min_shoot_y != null ? state.min_shoot_y : 4;
+    const tooFar = holder && holder.y < minShootY;
     let allowed =
       !demoPlaying &&
       (act === "shoot" || act === "end" || tools[act] !== false);
@@ -304,6 +307,7 @@ function paintHud() {
     if (afterCarry && (act === "shoot" || act === "dribble")) {
       allowed = false;
     }
+    if (act === "shoot" && tooFar) allowed = false;
     btn.disabled = !!state.finished || !allowed || demoPlaying;
     btn.classList.toggle("locked", !allowed);
     btn.classList.toggle("active", btn.dataset.act === mode);
@@ -330,7 +334,8 @@ function paintHud() {
     } else if (moved) {
       hint.textContent = "本回合已跑位：可繼續移動或傳球；射門／盤帶須先結束回合";
     } else {
-      hint.textContent = `本關手段：${on.join(" · ")}（灰鈕＝此關壓力下鎖死）`;
+      const minY = state.min_shoot_y != null ? state.min_shoot_y : 4;
+      hint.textContent = `本關手段：${on.join(" · ")} · 射門須 y≥${minY}（灰鈕＝鎖死）`;
     }
   }
 }
@@ -362,7 +367,7 @@ function selectMode(next) {
     dribble: "點選持球者相鄰格盤帶（本回合限一次）",
     pass: "點接球隊友（地滾）。傳球後防守者會移動——用來拉扯防線。",
     lob: "點接球隊友（高空）。傳球後防守者會移動。",
-    shoot: "可直接射門。點球門三格。",
+    shoot: "須推進到前場（y≥4）才能射。點球門三格。",
   };
   setPrompt(prompts[next]);
   paintHud();
@@ -429,6 +434,10 @@ async function playSolutionDemo() {
 
   try {
     const pack = await api("/api/solution", { puzzle_id: state.puzzle.id });
+    if (!pack.ok) throw new Error(pack.message || "無法載入正解");
+    const frames = pack.frames;
+    if (!frames?.length) throw new Error("正解步驟為空");
+
     state = pack.state;
     logEl.innerHTML = "";
     appendLogs([], `正解示範 · ${pack.puzzle_id}`);
@@ -437,27 +446,20 @@ async function playSolutionDemo() {
     renderBoard();
     await sleep(500);
 
-    for (const step of pack.steps) {
-      demoHighlight = demoFocusForStep(step);
-      pathPreview = previewPathForStep(step);
-      // temporarily set mode for path color
+    for (const frame of frames) {
+      demoHighlight = demoFocusForStep(frame);
+      pathPreview = previewPathForStep(frame);
       const prevMode = mode;
-      mode = step.type === "lob" ? "lob" : step.type === "pass" ? "pass" : mode;
-      setPrompt(step.label);
-      appendLogs([], step.label);
+      mode = frame.type === "lob" ? "lob" : frame.type === "pass" ? "pass" : mode;
+      setPrompt(frame.label);
+      appendLogs([], frame.label);
       paintHud();
       renderBoard();
       await sleep(900);
 
-      const payload = { type: step.type };
-      if (step.x != null) payload.x = step.x;
-      if (step.y != null) payload.y = step.y;
-      if (step.target_id) payload.target_id = step.target_id;
-      if (step.actor_id) payload.actor_id = step.actor_id;
-
-      const res = await api("/api/action", payload);
-      state = res.state;
-      appendLogs(res.logs, res.message);
+      // Server already applied this step — just show the resulting board.
+      state = frame.state;
+      appendLogs(frame.logs, frame.message);
       demoHighlight = null;
       pathPreview = [];
       mode = prevMode;
@@ -465,10 +467,13 @@ async function playSolutionDemo() {
       renderBoard();
       await sleep(700);
 
+      if (!frame.ok || (frame.turnover && !frame.goal)) {
+        throw new Error(frame.message || "示範步驟失敗");
+      }
       if (state.finished) break;
     }
 
-    if (state.won) {
+    if (pack.won || state.won) {
       showModal(
         "正解示範完成",
         `${state.puzzle.title}\n\n這就是本關要學的解法。按「重開本關」自己再試一次。`
@@ -478,6 +483,7 @@ async function playSolutionDemo() {
     }
   } catch (err) {
     setPrompt("示範失敗：" + err.message);
+    showModal("示範失敗", err.message || "未知錯誤");
   } finally {
     demoPlaying = false;
     demoHighlight = null;
