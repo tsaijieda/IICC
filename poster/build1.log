@@ -1,0 +1,293 @@
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex)
+ restricted \write18 enabled.
+entering extended mode
+(./football_relativity.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-11-06>
+(/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/base/size10.clo)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/geometry/geometry.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/graphics/keyval.sty) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/iftex/ifvtex.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/iftex/iftex.sty))) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/fontspec/fontspec.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/l3kernel/expl3.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/l3backend/l3backend-xetex.def))) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/base/fontenc.sty) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/fontspec/fontspec.cfg))) (/Users/ethan/Library/TinyTex/texmf-dist/tex/xelatex/xecjk/xeCJK.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/ctex/ctexhook.sty) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.sty) (/Users/ethan/Library/TinyTex/texmf-dist/tex/xelatex/xecjk/xeCJK.cfg))
+
+! Package fontspec Error: 
+(fontspec)                The font "Latin Modern Roman" cannot be found;
+(fontspec)                this may be but usually is not a fontspec bug.
+(fontspec)                Either there is a typo in the font name/file, the
+(fontspec)                font is not installed (correctly), or there is a
+(fontspec)                bug in the underlying font loading engine
+(fontspec)                (XeTeX/luaotfload).
+
+For immediate help type H <return>.
+ ...                                              
+                                                  
+l.8 \setCJKmainfont
+                   {Arial Unicode MS}[
+
+! Package fontspec Error: 
+(fontspec)                The font "Latin Modern Roman" cannot be found;
+(fontspec)                this may be but usually is not a fontspec bug.
+(fontspec)                Either there is a typo in the font name/file, the
+(fontspec)                font is not installed (correctly), or there is a
+(fontspec)                bug in the underlying font loading engine
+(fontspec)                (XeTeX/luaotfload).
+
+For immediate help type H <return>.
+ ...                                              
+                                                  
+l.8 \setCJKmainfont
+                   {Arial Unicode MS}[
+
+! Package fontspec Error: 
+(fontspec)                The font "Latin Modern Roman" cannot be found;
+(fontspec)                this may be but usually is not a fontspec bug.
+(fontspec)                Either there is a typo in the font name/file, the
+(fontspec)                font is not installed (correctly), or there is a
+(fontspec)                bug in the underlying font loading engine
+(fontspec)                (XeTeX/luaotfload).
+
+For immediate help type H <return>.
+ ...                                              
+                                                  
+l.8 \setCJKmainfont
+                   {Arial Unicode MS}[
+! Font TU/LatinModernRoman(0)/m/n/10="Latin Modern Roman" at 10.0pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.8 \setCJKmainfont
+                   {Arial Unicode MS}[
+(/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/xcolor/xcolor.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/graphics-cfg/color.cfg) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/graphics-def/xetex.def) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/graphics/mathcolor.ltx)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/pgf.revision.tex))) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/graphics/graphicx.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/graphics/graphics.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/graphics/trig.sty) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/graphics-cfg/graphics.cfg))) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.def (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx.def (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def)))) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex))) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex))) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfit.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybackgrounds.code.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/tools/tabularx.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/tools/array.sty)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/colortbl/colortbl.sty) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/enumitem/enumitem.sty) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/tools/multicol.sty) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/amsmath/amstext.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/amsmath/amsgen.sty)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/amsmath/amsbsy.sty) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/amsmath/amsopn.sty)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/amsfonts/amssymb.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/amsfonts/amsfonts.sty)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/tools/verbatim.sty) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/environ/environ.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/trimspaces/trimspaces.sty)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/etoolbox/etoolbox.sty)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '6.8.0'
+(/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/tikzfill/tikzfill.image.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/tikzfill/tikzfill-common.sty) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/tikzfill/tikzlibraryfill.image.code.tex)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.8.0'
+)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.8.0'
+(/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/pdfcol/pdfcol.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/infwarerr/infwarerr.sty))) (./football_relativity.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+! Font TU/LatinModernRoman(0)/m/n/14.4="Latin Modern Roman" at 14.4pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.103     {
+           第十七屆智慧鐵人創意競賽　決賽};
+
+LaTeX Font Warning: Font shape `TU/LatinModernRoman(0)/b/n' undefined
+(Font)              using `TU/LatinModernRoman(0)/m/n' instead on input line 103.
+
+! Font TU/LatinModernRoman(0)/m/n/48="Latin Modern Roman" at 48.0pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.108   {\fontsize{48}{52}\selectfont
+                                     \bfseries
+! Font TU/LatinModernRoman(0)/b/n/48="Latin Modern Roman" at 48.0pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.108   {\fontsize{48}{52}\selectfont\bfseries
+                                              
+Missing character: There is no F ("46) in font nullfont!
+Missing character: There is no o ("6F) in font nullfont!
+Missing character: There is no o ("6F) in font nullfont!
+Missing character: There is no t ("74) in font nullfont!
+Missing character: There is no b ("62) in font nullfont!
+Missing character: There is no a ("61) in font nullfont!
+Missing character: There is no l ("6C) in font nullfont!
+Missing character: There is no l ("6C) in font nullfont!
+Missing character: There is no R ("52) in font nullfont!
+Missing character: There is no e ("65) in font nullfont!
+Missing character: There is no l ("6C) in font nullfont!
+Missing character: There is no a ("61) in font nullfont!
+Missing character: There is no t ("74) in font nullfont!
+Missing character: There is no i ("69) in font nullfont!
+Missing character: There is no v ("76) in font nullfont!
+Missing character: There is no i ("69) in font nullfont!
+Missing character: There is no t ("74) in font nullfont!
+Missing character: There is no y ("79) in font nullfont!
+! Font TU/LatinModernRoman(0)/b/n/14.4="Latin Modern Roman" at 14.4pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.111   {\Large\color{white}\bfseries
+                                      足球相對論}
+! Font TU/LatinModernRoman(0)/m/n/12="Latin Modern Roman" at 12.0pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.116   {\color{white}\large
+                            \bfseries 星際足球 × 相對論}\\[2pt]
+! Font TU/LatinModernRoman(0)/b/n/12="Latin Modern Roman" at 12.0pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.116   {\color{white}\large\bfseries
+                                      星際足球 × 相對論}\\[2pt]
+Missing character: There is no × ("D7) in font nullfont!
+! Font TU/LatinModernRoman(0)/m/n/17.28="Latin Modern Roman" at 17.28pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.127 \secHead{一、關卡內容}
+                      
+! Font TU/LatinModernRoman(0)/b/n/17.28="Latin Modern Roman" at 17.28pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.127 \secHead{一、關卡內容}
+                      
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 127--127
+[][][] 
+Missing character: There is no C ("43) in font nullfont!
+Missing character: There is no E ("45) in font nullfont!
+Missing character: There is no R ("52) in font nullfont!
+Missing character: There is no N ("4E) in font nullfont!
+! Font TU/LatinModernRoman(0)/b/n/10="Latin Modern Roman" at 10.0pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.129 你們被 CERN 製造的黑洞甩到外太空，並被\textbf{天狼星文明}
+                                          帶去比\textbf{星際足球}。
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 135--135
+[][][] 
+! Font TU/LatinModernRoman(0)/m/n/9="Latin Modern Roman" at 9.0pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.145   \node[box] (a) {
+                        閱讀關卡\\物理文本};
+! Font TU/LatinModernRoman(0)/b/n/9="Latin Modern Roman" at 9.0pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.145   \node[box] (a) {
+                        閱讀關卡\\物理文本};
+Missing character: There is no × ("D7) in font nullfont!
+Missing character: There is no 6 ("36) in font nullfont!
+Missing character: There is no × ("D7) in font nullfont!
+Missing character: There is no 5 ("35) in font nullfont!
+! Font TU/LatinModernRoman(0)/m/n/8="Latin Modern Roman" at 8.0pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.156 {\footnotesize
+                    \color{gbGrey}
+Missing character: There is no 3 ("33) in font nullfont!
+Missing character: There is no → ("2192) in font nullfont!
+Missing character: There is no 1 ("31) in font nullfont!
+Missing character: There is no 0 ("30) in font nullfont!
+! Font TU/LatinModernRoman(0)/m/n/7="Latin Modern Roman" at 7.0pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.173   \node at (1.05,4.5) {
+                             \bfseries A 區};
+! Font TU/LatinModernRoman(0)/b/n/7="Latin Modern Roman" at 7.0pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.173   \node at (1.05,4.5) {\bfseries
+                                       A 區};
+Missing character: There is no A ("41) in font nullfont!
+Missing character: There is no B ("42) in font nullfont!
+Missing character: There is no C ("43) in font nullfont!
+Missing character: There is no D ("44) in font nullfont!
+! Font TU/LatinModernRoman(0)/m/n/5="Latin Modern Roman" at 5.0pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.184 ...iny\bfseries, text=white] at (4.2,3.55) {
+                                                  裁判位};
+! Font TU/LatinModernRoman(0)/b/n/5="Latin Modern Roman" at 5.0pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.184 ...iny\bfseries, text=white] at (4.2,3.55) {
+                                                  裁判位};
+(/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/amsfonts/umsa.fd) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/amsfonts/umsb.fd)
+! Font TU/LatinModernRoman(0)/b/n/8="Latin Modern Roman" at 8.0pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.196 \textbf{空間提示：}
+                    上半場防守者為固定高度圓柱，連線構成防線；
+Missing character: There is no z ("7A) in font nullfont!
+Missing character: There is no o ("6F) in font nullfont!
+Missing character: There is no n ("6E) in font nullfont!
+Missing character: There is no e ("65) in font nullfont!
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 201--201
+[][][] 
+Missing character: There is no 1 ("31) in font nullfont!
+Missing character: There is no . ("2E) in font nullfont!
+Missing character: There is no 2 ("32) in font nullfont!
+Missing character: There is no . ("2E) in font nullfont!
+Missing character: There is no 6 ("36) in font nullfont!
+Missing character: There is no 5 ("35) in font nullfont!
+Missing character: There is no 3 ("33) in font nullfont!
+Missing character: There is no . ("2E) in font nullfont!
+Missing character: There is no 0 ("30) in font nullfont!
+Missing character: There is no 4 ("34) in font nullfont!
+Missing character: There is no . ("2E) in font nullfont!
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 228--228
+[][][] 
+Missing character: There is no z ("7A) in font nullfont!
+Missing character: There is no o ("6F) in font nullfont!
+Missing character: There is no n ("6E) in font nullfont!
+Missing character: There is no e ("65) in font nullfont!
+! Font TU/LatinModernRoman(0)/m/n/6="Latin Modern Roman" at 6.0pt not loadable: Metric (TFM) file or installed font not found.
+<to be read again> 
+                   relax 
+l.239 \begin{tabular}
+                     {|c|c|c|}
+Missing character: There is no 1 ("31) in font nullfont!
+Missing character: There is no 5 ("35) in font nullfont!
+Missing character: There is no 3 ("33) in font nullfont!
+Missing character: There is no 0 ("30) in font nullfont!
+Missing character: There is no 3 ("33) in font nullfont!
+Missing character: There is no 0 ("30) in font nullfont!
+Missing character: There is no 6 ("36) in font nullfont!
+Missing character: There is no 4 ("34) in font nullfont!
+Missing character: There is no 5 ("35) in font nullfont!
+Missing character: There is no 0 ("30) in font nullfont!
+Missing character: There is no • ("2022) in font nullfont!
+Missing character: There is no • ("2022) in font nullfont!
+Missing character: There is no • ("2022) in font nullfont!
+Missing character: There is no • ("2022) in font nullfont!
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 262--262
+[][][] 
+Missing character: There is no 1 ("31) in font nullfont!
+Missing character: There is no 0 ("30) in font nullfont!
+Missing character: There is no • ("2022) in font nullfont!
+Missing character: There is no 2 ("32) in font nullfont!
+Missing character: There is no • ("2022) in font nullfont!
+Missing character: There is no • ("2022) in font nullfont!
+Missing character: There is no • ("2022) in font nullfont!
+Missing character: There is no • ("2022) in font nullfont!
+Missing character: There is no 3 ("33) in font nullfont!
+Missing character: There is no 1 ("31) in font nullfont!
+Missing character: There is no 1 ("31) in font nullfont!
+Missing character: There is no 2 ("32) in font nullfont!
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 281--281
+[][][] 
+Missing character: There is no + ("2B) in font nullfont!
+Missing character: There is no + ("2B) in font nullfont!
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 297--297
+[][][] 
+Missing character: There is no 1 ("31) in font nullfont!
+Missing character: There is no 1 ("31) in font nullfont!
+Missing character: There is no 1 ("31) in font nullfont!
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 321--323
+[][]
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--323
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 325--325
+[][][] 
+Missing character: There is no 1 ("31) in font nullfont!
+Missing character: There is no . ("2E) in font nullfont!
+Missing character: There is no 2 ("32) in font nullfont!
+Missing character: There is no . ("2E) in font nullfont!
+Missing character: There is no 3 ("33) in font nullfont!
+Missing character: There is no . ("2E) in font nullfont!
+Missing character: There is no p ("70) in font nullfont!
+Missing character: There is no p ("70) in font nullfont!
+[1] (./football_relativity.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ )
+(see the transcript file for additional information)
+Output written on football_relativity.pdf (1 page).
+Transcript written on football_relativity.log.
