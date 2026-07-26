@@ -1,0 +1,9 @@
+play_id: "T008"
+title: "題型 8：極限壓迫破解"
+mode: pass_points
+
+frames:
+  - {zone: 11, place: 左肋深處, label: CM, receiver: CM}
+  - {zone: 14, place: 弧頂前緣, label: CM, receiver: CM, pass_action: 盤帶推進}
+  - {zone: 19, place: 右路底線, label: RB, passer: CM, receiver: RB, pass_action: 傳球}
+  - {zone: 20, place: 禁區中央, label: ST, passer: RB, receiver: ST, pass_action: 傳中}

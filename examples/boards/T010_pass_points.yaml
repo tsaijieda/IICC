@@ -1,0 +1,8 @@
+play_id: "T010"
+title: "題型 10：邊路傳中得分"
+mode: pass_points
+
+frames:
+  - {zone: 17, label: RW, receiver: RW}
+  - {zone: 19, label: RB, passer: RW, receiver: RB, pass_action: 傳球}
+  - {zone: 20, label: ST, passer: RB, receiver: ST, pass_action: 傳中}

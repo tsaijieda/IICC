@@ -1,0 +1,8 @@
+play_id: "T006"
+title: "題型 6：高空作業與做牆"
+mode: pass_points
+
+frames:
+  - {zone: 14, place: 弧頂前緣, label: ST, passer: CB, receiver: ST, pass_action: 過頂長傳}
+  - {zone: 11, place: 左肋深處, label: AM, passer: ST, receiver: AM, pass_action: 回做球}
+  - {zone: 20, place: 禁區中央, label: ST, passer: AM, receiver: ST, pass_action: 傳球}

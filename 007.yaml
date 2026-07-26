@@ -1,0 +1,58 @@
+play_id: "T007"
+title: "題型 7：中路撞牆二度突破"
+description: "隊友將球傳球給前鋒（ST），前鋒在弧頂前緣接球。前鋒回做球給前腰（AM），前腰在左肋深處接球。前腰傳球給前鋒（ST），前鋒在禁區中央得分。"
+scoring_mode: pass_points
+
+evaluation_points:
+  傳球: "傳球人：隊友 → 前鋒（ST）；邊：傳球；接球點：弧頂前緣。"
+  回做球: "傳球人：前鋒（ST）→ 前腰（AM）；邊：回做球；接球點：左肋深處。"
+  傳球 (終點): "傳球人：前腰（AM）→ 前鋒（ST）；邊：傳球；接球點：禁區中央；得分。"
+
+pass_points:
+  - {zone: 14, place: 弧頂前緣, receiver: ST, pass_action: 傳球}
+  - {zone: 11, place: 左肋深處, passer: ST, receiver: AM, pass_action: 回做球}
+  - {zone: 20, place: 禁區中央, passer: AM, receiver: ST, pass_action: 傳球, outcome: 得分}
+
+y_label: "Field Depth (m)"
+x_label: "Time (seconds)"
+x_limits: [0.0, 5.5]
+y_limits: [55, 110]
+
+entities:
+  - id: "ST"
+    label: "Striker (ST)"
+    color: "#4A85F6"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 85]
+      - [2.0, 85]
+      - [3.5, 95]
+      - [5.0, 95]
+
+  - id: "AM"
+    label: "Attacking Mid (AM)"
+    color: "#74DB7A"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 65]
+      - [2.0, 70]
+      - [5.0, 72]
+
+  - id: "Ball"
+    label: "Ball"
+    color: "#F26974"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 85]
+      - [2.0, 70]
+      - [3.5, 95]
+      - [4.2, 105]
+
+  - id: "Offside"
+    label: "Offside Line"
+    color: "#EAC2CE"
+    linestyle: "--"
+    trajectory:
+      - [0.0, 88]
+      - [2.8, 88]
+      - [5.0, 95]

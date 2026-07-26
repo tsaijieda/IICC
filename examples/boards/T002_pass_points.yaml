@@ -1,0 +1,7 @@
+play_id: "T002"
+title: "題型 2：肋部切割器"
+mode: pass_points
+
+frames:
+  - {zone: 19, place: 右路底線, label: RW, receiver: RW}
+  - {zone: 20, place: 禁區中央, label: AM, passer: RW, receiver: AM, pass_action: 直塞}

@@ -1,58 +1,58 @@
-# 基本資訊與敘述
 play_id: "T002"
 title: "題型 2：肋部切割器"
-description: "右邊鋒在邊線持球，右前腰發動內切插上。邊鋒直塞給前腰，前腰接球後直接射正。"
+description: "邊鋒（RW）在右路底線接球。邊鋒直塞給前腰（AM），前腰在禁區中央射正。"
+scoring_mode: pass_points
 
-# 評分檢核點
 evaluation_points:
-  內切插上: "前腰是否確實從 zone 15 往內側跑向 zone 20？"
-  直塞: "邊鋒是否從 zone 19 將球向前穿越圓柱體防線送到 zone 20？"
-  射正: "球是否進入球框範圍？"
+  直塞: "傳球人：邊鋒（RW）→ 前腰（AM）；邊：直塞；接球點：禁區中央。"
+  射正: "終點禁區中央射正。"
 
-# 畫布與座標設定
+pass_points:
+  - {zone: 19, place: 右路底線, receiver: RW}
+  - {zone: 20, place: 禁區中央, passer: RW, receiver: AM, pass_action: 直塞, outcome: 射正}
+
 y_label: "Field Depth (m)"
 x_label: "Time (seconds)"
 x_limits: [0.0, 4.2]
 y_limits: [50, 105]
 
-# 實體時空軌跡 (x-t data)
 entities:
   - id: "RW"
     label: "Winger (RW)"
-    color: "#F6B746"  # 黃色
+    color: "#F6B746"
     linestyle: "-"
     trajectory:
-      - [0.0, 80]     # 邊鋒在 Zone 19 邊緣持球等待
-      - [2.0, 80]     # 抓準時機送出直塞
-      - [4.0, 80]     # 傳球後留在原地觀察
+      - [0.0, 80]
+      - [2.0, 80]
+      - [4.0, 80]
 
   - id: "AM"
     label: "Attacker (AM)"
-    color: "#74DB7A"  # 綠色
+    color: "#74DB7A"
     linestyle: "-"
     trajectory:
-      - [0.0, 65]     # 前腰在 Zone 15 較深處準備
-      - [1.0, 65]     # 突然啟動
-      - [2.0, 80]     # t=2.0 剛好切齊越位線 (反越位成功)
-      - [3.0, 95]     # t=3.0 在 Zone 20 腹地接球
-      - [4.0, 95]     # 完成射門動作
+      - [0.0, 65]
+      - [1.0, 65]
+      - [2.0, 80]
+      - [3.0, 95]
+      - [4.0, 95]
 
   - id: "Ball"
     label: "Ball"
-    color: "#F26974"  # 亮紅色
+    color: "#F26974"
     linestyle: "-"
     trajectory:
-      - [0.0, 80]     # 球在邊鋒腳下
-      - [2.0, 80]     # t=2.0 傳出直塞
-      - [3.0, 95]     # t=3.0 前腰接球
-      - [3.5, 105]    # t=3.5 射正 (球飛入球門)
+      - [0.0, 80]
+      - [2.0, 80]
+      - [3.0, 95]
+      - [3.5, 105]
 
   - id: "Offside"
     label: "Offside Line"
-    color: "#EAC2CE"  # 粉白色
+    color: "#EAC2CE"
     linestyle: "--"
     trajectory:
-      - [0.0, 82]     # 防線原先壓在 82m 處
-      - [2.0, 82]     # 被直塞球打穿的瞬間
-      - [3.0, 92]     # 防守者狼狽回追
+      - [0.0, 82]
+      - [2.0, 82]
+      - [3.0, 92]
       - [4.0, 95]

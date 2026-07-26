@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>戰術板轉譯</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css?v=7" />
+</head>
+<body>
+  <div class="app">
+    <aside class="rail">
+      <p class="brand">戰術板轉譯</p>
+      <p class="brand-sub">點球場 · 填接球人 · 自動轉譯</p>
+
+      <p class="section-label">模式</p>
+      <div class="mode-toggle">
+        <button type="button" id="mode-pass" class="active">傳球點</button>
+        <button type="button" id="mode-full">全員跑位</button>
+      </div>
+
+      <label class="field">
+        <span>戰術 ID</span>
+        <input id="play-id" type="text" placeholder="T001" />
+      </label>
+      <label class="field">
+        <span>標題</span>
+        <input id="play-title" type="text" placeholder="題型 1：邊路經典爆破" />
+      </label>
+
+      <p class="section-label">範例</p>
+      <div id="examples" class="examples"></div>
+
+      <p class="section-label">接球時間軸</p>
+      <div id="frames" class="frames"></div>
+      <button type="button" id="btn-add-frame" class="ghost">＋ 手動加一拍</button>
+    </aside>
+
+    <main class="stage">
+      <header class="hud">
+        <div>
+          <h1 id="frame-title">接球點 1</h1>
+          <p id="frame-hint" class="desc">填接球人 → 點球場 = 記一筆；可一直點、沒有上限。</p>
+        </div>
+        <div class="hud-actions">
+          <button type="button" id="btn-translate" class="primary">轉譯戰術</button>
+        </div>
+      </header>
+
+      <div class="board-wrap">
+        <div class="goal-label">球門 ↑</div>
+        <div class="board-shell">
+          <div id="board" class="board" role="grid">
+            <svg class="pitch-svg" viewBox="0 0 68 105" aria-hidden="true">
+              <!-- 0,0 = 上方球門線；viewBox 單位 = 公尺（68×105） -->
+              <rect class="pitch-line" x="0" y="0" width="68" height="105" />
+              <line class="pitch-line" x1="0" y1="52.5" x2="68" y2="52.5" />
+              <circle class="pitch-line" cx="34" cy="52.5" r="9.15" />
+              <circle class="pitch-spot" cx="34" cy="52.5" r="0.35" />
+              <!-- 上方禁區 / 小禁區 / 球門 -->
+              <rect class="pitch-line" x="13.84" y="0" width="40.32" height="16.5" />
+              <rect class="pitch-line" x="24.84" y="0" width="18.32" height="5.5" />
+              <rect class="pitch-goal" x="30.34" y="-2.44" width="7.32" height="2.44" />
+              <circle class="pitch-spot" cx="34" cy="11" r="0.35" />
+              <path class="pitch-line" d="M 26.69 16.5 A 9.15 9.15 0 0 0 41.31 16.5" />
+              <!-- 下方禁區 / 小禁區 / 球門 -->
+              <rect class="pitch-line" x="13.84" y="88.5" width="40.32" height="16.5" />
+              <rect class="pitch-line" x="24.84" y="99.5" width="18.32" height="5.5" />
+              <rect class="pitch-goal" x="30.34" y="105" width="7.32" height="2.44" />
+              <circle class="pitch-spot" cx="34" cy="94" r="0.35" />
+              <path class="pitch-line" d="M 26.69 88.5 A 9.15 9.15 0 0 1 41.31 88.5" />
+            </svg>
+          </div>
+        </div>
+        <div class="legend">
+          <span><i class="chip ball"></i>目前接球點</span>
+          <span><i class="chip ghost"></i>其他點</span>
+        </div>
+      </div>
+
+      <section id="touch-editor" class="touch-editor touch-editor--compact">
+        <label class="field field-inline">
+          <span>接球人</span>
+          <input id="touch-receiver" type="text" placeholder="CM / ST" />
+        </label>
+        <details class="touch-advanced">
+          <summary>進階</summary>
+          <label class="field">
+            <span>越位線 depth</span>
+            <select id="offside-depth">
+              <option value="">—</option>
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </label>
+        </details>
+      </section>
+
+      <section id="touch-record-section" class="touch-record-section">
+        <h2>接球紀錄</h2>
+        <p class="desc">每拍：誰在球場哪裡接球（點球場會自動往後加拍）</p>
+        <ol id="touch-record" class="touch-record"></ol>
+      </section>
+
+      <section id="roster-section" class="roster" hidden>
+        <div class="roster-head">
+          <h2>球員</h2>
+          <button type="button" id="btn-add-player" class="ghost sm">＋ 球員</button>
+        </div>
+        <ul id="players" class="players"></ul>
+      </section>
+    </main>
+
+    <aside class="out-panel">
+      <h2>轉譯結果</h2>
+      <p id="valid-flag" class="valid ok">—</p>
+      <h3>評分</h3>
+      <p id="out-score" class="out-block score-block">（戰術 ID 對應題目時自動評分）</p>
+      <ul id="out-scoring" class="evals"></ul>
+      <h3>description</h3>
+      <p id="out-desc" class="out-block">（按「轉譯戰術」）</p>
+      <h3>evaluation_points</h3>
+      <ul id="out-evals" class="evals"></ul>
+      <h3>接球時間軸</h3>
+      <ul id="out-touches" class="touches"></ul>
+      <button type="button" id="btn-export" class="ghost">複製 YAML</button>
+    </aside>
+  </div>
+  <script src="/app.js?v=14"></script>
+</body>
+</html>
