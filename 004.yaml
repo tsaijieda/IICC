@@ -1,78 +1,81 @@
-# 基本資訊與敘述
 play_id: "T004"
 title: "題型 4：中路三人過度"
-description: "後腰將球直塞給前鋒。前鋒第一時間執行回做球給前腰。前腰迎球再次發動直塞給跑位的另一名前鋒，該前鋒射正。"
+description: "後腰（DM）在後場中路接球。後腰直塞給前鋒（ST1），前鋒在弧頂前緣接球。前鋒回做球給前腰（AM），前腰在左肋深處接球。前腰直塞給前鋒（ST2），前鋒在禁區中央射正。"
+scoring_mode: pass_points
 
-# 評分檢核點
 evaluation_points:
-  直塞 (首次): "球是否從 zone 8 向前穿越防線至 zone 14/20？"
-  回做球: "前鋒是否在 zone 14/20 背對球門，一腳觸球傳回給 zone 11/13/15 的前腰？"
-  直塞 (二次): "前腰是否成功將球穿越最後一道防線？"
+  直塞: "傳球人：後腰（DM）→ 前鋒（ST1）；邊：直塞；接球點：弧頂前緣。"
+  回做球: "傳球人：前鋒（ST1）→ 前腰（AM）；邊：回做球；接球點：左肋深處。"
+  直塞 (終點): "傳球人：前腰（AM）→ 前鋒（ST2）；邊：直塞；接球點：禁區中央；射正。"
 
-# 畫布與座標設定
+pass_points:
+  - {zone: 7, place: 後場中路, receiver: DM}
+  - {zone: 14, place: 弧頂前緣, passer: DM, receiver: ST1, pass_action: 直塞}
+  - {zone: 11, place: 左肋深處, passer: ST1, receiver: AM, pass_action: 回做球}
+  - {zone: 20, place: 禁區中央, passer: AM, receiver: ST2, pass_action: 直塞, outcome: 射正}
+
 y_label: "Field Depth (m)"
 x_label: "Time (seconds)"
 x_limits: [0.0, 5.0]
 y_limits: [30, 110]
 
-# 實體時空軌跡 (x-t data)
 entities:
   - id: "DM"
     label: "Def. Mid (DM)"
-    color: "#B48EAD"  # 紫色
+    color: "#B48EAD"
     linestyle: "-"
     trajectory:
-      - [0.0, 40]     # 後腰在深處持球 (Zone 8 邊緣)
-      - [1.0, 40]     # 抓準時機送出直塞
-      - [5.0, 45]     # 傳球後稍微向前推進保護陣型
+      - [0.0, 40]
+      - [1.0, 40]
+      - [5.0, 45]
 
   - id: "ST1"
     label: "Target Striker (ST1)"
-    color: "#4A85F6"  # 藍色
+    color: "#4A85F6"
     linestyle: "-"
     trajectory:
-      - [0.0, 85]     # 支點前鋒在高位 (Zone 14/20 交界) 背身要球
-      - [2.0, 85]     # 迎球第一時間觸球
-      - [5.0, 85]     # 完成回做球後，留在原地牽制中後衛
+      - [0.0, 85]
+      - [2.0, 85]
+      - [5.0, 85]
 
   - id: "AM"
     label: "Attacking Mid (AM)"
-    color: "#74DB7A"  # 綠色
+    color: "#74DB7A"
     linestyle: "-"
     trajectory:
-      - [0.0, 65]     # 前腰在中路 (Zone 11/14 之間)
-      - [2.0, 70]     # 向前迎球準備接應
-      - [2.5, 70]     # 停下回做球，瞬間送出致命直塞
-      - [5.0, 75]     # 跟進觀察
+      - [0.0, 65]
+      - [2.0, 70]
+      - [2.5, 70]
+      - [5.0, 75]
 
   - id: "ST2"
     label: "Running Striker (ST2)"
-    color: "#F6B746"  # 黃色
+    color: "#F6B746"
     linestyle: "-"
     trajectory:
-      - [0.0, 75]     # 另一名前鋒埋伏在防線前
-      - [2.0, 75]     # 看到 ST1 回做球，立刻啟動前插
-      - [3.5, 95]     # 打穿防線，在禁區深處接獲 AM 的直塞
-      - [4.5, 95]     # 完成射門動作
+      - [0.0, 75]
+      - [2.0, 75]
+      - [3.5, 95]
+      - [4.5, 95]
 
   - id: "Ball"
     label: "Ball"
-    color: "#F26974"  # 亮紅色
+    color: "#F26974"
     linestyle: "-"
     trajectory:
-      - [0.0, 40]     # 球在後腰腳下
-      - [1.0, 40]     # 發動第一次長距離直塞 (Up)
-      - [2.0, 85]     # ST1 觸球
-      - [2.5, 70]     # 一腳觸球回做！(Back：軌跡出現負斜率往回折)
-      - [3.5, 95]     # AM 再次直塞，精準送到前插的 ST2 腳下 (Through)
-      - [4.0, 105]    # ST2 射門，球飛入球門
+      - [0.0, 40]
+      - [1.0, 40]
+      - [2.0, 85]
+      - [2.5, 70]
+      - [3.5, 95]
+      - [4.0, 105]
 
   - id: "Offside"
     label: "Offside Line"
-    color: "#EAC2CE"  # 粉白色
+    color: "#EAC2CE"
     linestyle: "--"
     trajectory:
-      - [0.0, 88]     # 防線位置
-      - [2.5, 88]     # 保持不變，AM 傳球瞬間，ST2 (x=75) 在線後，完全沒越位
-      - [3.5, 92]     # 發現被打穿，防守者轉身回追
+      - [0.0, 88]
+      - [2.5, 88]
+      - [3.5, 92]
       - [5.0, 95]

@@ -22,7 +22,7 @@ HOST = "127.0.0.1"
 PORT = int(os.environ.get("DEFENSE_PORT", "8765"))
 
 _sessions: dict[str, DefenseGame] = {}
-_lock = threading.Lock()
+_lock = threading.RLock()
 
 
 def _game(session: str = "default") -> DefenseGame:
@@ -242,8 +242,11 @@ class Handler(BaseHTTPRequestHandler):
             return
 
         if path == "/api/action":
+            # Keep lock non-nested call sites simple: resolve game under lock once.
             with _lock:
-                game = _game()
+                if "default" not in _sessions:
+                    _sessions["default"] = DefenseGame(get_puzzle("D1"))
+                game = _sessions["default"]
                 try:
                     action = _parse_action(data)
                     result = game.apply(action)

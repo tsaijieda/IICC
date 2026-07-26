@@ -1,0 +1,9 @@
+play_id: "T009"
+title: "題型 9：誘敵深入與大逃亡"
+mode: pass_points
+
+frames:
+  - {zone: 7, place: 後場中路, label: DM, receiver: DM}
+  - {zone: 7, place: 後場中路, label: CB, passer: DM, receiver: CB, pass_action: 傳球}
+  - {zone: 7, place: 後場中路, label: FB, passer: CB, receiver: FB, pass_action: 回做球}
+  - {zone: 18, place: 左路底線, label: W, passer: FB, receiver: W, pass_action: 強弱邊轉移}

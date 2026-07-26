@@ -1,0 +1,56 @@
+play_id: "T010"
+title: "題型 10：邊路傳中得分"
+description: "邊鋒（RW）在右邊路接球。邊鋒傳球給右後衛（RB），右後衛在右路底線接球。右後衛傳中給前鋒（ST），前鋒在禁區中央得分。"
+scoring_mode: pass_points
+
+evaluation_points:
+  傳球: "傳球人：邊鋒（RW）→ 右後衛（RB）；邊：傳球；接球點：右路底線。"
+  傳中: "傳球人：右後衛（RB）→ 前鋒（ST）；邊：傳中；接球點：禁區中央；得分。"
+
+pass_points:
+  - {zone: 17, place: 右邊路, receiver: RW}
+  - {zone: 19, place: 右路底線, passer: RW, receiver: RB, pass_action: 傳球}
+  - {zone: 20, place: 禁區中央, passer: RB, receiver: ST, pass_action: 傳中, outcome: 得分}
+
+y_label: "Field Depth (m)"
+x_label: "Time (seconds)"
+x_limits: [0.0, 6.0]
+y_limits: [45, 110]
+
+entities:
+  - id: "RB"
+    label: "Right Back (RB)"
+    color: "#F6B746"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 50]
+      - [3.0, 95]
+      - [6.0, 95]
+
+  - id: "ST"
+    label: "Striker (ST)"
+    color: "#4A85F6"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 60]
+      - [5.0, 95]
+      - [6.0, 95]
+
+  - id: "Ball"
+    label: "Ball"
+    color: "#F26974"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 75]
+      - [3.0, 95]
+      - [5.0, 95]
+      - [5.5, 105]
+
+  - id: "Offside"
+    label: "Offside Line"
+    color: "#EAC2CE"
+    linestyle: "--"
+    trajectory:
+      - [0.0, 82]
+      - [4.0, 92]
+      - [6.0, 95]

@@ -1,0 +1,8 @@
+play_id: "T007"
+title: "題型 7：中路撞牆二度突破"
+mode: pass_points
+
+frames:
+  - {zone: 14, label: ST, receiver: ST, pass_action: 傳球}
+  - {zone: 11, label: AM, passer: ST, receiver: AM, pass_action: 回做球}
+  - {zone: 20, label: ST, passer: AM, receiver: ST, pass_action: 傳球}

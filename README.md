@@ -84,6 +84,33 @@ pip install -r requirements.txt
 python plot.py 001.yaml
 ```
 
+## 戰術板 → 戰術語言轉譯（畫跑位評分）
+
+將**每次接球傳球點**（接球者 + zone + 傳球名詞）轉成與 `001.yaml` 相同風格的 `description` / `evaluation_points`。戰術名詞見 `1st_half_rules.md`（傳球、直塞、回做球、盤帶推進、強弱邊轉移、倒三角傳球、傳中、過頂長傳、射正、得分）。
+
+```bash
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+.venv/bin/python translate_tactics.py examples/boards/T001_pass_points.yaml
+.venv/bin/python translate_tactics.py examples/boards/T007_pass_points.yaml -o out.yaml
+
+# 網頁 UI（傳球點模式）
+.venv/bin/python play_translate.py
+# → http://127.0.0.1:8770/
+```
+
+**輸入格式**（`examples/boards/*_pass_points.yaml`）：
+
+```yaml
+play_id: T007
+mode: pass_points
+frames:
+  - {zone: 14, label: ST, receiver: ST}
+  - {zone: 11, label: AM, passer: ST, receiver: AM, pass_action: 回做球}
+  - {zone: 20, label: ST, passer: AM, receiver: ST, pass_action: 傳球}
+```
+
+模組：`tactic_translate/`（zone 定義、戰術 pattern、部分給分）。規則對應 `1st_half_rules.md` 畫跑位定義。
+
 ## Requirements
 
 - Python 3.10+（網頁 UI 僅需標準庫）

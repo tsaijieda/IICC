@@ -90,12 +90,22 @@ function holder() {
 }
 
 function validTargets() {
-  if (!state || state.finished || !mode) return [];
+  if (!state || state.finished) return [];
   const h = holder();
   const out = [];
 
+  // No mode yet: highlight clickable attackers so the board feels interactive.
+  if (!mode) {
+    if (toolsAllow("move")) {
+      state.attackers
+        .filter((a) => !a.moved)
+        .forEach((a) => out.push({ x: a.x, y: a.y, kind: "actor", id: a.id }));
+    }
+    return out;
+  }
+
   if (mode === "dribble") {
-    if (h.moved) return out;
+    if (!h || h.moved) return out;
     for (let dx = -1; dx <= 1; dx++) {
       for (let dy = -1; dy <= 1; dy++) {
         if (dx === 0 && dy === 0) continue;
@@ -110,18 +120,20 @@ function validTargets() {
 
   if (mode === "move") {
     const actors = state.attackers.filter((a) => !a.moved);
-    if (!moveActorId) {
-      actors.forEach((a) => out.push({ x: a.x, y: a.y, kind: "actor", id: a.id }));
-    } else {
+    // Always allow picking / switching the mover.
+    actors.forEach((a) => out.push({ x: a.x, y: a.y, kind: "actor", id: a.id }));
+    if (moveActorId) {
       const actor = state.attackers.find((a) => a.id === moveActorId);
-      for (let dx = -1; dx <= 1; dx++) {
-        for (let dy = -1; dy <= 1; dy++) {
-          if (dx === 0 && dy === 0) continue;
-          const x = actor.x + dx, y = actor.y + dy;
-          if (x < 0 || y < 0 || x >= state.cols || y >= state.rows) continue;
-          if (state.attackers.some((a) => a.id !== actor.id && a.x === x && a.y === y)) continue;
-          if (state.defenders.some((d) => d.x === x && d.y === y)) continue;
-          out.push({ x, y, kind: "cell" });
+      if (actor) {
+        for (let dx = -1; dx <= 1; dx++) {
+          for (let dy = -1; dy <= 1; dy++) {
+            if (dx === 0 && dy === 0) continue;
+            const x = actor.x + dx, y = actor.y + dy;
+            if (x < 0 || y < 0 || x >= state.cols || y >= state.rows) continue;
+            if (state.attackers.some((a) => a.id !== actor.id && a.x === x && a.y === y)) continue;
+            if (state.defenders.some((d) => d.x === x && d.y === y)) continue;
+            out.push({ x, y, kind: "cell" });
+          }
         }
       }
     }
@@ -138,6 +150,12 @@ function validTargets() {
   }
 
   return out;
+}
+
+function toolsAllow(act) {
+  const tools = (state.puzzle && state.puzzle.tools) || {};
+  if (act === "shoot" || act === "end") return true;
+  return tools[act] !== false;
 }
 
 function renderBoard() {
@@ -226,21 +244,69 @@ function onCellHover(x, y) {
 }
 
 async function onCellClick(x, y) {
-  if (demoPlaying || !mode || state.finished) return;
+  if (demoPlaying || state.finished) return;
+
+  // Chess-like: click an attacker with no mode → start moving that player.
+  if (!mode) {
+    const p = pieceAt(x, y);
+    if (p && p.side === "atk") {
+      if (!toolsAllow("move")) {
+        setPrompt("本關不能移動球員。請改用傳球／射門等行動。");
+        return;
+      }
+      if (p.moved) {
+        setPrompt(`${p.id} 本回合已移動過，請選其他球員或傳球／結束回合。`);
+        return;
+      }
+      mode = "move";
+      moveActorId = p.id;
+      setPrompt(`已選 ${p.id}：再點相鄰空格移動（黃格）。持球者移動＝盤帶。`);
+      paintHud();
+      renderBoard();
+      return;
+    }
+    if (p && p.side === "def") {
+      setPrompt("防守者由系統移動。請點藍色進攻球員，或先選下方行動按鈕。");
+      return;
+    }
+    setPrompt("請先點藍色進攻球員開始移動，或先點下方「移動／盤帶／傳球／射門」。");
+    return;
+  }
+
   const targets = validTargets();
-  const hit = targets.find((t) => t.x === x && t.y === y);
-  if (!hit) return;
+  const hit =
+    targets.find((t) => t.x === x && t.y === y && t.kind === "actor") ||
+    targets.find((t) => t.x === x && t.y === y);
+  if (!hit) {
+    if (mode === "move" && !moveActorId) {
+      setPrompt("請先點要移動的進攻球員（黃格高亮）。");
+    } else if (mode === "move") {
+      setPrompt("請點黃格相鄰空位；或改點其他進攻球員切換。");
+    } else if (mode === "dribble") {
+      setPrompt("請點持球者旁邊的黃格盤帶。");
+    } else if (mode === "pass" || mode === "lob") {
+      setPrompt("請點接球的隊友（黃格）。");
+    } else if (mode === "shoot") {
+      setPrompt("請點球門三格（黃格）射門。");
+    }
+    return;
+  }
 
   try {
     if (mode === "move" && hit.kind === "actor") {
       moveActorId = hit.id;
-      setPrompt(`已選 ${hit.id}：點選要走到的相鄰格`);
+      setPrompt(`已選 ${hit.id}：點選要走到的相鄰格（黃格）`);
+      paintHud();
       renderBoard();
       return;
     }
 
     let payload = { type: mode };
     if (mode === "move") {
+      if (!moveActorId) {
+        setPrompt("請先點要移動的進攻球員。");
+        return;
+      }
       payload.actor_id = moveActorId;
       payload.x = x;
       payload.y = y;
@@ -350,10 +416,10 @@ function clearMode() {
     state.finished
       ? "本關已結束，可重開或選其他關卡。"
       : afterCarry
-        ? "已盤帶 — 可繼續移動其他球員或傳球；防守尚未動。不能射門／再盤帶。"
+        ? "已盤帶 — 可繼續點其他藍球員移動，或傳球；防守尚未動。不能射門／再盤帶。"
         : moved
-          ? `本回合已跑位 ${moved} 人 — 可繼續移動或傳球；不能射門／盤帶，或結束回合。`
-          : "先跑位拉扯防線；傳球後防守者會跟上。也可直接射門。"
+          ? `本回合已跑位 ${moved} 人 — 可繼續點藍球員移動或傳球；不能射門／盤帶，或結束回合。`
+          : "直接點藍色進攻球員開始移動，或先選下方傳球／射門。"
   );
 }
 

@@ -1,0 +1,9 @@
+# 與 T001_pass_points.yaml 相同（傳球點版）
+play_id: "T001"
+title: "題型 1：邊路經典爆破"
+mode: pass_points
+
+frames:
+  - {zone: 15, place: 右肋, label: AM, receiver: AM}
+  - {zone: 19, place: 右路底線, label: FB, passer: AM, receiver: FB, pass_action: 傳球}
+  - {zone: 20, place: 禁區中央, label: ST, passer: FB, receiver: ST, pass_action: 傳中}

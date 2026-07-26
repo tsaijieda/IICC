@@ -1,0 +1,169 @@
+% !TEX program = xelatex
+% 五張獨立圖：7×8 格（與 defense_game/grid.py 相同）
+%   xelatex defender_movement_diagrams.tex
+\documentclass[11pt]{article}
+\usepackage[a4paper,landscape,margin=14mm]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Times New Roman}
+\setCJKmainfont{Songti TC}
+\setCJKsansfont{Heiti TC}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc}
+
+\pagestyle{empty}
+
+% 與遊戲一致：COLS=7（球門短邊）、ROWS=8（向球門縱深）
+\newcommand{\pitchcols}{7}
+\newcommand{\pitchrows}{8}
+\newcommand{\cellsize}{1.12cm}
+\newcommand{\pitchmx}{0.75}  % 左／下留空給座標
+\newcommand{\pitchmy}{0.55}
+
+% 格 (x,y) 中心座標（須在 pitch scope 內使用）
+\newcommand{\gc}[2]{#1+0.5,#2+0.5}
+
+\newcommand{\defenderpage}[4]{%
+  \clearpage
+  \noindent
+  {\fontsize{22}{26}\selectfont\bfseries #1\par}
+  \vspace{0.15em}
+  {\fontsize{14}{18}\selectfont #2\par}
+  \vspace{0.45em}
+  \begin{center}
+  \begin{tikzpicture}[
+    x=\cellsize, y=\cellsize,
+    every node/.style={font=\small}
+  ]
+    \begin{scope}[shift={(\pitchmx,\pitchmy)}]
+      #3
+    \end{scope}
+    \foreach \x in {0,...,6} {
+      \node[font=\scriptsize, anchor=north]
+        at (\pitchmx+\x+0.5, \pitchmy-0.32) {\x};
+    }
+    \foreach \y in {0,...,7} {
+      \node[font=\scriptsize, anchor=east]
+        at (\pitchmx-0.32, \pitchmy+\y+0.5) {\strut\y};
+    }
+  \end{tikzpicture}
+  \end{center}
+  \vspace{0.4em}
+  \noindent{\normalsize #4\par}
+}
+
+% 7 欄 × 8 列：格 (x,y) = 矩形 [x,x+1]×[y,y+1]，與 grid.py 一致
+\newcommand{\pitchgrid}{%
+  \foreach \x in {1,...,6} {
+    \draw[gray!35, line width=0.35pt] (\x,0) -- (\x,\pitchrows);
+  }
+  \foreach \y in {1,...,7} {
+    \draw[gray!35, line width=0.35pt] (0,\y) -- (\pitchcols,\y);
+  }
+  \draw[line width=1pt] (0,0) rectangle (\pitchcols,\pitchrows);
+  % 球門三格頂邊加粗（不填灰、不畫出界括號）
+  \draw[line width=2.4pt] (2,\pitchrows) -- (5,\pitchrows);
+  \node[font=\footnotesize, anchor=south west]
+    at (5.08,\pitchrows+0.02) {球門 $(2,7)(3,7)(4,7)$};
+}
+
+\newcommand{\deftoken}[3]{%
+  \draw[thick, fill=white] (\gc{#1}{#2}) circle (0.24);
+  \node[font=\normalsize\bfseries] at (\gc{#1}{#2}) {#3};
+}
+
+% 進攻球員：白底圓＋圈內密斜線（不標名字／座標；持球也用同符號，不加圓心黑點）
+\newcommand{\atktoken}[2]{%
+  \coordinate (atk@) at (#1+0.5,#2+0.5);
+  \begin{scope}
+    \clip (atk@) circle (0.24);
+    \fill[white] (atk@) circle (0.24);
+    \foreach \i in {-6,-5,...,6} {
+      \draw[line width=0.35pt, black!75]
+        ($(atk@)+({-0.36+0.075*\i},-0.36)$)
+        -- ($(atk@)+({0.36+0.075*\i},0.36)$);
+    }
+  \end{scope}
+  \draw[thick] (atk@) circle (0.24);
+}
+\newcommand{\ballatk}[2]{\atktoken{#1}{#2}}
+
+% 箭頭：每段只跨 1 格（切比雪夫距離 1）；可選中間點標記第 2 步
+\newcommand{\moveone}[4]{%
+  \draw[-{Latex}, line width=1.5pt] (\gc{#1}{#2}) -- (\gc{#3}{#4});
+}
+\newcommand{\movetwo}[6]{%
+  \draw[-{Latex}, line width=1.5pt] (\gc{#1}{#2}) -- (\gc{#3}{#4}) -- (\gc{#5}{#6});
+  \fill (\gc{#3}{#4}) circle (0.07);
+}
+
+\begin{document}
+\thispagestyle{empty}
+\noindent{\fontsize{26}{30}\selectfont\bfseries 防守角色移動示意（共五張）\par}
+\vspace{0.3em}
+\noindent{\normalsize
+\textbf{$7\times 8$ 格}（寬 $7$、深 $8$；短邊為球門，與解防守題程式相同）。
+$y$ 愈大愈近球門；座標與棋盤一致。箭頭每跨\textbf{一邊}為 1 格（逼搶／遠距攔截可兩段，中點為第 2 步）。觸發：結束回合／傳球／高空傳球後。\par}
+
+% ========== 1 Presser ==========
+\defenderpage{1. 瘋狗逼搶員}{Presser — 每回合最多 2 格}{
+  \pitchgrid
+  \ballatk{4}{3}
+  \draw[dashed, thick] (0,4) -- (\pitchcols,4);
+  \node[anchor=west, font=\footnotesize, fill=white, inner sep=1pt, align=left]
+    at (4.85,5.15) {不可使 $y$ 大於持球者\\（界線 $y{=}4$）};
+  \deftoken{1}{3}{P}
+  \movetwo{1}{3}{2}{3}{3}{3}
+  \deftoken{3}{3}{P}
+  \node[font=\footnotesize, anchor=east, fill=white, inner sep=1pt]
+    at ($(3.5,3.5)+(-0.38,0)$) {鄰格施壓};
+}{朝持球者靠近，\textbf{不踩持球格}；$y$ 不得大於持球者。}
+
+% ========== 2 Block ==========
+\defenderpage{2. 區域大閘}{Block — 每回合橫移 1 格}{
+  \pitchgrid
+  \draw[thick, gray!60] (0,5) -- (\pitchcols,5);
+  \node[anchor=east, font=\footnotesize] at (-0.05,5.5) {固定橫線 $y{=}5$};
+  \ballatk{5}{6}
+  \draw[dashed, thick] (\gc{5}{6}) -- (\gc{3}{7});
+  \node[font=\footnotesize, anchor=west, fill=white, inner sep=1pt]
+    at ($(3.5,7.5)+(0.35,0)$) {球門中心};
+  \deftoken{3}{5}{B}
+  \moveone{3}{5}{4}{5}
+  \deftoken{4}{5}{B}
+}{只沿\textbf{同一橫線}滑動，站到「球→球門中心」走廊與該線交點。定點大閘不移動。}
+
+% ========== 3 Shadow ==========
+\defenderpage{3. 影子盯人}{Shadow — 每回合 1 格}{
+  \pitchgrid
+  \atktoken{4}{2}
+  \draw[dashed, thick] (\gc{4}{2}) -- (\gc{3}{7});
+  \deftoken{2}{2}{S}
+  \moveone{2}{2}{3}{3}
+  \deftoken{3}{3}{S}
+  \node[font=\footnotesize, anchor=north] at (\gc{4}{1}) {門側格；不可站到較小 $y$};
+}{朝被盯者與球門之間的\textbf{門側格}移動；不站進攻者本人所在格。}
+
+% ========== 4 Interceptor ==========
+\defenderpage{4. 路線攔截者}{Interceptor — 遠 2 格／近 1 格}{
+  \pitchgrid
+  \ballatk{1}{2}
+  \atktoken{5}{5}
+  \draw[dashed, thick] (\gc{1}{2}) -- (\gc{5}{5});
+  \deftoken{1}{2}{I}
+  \movetwo{1}{2}{2}{2}{3}{3}
+  \deftoken{3}{3}{I}
+  \node[font=\footnotesize, anchor=west, fill=white, inner sep=1pt]
+    at ($(3.5,3.5)+(0.32,0.15)$) {傳球線中點};
+}{鎖定最危險前鋒，移向「持球者—該隊友」地滾傳球線的\textbf{中點}。}
+
+% ========== 5 Goalkeeper ==========
+\defenderpage{5. 守門員}{Goalkeeper — 每回合橫移 1 格}{
+  \pitchgrid
+  \ballatk{1}{2}
+  \deftoken{4}{7}{G}
+  \moveone{4}{7}{3}{7}
+  \deftoken{3}{7}{G}
+}{僅在球門三格內，沿球門線跟隨球的\textbf{左右}位置（遠近皆追）。}
+
+\end{document}

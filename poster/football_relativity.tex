@@ -1,0 +1,277 @@
+% !TEX program = xelatex
+% A1 直式 · 黑白文字版
+%   xelatex football_relativity.tex
+%   xelatex football_relativity.tex
+\documentclass[12pt]{article}
+\usepackage[
+  paperwidth=594mm,
+  paperheight=841mm,
+  margin=16mm,
+  top=14mm,
+  bottom=14mm
+]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Times New Roman}
+\setCJKmainfont{Songti TC}
+\setCJKsansfont{Heiti TC}
+\xeCJKsetup{CJKmath=true}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\pagestyle{empty}
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.45em}
+\setlength{\columnsep}{12mm}
+
+\setlist[itemize]{
+  leftmargin=2em,
+  itemindent=0pt,
+  labelsep=0.55em,
+  itemsep=0.35em,
+  topsep=0.4em,
+  parsep=0pt
+}
+\setlist[enumerate]{
+  leftmargin=2em,
+  itemindent=0pt,
+  labelsep=0.55em,
+  itemsep=0.45em,
+  topsep=0.45em,
+  parsep=0pt,
+  label=\arabic*.
+}
+
+\newcommand{\secHead}[1]{%
+  \par\noindent\vspace{0.85em}%
+  {\fontsize{26}{30}\selectfont\bfseries #1\par}%
+  \noindent\rule{\linewidth}{1.2pt}\par
+  \vspace{0.4em}%
+  \noindent
+}
+\newcommand{\subHead}[1]{%
+  \par\noindent\vspace{0.55em}%
+  {\fontsize{18}{22}\selectfont\bfseries #1\par}%
+  \vspace{0.25em}%
+  \noindent
+}
+
+\begin{document}
+\rmfamily
+\fontsize{16}{22}\selectfont
+
+% 標題（純文字，無色帶）
+\noindent
+{\fontsize{48}{54}\selectfont\bfseries Football Relativity\par}
+\vspace{2mm}
+\noindent
+{\fontsize{32}{38}\selectfont\bfseries 足球相對論\par}
+\vspace{1mm}
+\noindent
+{\fontsize{18}{24}\selectfont 星際足球 × 相對論　｜　球員 · 教練 · 裁判\par}
+\vspace{2mm}
+\noindent{\large 第十七屆智慧鐵人創意競賽　決賽\par}
+
+\vspace{4mm}
+
+\begin{multicols}{2}
+\raggedcolumns
+
+\secHead{一、關卡內容}
+
+你們被 CERN 製造的黑洞甩到外太空，並被\textbf{天狼星文明}帶去比\textbf{星際足球}。
+尺度極大，必須考慮\textbf{相對論效應}；小隊需完成\textbf{球員、教練、裁判}三職任務。
+
+比賽分上下半場：\textbf{上半場}為戰術復刻——球員練技術動作，裁判學習相對論下的越位判斷；
+\textbf{下半場}教練針對不同防守陣型設計戰術並指揮球員執行，裁判裁決越位、犯規等相對論判決。
+
+\secHead{二、關卡配置}
+
+\subHead{流程}
+
+\noindent
+\begin{tikzpicture}[
+  box/.style={
+    draw=black, fill=white, rounded corners=3pt,
+    align=center, font=\large\bfseries,
+    minimum height=1.55cm, text width=3.2cm, inner sep=5pt
+  },
+  arr/.style={-{Latex}, very thick, black}
+]
+  \node[box] (a) {閱讀關卡\\物理文本};
+  \node[box, right=0.4cm of a] (b) {上半場\\戰術復刻 ×6};
+  \node[box, right=0.4cm of b] (c) {中場休息\\文本＋升級};
+  \node[box, right=0.4cm of c] (d) {下半場\\解防守題 ×5};
+  \draw[arr] (a) -- (b);
+  \draw[arr] (b) -- (c);
+  \draw[arr] (c) -- (d);
+\end{tikzpicture}
+
+\vspace{0.35em}
+\noindent{\normalsize
+上半場每戰術約 3 分鐘（畫跑位 → 跑帶傳）；下半場每題最多 10 回合，越快得分越高。\par}
+
+\subHead{場地示意}
+
+\noindent
+\begin{tikzpicture}[scale=1.15, every node/.style={font=\normalsize}]
+  \draw[thick] (0,0) rectangle (11.2,6.6);
+  \draw[dashed] (2.8,0) -- (2.8,6.6);
+  \draw[dashed] (5.6,0) -- (5.6,6.6);
+  \draw[dashed] (8.4,0) -- (8.4,6.6);
+  \draw[dashed] (0,1.65) -- (11.2,1.65);
+  \draw[dashed] (0,3.3) -- (11.2,3.3);
+  \draw[dashed] (0,4.95) -- (11.2,4.95);
+  \node[font=\Large\bfseries] at (1.4,5.75) {A 區};
+  \node[font=\Large\bfseries] at (9.8,5.75) {B 區};
+  \node[font=\Large\bfseries] at (1.4,0.85) {C 區};
+  \node[font=\Large\bfseries] at (9.8,0.85) {D 區};
+  \draw[thick] (4.6,5.85) rectangle (6.6,6.45);
+  \node[font=\large\bfseries] at (5.6,6.15) {球門};
+  \draw[thick] (4.4,2.7) -- (6.8,2.7) -- (6.3,3.85) -- (4.9,3.85) -- cycle;
+  \node[font=\large\bfseries] at (5.6,3.2) {控制台};
+  \draw[thick] (5.6,3.85) -- ++(0.7,0.85) -- ++(-1.4,0) -- cycle;
+  \node[font=\normalsize\bfseries] at (5.6,4.4) {裁判位};
+  \node[font=\normalsize] at (5.6,0.4) {下半場：$6\times5$ 格制};
+\end{tikzpicture}
+
+\vspace{0.55em}
+\noindent
+\begin{tcolorbox}[
+  colback=white, colframe=black, boxrule=1pt,
+  arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt,
+  width=\linewidth, before skip=0pt, after skip=0pt,
+  fontupper=\normalsize]
+\noindent\textbf{空間提示：}%
+上半場防守者為固定高度圓柱，連線構成防線；
+畫跑位時球與人須落在各 zone \textbf{中心}才計分。
+下半場為回合制格點棋盤，傳射沿格線判定攔截。
+\end{tcolorbox}
+
+\secHead{三、闖關規則}
+
+\begin{enumerate}
+  \item 小隊需輪替或兼任\textbf{球員／教練／裁判}職能，三人分工並行。
+  \item 上半場共 \textbf{6} 個戰術復刻；下半場共 \textbf{5} 題解防守題。
+  \item 破壞場地器材或危險衝撞，該節分數以 \textbf{0} 計。
+  \item 戰術設計須符合「宇宙足球規則」：\textbf{不可超光速}、\textbf{不可違反因果律}。
+\end{enumerate}
+
+\vspace{1em}
+\noindent{\large\textbf{職能：}球員　教練　裁判　物理　升級\par}
+
+\columnbreak
+
+\secHead{上半場　·　戰術復刻}
+
+\subHead{畫跑位}
+牆上有戰術描述，於戰術板上標出\textbf{每次接球}時人與球的位置（需標角色）。
+評分：位置須在 zone 中心；再將接球間移動轉譯為戰術語言（點＝球員、邊＝傳球方式），依正確比例部分給分。
+
+\subHead{跑戰術}
+在時限內執行所畫戰術；以各球員\textbf{第一次觸球}為接球時刻，同樣轉譯評分。
+
+\vspace{0.4em}
+\noindent
+{\large
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{畫跑位} & \textbf{跑戰術} & \textbf{越位} \\
+\hline
+15 & 30 & 30 \\
+\hline
+\end{tabular}}%
+\hspace{0.5em}{\normalsize 單戰術滿分示意；6 戰術合計約 450 分}
+
+\subHead{戰術語言（節錄）}
+\begin{itemize}
+  \item \textbf{直塞}：向前穿越防線
+  \item \textbf{套邊／內切插上}：外側或內側前插接球
+  \item \textbf{強弱邊轉移}：長傳換邊
+  \item \textbf{倒三角／傳中／過頂長傳}
+\end{itemize}
+
+\subHead{教練／裁判}
+教練依戰術文字選正確\textbf{世界線}供越位判決；
+裁判依世界線得相對地板速度，判定球員是否越位。
+
+\secHead{下半場　·　解防守題}
+
+教練依形勢選戰術、規劃移動；場地 $6\times5$ 格，回合制，最多 \textbf{10} 回合。
+斷點＝新球員持球或做出決定。越短回合／越短時間得分越高。
+
+\subHead{防守角色}
+\begin{itemize}
+  \item \textbf{瘋狗逼搶員}：每回合朝球移 2 格；需撞牆／轉移甩開
+  \item \textbf{區域大閘}：不前進，橫移封球門走廊；用邊路倒三角拉空
+  \item \textbf{影子盯人}：黏人門側；用誘餌跑拉開射門線
+  \item \textbf{路線攔截者}：卡傳切線；可用盤帶吃空檔
+  \item \textbf{守門員}：球門 3 格追球橫移；用橫傳打遠柱
+\end{itemize}
+
+\subHead{有球動作}
+傳球（線上無人）、盤帶（鄰格 1 步）、射門（避開封堵）、原地踩球（拖回合牽制）。
+無球僅可移動 1–2 格。
+
+\secHead{四、計分方式}
+
+上半場：畫跑位 + 跑戰術 + 越位判決。
+下半場：依剩餘回合與完成時間給分（越快越高）。
+物理文本分數可於中場購買道具／升級，加成下半場。
+
+\vspace{0.5em}
+\noindent
+\begin{tcolorbox}[
+  colback=white, colframe=black, boxrule=1.2pt, arc=2pt,
+  left=12pt, right=12pt, top=10pt, bottom=10pt,
+  width=\linewidth, fontupper=\large]
+\noindent\textbf{得分概念}\\[6pt]
+\noindent 總分 $\approx$ （上半場復刻）＋（下半場解題）＋（成就／升級）$-$ 扣分
+\end{tcolorbox}
+
+\secHead{五、成就與升級}
+
+\noindent
+{\normalsize
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\dimexpr\linewidth-2pt\relax}{|l|>{\raggedright\arraybackslash}X|c|}
+\hline
+\textbf{名稱} & \textbf{條件／效果} & \textbf{類型} \\
+\hline
+光速邊緣 & 於極少回合內破門 & 成就 \\
+\hline
+因果守護 & 戰術全程不違反因果律 & 成就 \\
+\hline
+記憶座標 & 正確選出世界線密碼 & 成就 \\
+\hline
+加速靴 & 進攻移動上限＋1 & 升級 \\
+\hline
+緩兵術 & 防守假人速度下降 & 升級 \\
+\hline
+時間倒流 & 回復上一動 & 一次性 \\
+\hline
+瞬間移動 & 調整場上站位 & 一次性 \\
+\hline
+清障 & 暫時移除一名防守者一回合 & 一次性 \\
+\hline
+\end{tabularx}}
+
+\secHead{宇宙足球規則}
+
+\begin{enumerate}
+  \item \textbf{因果律}：傳球必先於接球；不可超光速傳導或移動。
+  \item \textbf{越位}：比較「傳球事件」與「超越事件」；不同參考系可能判決不同，設計時須考慮裁判世界線。
+  \item 物理文本預計含：相對同時性與因果律、馬格努斯效應、基礎足球／天文物理。
+\end{enumerate}
+
+\end{multicols}
+\end{document}

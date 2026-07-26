@@ -1,0 +1,8 @@
+play_id: "T005"
+title: "題型 5：華麗的空間魔術"
+mode: pass_points
+
+frames:
+  - {zone: 19, place: 右路底線, label: W, receiver: W}
+  - {zone: 14, place: 弧頂前緣, label: CM, passer: W, receiver: CM, pass_action: 倒三角傳球}
+  - {zone: 20, place: 禁區中央, label: CM, receiver: CM, pass_action: 盤帶推進}
