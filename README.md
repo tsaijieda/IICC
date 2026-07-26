@@ -109,7 +109,7 @@ frames:
   - {zone: 20, label: ST, passer: AM, receiver: ST, pass_action: 傳球}
 ```
 
-模組：`tactic_translate/`（zone 定義、戰術 pattern、部分給分）。規則對應 `1st_half_rules.md` 畫跑位定義。
+模組：`tactic_translate/`（zone 定義、戰術 pattern、部分給分）。規則對應 `1st_half_rules.md` 畫跑位定義；**評分程式細節**見 [`tactic_translate/SCORING.md`](tactic_translate/SCORING.md)。
 
 ## Requirements
 
