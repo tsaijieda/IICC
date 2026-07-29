@@ -3,6 +3,6 @@ title: "題型 10：邊路傳中得分"
 mode: pass_points
 
 frames:
-  - {zone: 17, label: RW, receiver: RW}
-  - {zone: 19, label: RB, passer: RW, receiver: RB, pass_action: 傳球}
-  - {zone: 20, label: ST, passer: RB, receiver: ST, pass_action: 傳中}
+  - {zone: 17, place: 右邊路, label: RW, receiver: RW}
+  - {zone: 19, place: 右路底線, label: RB, receiver: RB, passer: RW, pass_action: 傳球}
+  - {zone: 20, place: 禁區中央, label: ST, receiver: ST, passer: RB, pass_action: 傳中, outcome: 得分}

@@ -3,7 +3,7 @@ title: "題型 12：倒三角撕裂大巴"
 mode: pass_points
 
 frames:
-  - {zone: 18, label: LW, receiver: LW}
-  - {zone: 14, label: AM, passer: LW, receiver: AM, pass_action: 倒三角傳球}
-  - {zone: 17, label: RW, passer: AM, receiver: RW, pass_action: 強弱邊轉移}
-  - {zone: 20, label: RW, receiver: RW, pass_action: 盤帶推進}
+  - {zone: 18, place: 左路底線, label: LW, receiver: LW}
+  - {zone: 14, place: 弧頂前緣, label: AM, receiver: AM, passer: LW, pass_action: 倒三角傳球}
+  - {zone: 17, place: 右邊路, label: RW, receiver: RW, passer: AM, pass_action: 強弱邊轉移}
+  - {zone: 20, place: 禁區中央, label: RW, receiver: RW, passer: AM, pass_action: 傳球, outcome: 得分}

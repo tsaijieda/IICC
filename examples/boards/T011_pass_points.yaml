@@ -3,7 +3,7 @@ title: "題型 11：後場脫困長轉移"
 mode: pass_points
 
 frames:
-  - {zone: 7, label: DM, receiver: DM}
-  - {zone: 7, label: CB, passer: DM, receiver: CB, pass_action: 傳球}
-  - {zone: 18, label: LW, passer: CB, receiver: LW, pass_action: 強弱邊轉移}
-  - {zone: 20, label: LW, receiver: LW, pass_action: 盤帶推進}
+  - {zone: 7, place: 後場中路, label: DM, receiver: DM}
+  - {zone: 7, place: 後場中路, label: CB, receiver: CB, passer: DM, pass_action: 傳球}
+  - {zone: 18, place: 左路底線, label: LW, receiver: LW, passer: CB, pass_action: 強弱邊轉移}
+  - {zone: 20, place: 禁區中央, label: ST, receiver: ST, passer: LW, pass_action: 傳中, outcome: 得分}

@@ -1,0 +1,112 @@
+# 戰術語言依 1st_half_rules.md（傳球點評分）
+play_id: "T015"
+title: "題型 15：前场三人穿插跑位"
+description: "前腰（AM）在弧頂前緣接球。前腰傳球給左邊鋒（LW），左邊鋒在左邊路接球。左邊鋒傳球給前鋒（ST），前鋒在弧頂前緣接球。前鋒傳球給前腰（AM），前腰在左肋接球。前腰傳球給左邊鋒（LW），左邊鋒在左路底線接球。左邊鋒傳中給前鋒（ST），前鋒在禁區中央得分。"
+scoring_mode: pass_points
+
+evaluation_points:
+  傳球 (拉扯): "AM@14 → LW@11 → ST@14；三人互換弧頂／邊路站位。"
+  傳球 (肋部): "ST@14 → AM@13 → LW@18。"
+  傳中: "LW@18 → ST@20 得分。"
+
+run_movement:
+  opening: "開球前：AM 在弧頂(14)，ST 在右肋(15)牽制，LW 在左邊路前段(12)拉開。"
+  steps:
+    - beat: "① AM@14 接球"
+      AM: "弧頂持球"
+      ST: "右肋(15)拉開防守"
+      LW: "左路(12)準備要球"
+    - beat: "② AM→LW@11"
+      AM: "傳出後**斜跑至左肋(13)**"
+      ST: "**從右肋(15)收到弧頂(14)**"
+      LW: "**從(12)收到(11)** 邊路接球"
+    - beat: "③ LW→ST@14"
+      LW: "傳出後**全速下底至(18)**"
+      ST: "**從(14)區域收到弧頂(14)** 轉身傳球"
+      AM: "**從(13)收到左邊路(11)**"
+    - beat: "④ ST→AM@13"
+      ST: "傳出後**插入禁區通道(20)**"
+      AM: "**從(11)收到左肋(13)**"
+      LW: "底線(18)等傳中"
+    - beat: "⑤ AM→LW@18"
+      AM: "傳出後**回撤弧頂(14)** 策應"
+      LW: "**(18)底線接球**"
+      ST: "禁區內(20)要球"
+    - beat: "⑥ LW→ST@20"
+      LW: "底線傳中後**向近門柱跑**"
+      ST: "**禁區中央(20)包抄得分**"
+      AM: "弧頂外二點"
+
+pass_points:
+  - {zone: 14, place: 弧頂前緣, receiver: AM}
+  - {zone: 11, place: 左邊路, passer: AM, receiver: LW, pass_action: 傳球}
+  - {zone: 14, place: 弧頂前緣, passer: LW, receiver: ST, pass_action: 傳球}
+  - {zone: 13, place: 左肋, passer: ST, receiver: AM, pass_action: 傳球}
+  - {zone: 18, place: 左路底線, passer: AM, receiver: LW, pass_action: 傳球}
+  - {zone: 20, place: 禁區中央, passer: LW, receiver: ST, pass_action: 傳中, outcome: 得分}
+
+run_tactic:
+  reception_radius_m: 1.0
+  score_touches:
+    - {touch: 0, zone: 14, receiver: AM, label: "評分①"}
+    - {touch: 1, zone: 11, receiver: LW, label: "評分②"}
+    - {touch: 2, zone: 14, receiver: ST, label: "評分③"}
+    - {touch: 3, zone: 13, receiver: AM, label: "評分④"}
+    - {touch: 4, zone: 18, receiver: LW, label: "評分⑤"}
+    - {touch: 5, zone: 20, receiver: ST, label: "評分⑥"}
+  defenders:
+    - {between: [11, 14], note: "擋邊路直連弧頂（逼下底）"}
+    - {between: [18, 20], note: "擋底線貼線傳中"}
+
+y_label: "Field Depth (m)"
+x_label: "Time (seconds)"
+x_limits: [0.0, 7.0]
+y_limits: [40, 110]
+
+entities:
+  - id: "AM"
+    label: "Attacker (AM)"
+    color: "#74DB7A"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 58]
+      - [1.5, 55]
+      - [3.0, 48]
+      - [4.5, 52]
+      - [5.5, 58]
+      - [7.0, 60]
+
+  - id: "ST"
+    label: "Striker (ST)"
+    color: "#4A85F6"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 55]
+      - [1.5, 58]
+      - [3.0, 58]
+      - [4.5, 55]
+      - [5.5, 88]
+      - [7.0, 92]
+
+  - id: "LW"
+    label: "Winger (LW)"
+    color: "#F6B746"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 48]
+      - [1.5, 45]
+      - [3.0, 42]
+      - [5.0, 85]
+      - [6.5, 90]
+
+  - id: "Ball"
+    label: "Ball"
+    color: "#F26974"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 58]
+      - [1.5, 45]
+      - [3.0, 58]
+      - [4.5, 52]
+      - [5.5, 90]
+      - [6.5, 92]

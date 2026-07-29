@@ -4,6 +4,6 @@ mode: pass_points
 
 frames:
   - {zone: 11, place: 左肋深處, label: CM, receiver: CM}
-  - {zone: 14, place: 弧頂前緣, label: CM, receiver: CM, pass_action: 盤帶推進}
-  - {zone: 19, place: 右路底線, label: RB, passer: CM, receiver: RB, pass_action: 傳球}
-  - {zone: 20, place: 禁區中央, label: ST, passer: RB, receiver: ST, pass_action: 傳中}
+  - {zone: 14, place: 弧頂前緣, label: AM, receiver: AM, passer: CM, pass_action: 傳球}
+  - {zone: 19, place: 右路底線, label: RB, receiver: RB, passer: AM, pass_action: 傳球}
+  - {zone: 20, place: 禁區中央, label: ST, receiver: ST, passer: RB, pass_action: 傳中, outcome: 得分}

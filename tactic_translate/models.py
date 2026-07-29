@@ -47,6 +47,8 @@ class BoardInput:
     frames: list[TouchFrame] = field(default_factory=list)
     # pass_points：只記每次接球 zone；full：含全員跑位
     mode: str = "pass_points"
+    # draw_runs（畫跑位 15 分）| run_tactic（跑戰術 30 分）
+    grading_mode: str = "draw_runs"
 
 
 @dataclass(slots=True)

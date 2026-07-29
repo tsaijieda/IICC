@@ -4,5 +4,5 @@ mode: pass_points
 
 frames:
   - {zone: 19, place: 右路底線, label: W, receiver: W}
-  - {zone: 14, place: 弧頂前緣, label: CM, passer: W, receiver: CM, pass_action: 倒三角傳球}
-  - {zone: 20, place: 禁區中央, label: CM, receiver: CM, pass_action: 盤帶推進}
+  - {zone: 14, place: 弧頂前緣, label: CM, receiver: CM, passer: W, pass_action: 倒三角傳球}
+  - {zone: 20, place: 禁區中央, label: W, receiver: W, passer: CM, pass_action: 傳球, outcome: 得分}

@@ -1,0 +1,15 @@
+% 編譯：cd docs && xelatex zone_map.tex
+\documentclass[border=0pt]{standalone}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{svg}
+
+\IfFontExistsTF{Songti TC}{
+  \setCJKmainfont{Songti TC}
+}{
+  \setCJKmainfont{FandolSong}
+}
+
+\begin{document}
+\includesvg[width=17cm]{../tactic_translate/zone_map.svg}
+\end{document}

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 1146" width="680" height="1146">
+<style>
+  text { font-family: 'PingFang TC', 'Heiti TC', 'Noto Sans TC', sans-serif; }
+</style>
+<rect width="100%" height="100%" fill="#fafafa"/>
+<text x="340.0" y="18" text-anchor="middle" font-size="15" font-weight="bold" fill="#263238">T015 跑戰術場地圖 · 題型 15：前场三人穿插跑位</text>
+<rect x="28.00" y="28.00" width="624.00" height="994.00" fill="#2e7d32" stroke="none"/>
+<rect x="28.00" y="28.00" width="126.98" height="156.16" fill="#bbdefb" stroke="#1b5e20" stroke-width="1.2" opacity="0.95"/>
+<text x="91.49" y="106.08" text-anchor="middle" dominant-baseline="middle" font-size="10" font-weight="bold" fill="#0d47a1">18</text>
+<rect x="154.98" y="28.00" width="369.97" height="156.16" fill="#bbdefb" stroke="#1b5e20" stroke-width="1.2" opacity="0.95"/>
+<text x="339.97" y="106.08" text-anchor="middle" dominant-baseline="middle" font-size="10" font-weight="bold" fill="#0d47a1">20</text>
+<rect x="525.02" y="28.00" width="126.98" height="156.16" fill="#e8f5e9" stroke="#1b5e20" stroke-width="0.8" opacity="0.55"/>
+<rect x="28.00" y="184.16" width="126.98" height="170.37" fill="#e8f5e9" stroke="#1b5e20" stroke-width="0.8" opacity="0.55"/>
+<rect x="154.98" y="184.16" width="123.30" height="340.84" fill="#bbdefb" stroke="#1b5e20" stroke-width="1.2" opacity="0.95"/>
+<text x="216.64" y="354.58" text-anchor="middle" dominant-baseline="middle" font-size="10" font-weight="bold" fill="#0d47a1">13</text>
+<rect x="278.35" y="184.16" width="123.30" height="340.84" fill="#bbdefb" stroke="#1b5e20" stroke-width="1.2" opacity="0.95"/>
+<text x="340.00" y="354.58" text-anchor="middle" dominant-baseline="middle" font-size="10" font-weight="bold" fill="#0d47a1">14</text>
+<rect x="401.65" y="184.16" width="123.30" height="340.84" fill="#e8f5e9" stroke="#1b5e20" stroke-width="0.8" opacity="0.55"/>
+<rect x="525.02" y="184.16" width="126.98" height="170.37" fill="#e8f5e9" stroke="#1b5e20" stroke-width="0.8" opacity="0.55"/>
+<rect x="28.00" y="354.63" width="126.98" height="170.37" fill="#bbdefb" stroke="#1b5e20" stroke-width="1.2" opacity="0.95"/>
+<text x="91.49" y="439.81" text-anchor="middle" dominant-baseline="middle" font-size="10" font-weight="bold" fill="#0d47a1">11</text>
+<rect x="525.02" y="354.63" width="126.98" height="170.37" fill="#e8f5e9" stroke="#1b5e20" stroke-width="0.8" opacity="0.55"/>
+<rect x="28.00" y="525.00" width="126.98" height="170.37" fill="#e8f5e9" stroke="#1b5e20" stroke-width="0.8" opacity="0.55"/>
+<rect x="154.98" y="525.00" width="123.30" height="340.84" fill="#e8f5e9" stroke="#1b5e20" stroke-width="0.8" opacity="0.55"/>
+<rect x="278.35" y="525.00" width="123.30" height="340.84" fill="#e8f5e9" stroke="#1b5e20" stroke-width="0.8" opacity="0.55"/>
+<rect x="401.65" y="525.00" width="123.30" height="340.84" fill="#e8f5e9" stroke="#1b5e20" stroke-width="0.8" opacity="0.55"/>
+<rect x="525.02" y="525.00" width="126.98" height="170.37" fill="#e8f5e9" stroke="#1b5e20" stroke-width="0.8" opacity="0.55"/>
+<rect x="28.00" y="695.37" width="126.98" height="170.37" fill="#e8f5e9" stroke="#1b5e20" stroke-width="0.8" opacity="0.55"/>
+<rect x="525.02" y="695.37" width="126.98" height="170.37" fill="#e8f5e9" stroke="#1b5e20" stroke-width="0.8" opacity="0.55"/>
+<rect x="28.00" y="865.84" width="126.98" height="156.16" fill="#e8f5e9" stroke="#1b5e20" stroke-width="0.8" opacity="0.55"/>
+<rect x="154.98" y="865.84" width="369.97" height="156.16" fill="#e8f5e9" stroke="#1b5e20" stroke-width="0.8" opacity="0.55"/>
+<rect x="525.02" y="865.84" width="126.98" height="156.16" fill="#e8f5e9" stroke="#1b5e20" stroke-width="0.8" opacity="0.55"/>
+<rect x="28.00" y="28.00" width="624.00" height="994.00" fill="none" stroke="white" stroke-width="1.2"/>
+<line x1="28.00" y1="525.00" x2="652.00" y2="525.00" stroke="white" stroke-width="1.2"/>
+<rect x="155.00" y="28.00" width="370.00" height="156.20" fill="none" stroke="white" stroke-width="1.2"/>
+<rect x="155.00" y="865.80" width="370.00" height="156.20" fill="none" stroke="white" stroke-width="1.2"/>
+<line x1="340.00" y1="354.58" x2="91.49" y2="439.81" stroke="#ff6f00" stroke-width="2" stroke-dasharray="6 4" opacity="0.85"/>
+<line x1="91.49" y1="439.81" x2="340.00" y2="354.58" stroke="#ff6f00" stroke-width="2" stroke-dasharray="6 4" opacity="0.85"/>
+<line x1="340.00" y1="354.58" x2="216.64" y2="354.58" stroke="#ff6f00" stroke-width="2" stroke-dasharray="6 4" opacity="0.85"/>
+<line x1="216.64" y1="354.58" x2="91.49" y2="106.08" stroke="#ff6f00" stroke-width="2" stroke-dasharray="6 4" opacity="0.85"/>
+<line x1="91.49" y1="106.08" x2="339.97" y2="106.08" stroke="#ff6f00" stroke-width="2" stroke-dasharray="6 4" opacity="0.85"/>
+<circle cx="340.00" cy="354.58" r="9.18" fill="none" stroke="#1565c0" stroke-width="2.5"/>
+<circle cx="340.00" cy="354.58" r="5.00" fill="#1565c0" stroke="white" stroke-width="1"/>
+<text x="340.00" y="328.07" text-anchor="middle" font-size="9" font-weight="bold" fill="#1565c0">評分①</text>
+<text x="340.00" y="384.87" text-anchor="middle" font-size="9" fill="#0d47a1">AM</text>
+<circle cx="91.49" cy="439.81" r="9.18" fill="none" stroke="#1565c0" stroke-width="2.5"/>
+<circle cx="91.49" cy="439.81" r="5.00" fill="#1565c0" stroke="white" stroke-width="1"/>
+<text x="91.49" y="413.31" text-anchor="middle" font-size="9" font-weight="bold" fill="#1565c0">評分②</text>
+<text x="91.49" y="470.11" text-anchor="middle" font-size="9" fill="#0d47a1">LW</text>
+<circle cx="340.00" cy="354.58" r="9.18" fill="none" stroke="#1565c0" stroke-width="2.5"/>
+<circle cx="340.00" cy="354.58" r="5.00" fill="#1565c0" stroke="white" stroke-width="1"/>
+<text x="340.00" y="328.07" text-anchor="middle" font-size="9" font-weight="bold" fill="#1565c0">評分③</text>
+<text x="340.00" y="384.87" text-anchor="middle" font-size="9" fill="#0d47a1">ST</text>
+<circle cx="216.64" cy="354.58" r="9.18" fill="none" stroke="#1565c0" stroke-width="2.5"/>
+<circle cx="216.64" cy="354.58" r="5.00" fill="#1565c0" stroke="white" stroke-width="1"/>
+<text x="216.64" y="328.07" text-anchor="middle" font-size="9" font-weight="bold" fill="#1565c0">評分④</text>
+<text x="216.64" y="384.87" text-anchor="middle" font-size="9" fill="#0d47a1">AM</text>
+<circle cx="91.49" cy="106.08" r="9.18" fill="none" stroke="#1565c0" stroke-width="2.5"/>
+<circle cx="91.49" cy="106.08" r="5.00" fill="#1565c0" stroke="white" stroke-width="1"/>
+<text x="91.49" y="79.57" text-anchor="middle" font-size="9" font-weight="bold" fill="#1565c0">評分⑤</text>
+<text x="91.49" y="136.37" text-anchor="middle" font-size="9" fill="#0d47a1">LW</text>
+<circle cx="339.97" cy="106.08" r="9.18" fill="none" stroke="#1565c0" stroke-width="2.5"/>
+<circle cx="339.97" cy="106.08" r="5.00" fill="#1565c0" stroke="white" stroke-width="1"/>
+<text x="339.97" y="79.57" text-anchor="middle" font-size="9" font-weight="bold" fill="#1565c0">評分⑥</text>
+<text x="339.97" y="136.37" text-anchor="middle" font-size="9" fill="#0d47a1">ST</text>
+<circle cx="215.75" cy="397.20" r="7.00" fill="#c62828" stroke="#4a0000" stroke-width="1.5"/>
+<text x="215.75" y="397.20" text-anchor="middle" dominant-baseline="middle" font-size="8" font-weight="bold" fill="white">D1</text>
+<text x="252.45" y="397.20" font-size="7.5" fill="#c62828">擋邊路直連弧頂（逼下底）</text>
+<circle cx="154.98" cy="106.08" r="7.00" fill="#c62828" stroke="#4a0000" stroke-width="1.5"/>
+<text x="154.98" y="106.08" text-anchor="middle" dominant-baseline="middle" font-size="8" font-weight="bold" fill="white">D2</text>
+<text x="191.69" y="106.08" font-size="7.5" fill="#c62828">擋底線貼線傳中</text>
+<rect x="12" y="1064" width="656" height="64" rx="6" fill="white" stroke="#cfd8dc"/>
+<circle cx="32" cy="1082" r="6" fill="none" stroke="#1565c0" stroke-width="2"/>
+<text x="48" y="1086" font-size="10" fill="#37474f">評分接球圈（半徑 1.0m；只判這幾拍）</text>
+<circle cx="32" cy="1104" r="7" fill="#c62828"/>
+<text x="48" y="1108" font-size="10" fill="#37474f">靜止防守圓柱（傳球碰到 = 該次失敗）</text>
+<line x1="28" y1="1122" x2="44" y2="1122" stroke="#ff6f00" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="48" y="1126" font-size="10" fill="#37474f">正解傳球方向（示意）</text>
+</svg>

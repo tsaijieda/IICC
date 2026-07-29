@@ -14,6 +14,17 @@ pass_points:
   - {zone: 7, place: 後場中路, passer: CB, receiver: FB, pass_action: 回做球}
   - {zone: 18, place: 左路底線, passer: FB, receiver: W, pass_action: 強弱邊轉移}
 
+run_tactic:
+  reception_radius_m: 1.0
+  score_touches:
+    - {touch: 0, zone: 7, receiver: DM, label: "評分①"}
+    - {touch: 1, zone: 7, receiver: CB, label: "評分②"}
+    - {touch: 2, zone: 7, receiver: FB, label: "評分③"}
+    - {touch: 3, zone: 18, receiver: W, label: "評分④"}
+  defenders:
+    - {zone: 16, note: "擋右路短傳換邊"}
+    - {between: [7, 18], note: "擋後場直連底線"}
+
 y_label: "Field Depth (m)"
 x_label: "Time (seconds)"
 x_limits: [0.0, 8.5]

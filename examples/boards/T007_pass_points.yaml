@@ -3,6 +3,6 @@ title: "題型 7：中路撞牆二度突破"
 mode: pass_points
 
 frames:
-  - {zone: 14, label: ST, receiver: ST, pass_action: 傳球}
-  - {zone: 11, label: AM, passer: ST, receiver: AM, pass_action: 回做球}
-  - {zone: 20, label: ST, passer: AM, receiver: ST, pass_action: 傳球}
+  - {zone: 14, place: 弧頂前緣, label: ST, receiver: ST, pass_action: 傳球}
+  - {zone: 11, place: 左肋深處, label: AM, receiver: AM, passer: ST, pass_action: 回做球}
+  - {zone: 20, place: 禁區中央, label: ST, receiver: ST, passer: AM, pass_action: 傳球, outcome: 得分}

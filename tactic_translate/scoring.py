@@ -15,6 +15,12 @@ ROOT = Path(__file__).resolve().parent.parent
 
 DEFAULT_WEIGHTS = {"players": 0.3, "action": 0.5, "place": 0.2}
 
+GRADING_MODES = {
+    "draw_runs": {"label": "畫跑位", "max_points": 15.0},
+    "run_tactic": {"label": "跑戰術", "max_points": 30.0},
+}
+DEFAULT_GRADING_MODE = "draw_runs"
+
 
 @dataclass(slots=True)
 class ScoringItem:
@@ -60,6 +66,8 @@ class ScoringResult:
     max_points: float
     earned: float
     items: list[ItemScore]
+    grading_mode: str = DEFAULT_GRADING_MODE
+    grading_mode_label: str = GRADING_MODES[DEFAULT_GRADING_MODE]["label"]
 
     @property
     def ratio(self) -> float:
@@ -107,17 +115,58 @@ def load_rubric_for_play_id(play_id: str) -> ScoringRubric | None:
     pid = (play_id or "").strip()
     if not pid:
         return None
-    num = pid.upper().removeprefix("T")
+    num = pid.upper().removeprefix("T").removeprefix("A")
     candidates = [
         ROOT / f"{pid}.yaml",
-        ROOT / f"{num}.yaml",
         ROOT / f"{pid.lower()}.yaml",
+        ROOT / f"a{num}.yaml",
+        ROOT / f"{num}.yaml",
         ROOT / "examples" / "boards" / f"{pid}_pass_points.yaml",
+        ROOT / "examples" / "boards" / f"{pid.lower()}_pass_points.yaml",
     ]
     for path in candidates:
         if path.is_file():
             return load_rubric(path)
     return None
+
+
+def normalize_grading_mode(mode: str | None) -> str:
+    key = (mode or DEFAULT_GRADING_MODE).strip()
+    if key in GRADING_MODES:
+        return key
+    aliases = {
+        "画跑位": "draw_runs",
+        "畫跑位": "draw_runs",
+        "跑战术": "run_tactic",
+        "跑戰術": "run_tactic",
+    }
+    return aliases.get(key, DEFAULT_GRADING_MODE)
+
+
+def scale_rubric_for_mode(rubric: ScoringRubric, mode: str) -> ScoringRubric:
+    """Scale YAML rubric (base 15) to draw_runs or run_tactic max."""
+    mode = normalize_grading_mode(mode)
+    base_total = rubric.total if rubric.total > 0 else sum(i.points for i in rubric.items)
+    target = GRADING_MODES[mode]["max_points"]
+    if base_total <= 0:
+        return rubric
+    factor = target / base_total
+    items = [
+        ScoringItem(
+            name=item.name,
+            points=round(item.points * factor, 4),
+            touch_index=item.touch_index,
+            passer=item.passer,
+            receiver=item.receiver,
+            action=item.action,
+            place=item.place,
+            zone=item.zone,
+            outcome=item.outcome,
+            from_place=item.from_place,
+        )
+        for item in rubric.items
+    ]
+    return ScoringRubric(total=target, weights=rubric.weights, items=items)
 
 
 def _opt_str(raw: dict[str, Any], *keys: str) -> str | None:
@@ -261,15 +310,30 @@ def score_item(
     return ItemScore(item.name, item.points, round(earned, 2), criteria)
 
 
-def score_touches(touches: list[TouchRecord], rubric: ScoringRubric) -> ScoringResult:
-    items = [score_item(item, touches, rubric.weights) for item in rubric.items]
+def score_touches(
+    touches: list[TouchRecord],
+    rubric: ScoringRubric,
+    *,
+    grading_mode: str = DEFAULT_GRADING_MODE,
+) -> ScoringResult:
+    mode = normalize_grading_mode(grading_mode)
+    scaled = scale_rubric_for_mode(rubric, mode)
+    items = [score_item(item, touches, scaled.weights) for item in scaled.items]
     earned = round(sum(i.earned for i in items), 2)
-    max_points = rubric.total if rubric.total > 0 else sum(i.max_points for i in items)
-    return ScoringResult(max_points=max_points, earned=earned, items=items)
+    max_points = scaled.total if scaled.total > 0 else sum(i.max_points for i in items)
+    return ScoringResult(
+        max_points=max_points,
+        earned=earned,
+        items=items,
+        grading_mode=mode,
+        grading_mode_label=GRADING_MODES[mode]["label"],
+    )
 
 
 def scoring_to_dict(result: ScoringResult) -> dict[str, Any]:
     return {
+        "grading_mode": result.grading_mode,
+        "grading_mode_label": result.grading_mode_label,
         "max_points": result.max_points,
         "earned": result.earned,
         "ratio": round(result.ratio, 4),

@@ -1,0 +1,172 @@
+% 編譯：cd docs && xelatex 戰術語言.tex
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\setmainfont{Times New Roman}
+\IfFontExistsTF{Songti TC}{
+  \setCJKmainfont{Songti TC}
+  \setCJKsansfont{Heiti TC}
+}{
+  \setCJKmainfont{FandolSong}
+  \setCJKsansfont{FandolHei}
+}
+
+\setlist{nosep,leftmargin=1.8em}
+\pagestyle{empty}
+
+\newcommand{\term}[1]{\textbf{#1}}
+
+\begin{document}
+
+{\LARGE\bfseries 戰術復刻　戰術語言一覽\par}
+\vspace{0.4em}
+{\large 傳球點模式：每次接球記錄「點」（接球者＋位置）與「邊」（傳球方式）\par}
+\vspace{1em}
+
+\section*{一、基本規則}
+
+\begin{itemize}
+  \item 未符合下列任何特殊傳球時，一律標為 \term{傳球}。
+  \item 戰術描述寫法：依序寫明「傳球人將球【邊】給接球人，接球人在【位置】」；終點可標【射正】或【得分】。
+  \item 轉譯時若找不到相符名詞，該段邊記為「無」。
+  \item 場地 20 個戰術區編號與中文名稱見 \texttt{zone\_map.pdf}。
+\end{itemize}
+
+\section*{二、戰術語言（邊）}
+
+\subsection*{\term{傳球}}
+球由傳球者的腳邊移動至接球者的腳邊，雙方皆須觸碰到球。不符合下列任何特殊傳球時，一律標為傳球。
+
+\subsection*{\term{直塞}（Line breaking pass）}
+傳球向前且穿越防線。
+\begin{itemize}
+  \item \textbf{起點}：任意區域。
+  \item \textbf{終點}：比起點更靠近球門，且位於 \term{弧頂前緣} 或 \term{禁區中央}。
+  \item \textbf{特徵}：終點深度穿過當下防線。
+\end{itemize}
+
+\subsection*{\term{回做球}}
+球由前方區域往回傳給身後隊友。
+\begin{itemize}
+  \item \textbf{常見路徑}：弧頂前緣 $\rightarrow$ 左肋深處／右肋深處。
+  \item \textbf{特徵}：終點 zone 深度小於起點（往回傳）。
+\end{itemize}
+
+\subsection*{\term{盤帶推進}}
+同一接球者連續兩次觸球，球與人同步推向球門。
+\begin{itemize}
+  \item \textbf{執法}：兩拍為同一人，且後一拍比前一拍更靠近球門。
+\end{itemize}
+
+\subsection*{\term{強弱邊轉移}（Switch of play）}
+長傳橫跨半場，利用弱側空間。
+\begin{itemize}
+  \item \textbf{常見路徑}：右邊路／右路中路 $\rightarrow$ 左邊路／左路底線；或後場中路長傳至左路底線。
+  \item \textbf{特徵}：橫跨半場換邊，或自中低位縱深大跳躍換邊。
+\end{itemize}
+
+\subsection*{\term{倒三角傳球}（Cut-back）}
+自底線或禁區深處貼地回傳弧頂前緣。
+\begin{itemize}
+  \item \textbf{起點}：左路底線、右路底線，或禁區中央深處。
+  \item \textbf{終點}：弧頂前緣。
+\end{itemize}
+
+\subsection*{\term{傳中}（Cross）}
+邊路傳球至禁區中央。
+\begin{itemize}
+  \item \textbf{起點}：左路底線或右路底線（或邊路前段）。
+  \item \textbf{終點}：禁區中央。
+\end{itemize}
+
+\subsection*{\term{過頂長傳}（Lobbed pass / Over the top）}
+中低位起腳，縱深大跳躍越過防線。
+\begin{itemize}
+  \item \textbf{常見路徑}：後場中路 $\rightarrow$ 左路底線；或中低位 $\rightarrow$ 弧頂／禁區／底線，縱深跳躍 $\geq 2$ 格。
+  \item \textbf{特徵}：球路越過防線頭頂至身後空間。
+\end{itemize}
+
+\subsection*{\term{第三人出球}（破高位壓迫）}
+在逼搶壓力下，第二人短傳給已拉開的第三人脫困。
+\begin{itemize}
+  \item \textbf{常見序列}：後場禁區 $\rightarrow$ 後場中路 $\rightarrow$ 邊路後段／邊後衛，再接肋部或前場推進。
+  \item \textbf{特徵}：第二、第三人接力，避開第一線壓迫。
+\end{itemize}
+
+\section*{三、終點結果}
+
+\subsection*{\term{射正}}
+終點在禁區中央，球進入球框範圍（未進特定得分區）。
+
+\subsection*{\term{得分}}
+終點在禁區中央，球進入球框之特定得分範圍。
+
+\vspace{0.5em}
+\noindent
+部分題目允許在弧頂前緣或邊路起腳標為射正，依該題戰術文字為準。
+
+\section*{四、戰術區 20 格名稱}
+
+完整示意見 \texttt{zone\_map.pdf}。編號與名稱對照：
+
+\vspace{0.3em}
+\small
+\begin{tabular}{@{}clcl@{}}
+\toprule
+\textbf{Zone} & \textbf{名稱} & \textbf{Zone} & \textbf{名稱} \\
+\midrule
+1 & 後場左角 & 11 & 左邊路 \\
+2 & 後場禁區 & 12 & 左邊路（前段） \\
+3 & 後場右角 & 13 & 左肋 \\
+4 & 左邊路（後段） & 14 & 弧頂前緣 \\
+5 & 左邊路（中段） & 15 & 右肋 \\
+6 & 左肋深處 & 16 & 右路中路 \\
+7 & 後場中路 & 17 & 右邊路 \\
+8 & 右肋深處 & 18 & 左路底線 \\
+9 & 右邊路（後段） & 19 & 右路底線 \\
+10 & 右邊路（中段） & 20 & 禁區中央 \\
+\bottomrule
+\end{tabular}
+\normalsize
+
+\section*{五、戰術描述常用場地名稱}
+
+戰術文字常優先使用下列簡稱（皆對應上表某一 zone）：
+
+\vspace{0.4em}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{名稱} & \textbf{說明} \\
+\midrule
+後場中路 & 後場中央帶 \\
+左肋深處／右肋深處 & 後場至中場的肋部深區 \\
+左邊路／右邊路 & 邊路中段 \\
+左肋／右肋 & 進攻肋部 \\
+弧頂前緣 & 禁區前沿弧頂 \\
+右路中路 & 右側中場通道 \\
+左路底線／右路底線 & 底線角區 \\
+禁區中央 & 大禁區中央 \\
+\bottomrule
+\end{tabular}
+
+\section*{六、描述範例}
+
+\begin{quote}
+前腰將球直塞給左邊鋒，左邊鋒在左路底線接球。左邊鋒傳中給前鋒，前鋒在禁區中央得分。
+\end{quote}
+
+\begin{quote}
+邊後衛將球傳球給前腰，前腰在右肋接球。前腰將球傳球給邊後衛，邊後衛在右路底線接球。邊後衛傳中給前鋒，前鋒在禁區中央得分。
+\end{quote}
+
+\vspace{1em}
+\hrule
+\vspace{0.4em}
+{\small 規則來源：\texttt{1st\_half\_rules.md}；自動轉譯邏輯見 \texttt{tactic\_translate/}。}
+
+\end{document}

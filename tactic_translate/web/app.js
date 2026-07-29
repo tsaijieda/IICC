@@ -75,9 +75,10 @@ const state = {
   pitchAspect: 105 / 68,
   zoneRects: buildDefaultZoneRects(),
   zoneNames: {},
-  playId: "T001",
+  playId: "A001",
   title: "",
   mode: "pass_points",
+  gradingMode: "draw_runs",
   frameIndex: 0,
   frames: [],
   selectedPlayerId: null,
@@ -127,6 +128,18 @@ function isPassPointsMode() {
   return state.mode === "pass_points";
 }
 
+function isDrawRunsMode() {
+  return state.gradingMode === "draw_runs";
+}
+
+function gradingModeLabel() {
+  return isDrawRunsMode() ? "畫跑位" : "跑戰術";
+}
+
+function gradingModeMax() {
+  return isDrawRunsMode() ? 15 : 30;
+}
+
 function isAddingTouch() {
   return state.frameIndex >= state.frames.length;
 }
@@ -171,6 +184,7 @@ function buildBoardPayload() {
     play_id: document.getElementById("play-id").value || state.playId,
     title: document.getElementById("play-title").value || state.title,
     mode: state.mode,
+    grading_mode: state.gradingMode,
     frames: (passPoints ? recordedFrames() : state.frames).map((f, i) => {
       if (passPoints) {
         return {
@@ -419,10 +433,10 @@ function syncFrameControls() {
 
 function syncModeUi() {
   const passPoints = isPassPointsMode();
-  document.getElementById("mode-pass").classList.toggle("active", passPoints);
-  document.getElementById("mode-full").classList.toggle("active", !passPoints);
+  document.getElementById("mode-draw").classList.toggle("active", isDrawRunsMode());
+  document.getElementById("mode-run").classList.toggle("active", !isDrawRunsMode());
   document.getElementById("frame-hint").textContent = passPoints
-    ? "填接球人 → 點球場 = 記一筆；可一直點、一直加，沒有上限。"
+    ? `評分模式：${gradingModeLabel()}（滿分 ${gradingModeMax()}）。填接球人 → 點球場記錄每一拍。`
     : "點選球員 → 再點 zone 放置；點「接球」設為該拍持球者。";
   const rec = document.getElementById("touch-record-section");
   if (rec) rec.hidden = !passPoints;
@@ -551,7 +565,8 @@ function renderOutput(result) {
   scoreList.innerHTML = "";
   if (result.scoring) {
     const s = result.scoring;
-    scoreEl.textContent = `${s.earned} / ${s.max_points} 分（${Math.round(s.ratio * 100)}%）`;
+    const modeLabel = s.grading_mode_label || gradingModeLabel();
+    scoreEl.textContent = `${modeLabel}：${s.earned} / ${s.max_points} 分（${Math.round(s.ratio * 100)}%）`;
     for (const item of s.items || []) {
       const li = document.createElement("li");
       const crit = (item.criteria || [])
@@ -566,7 +581,7 @@ function renderOutput(result) {
       scoreList.appendChild(li);
     }
   } else {
-    scoreEl.textContent = "（此戰術 ID 尚無評分標準，請填 T001 測試）";
+    scoreEl.textContent = "（此戰術 ID 尚無評分標準，請填 A001 測試）";
   }
 
   const evals = document.getElementById("out-evals");
@@ -632,6 +647,7 @@ function loadBoardData(data) {
   const rawFrames = data.frames || data.pass_points || [];
   const hasPlayers = rawFrames.some((f) => (f.players || []).length);
   state.mode = data.mode || data.scoring_mode || (hasPlayers ? "full" : "pass_points");
+  state.gradingMode = data.grading_mode || "draw_runs";
 
   state.frames = rawFrames.map((f, i) => ({
     receiver: f.receiver || f.label || `T${i + 1}`,
@@ -679,30 +695,18 @@ async function init() {
   syncFrameControls();
   renderAll();
 
-  document.getElementById("mode-pass").addEventListener("click", () => {
+  document.getElementById("mode-draw").addEventListener("click", () => {
+    state.gradingMode = "draw_runs";
     state.mode = "pass_points";
-    state.frames = state.frames.map((f, i) => ({
-      receiver: f.receiver || `T${i + 1}`,
-      ball_zone: f.ball_zone,
-      offside_line_depth: f.offside_line_depth,
-      players: [],
-    }));
-    state.frameIndex = state.frames.length;
     renderAll();
+    scheduleTranslate();
   });
 
-  document.getElementById("mode-full").addEventListener("click", () => {
-    state.mode = "full";
-    state.frames = state.frames.map((f) => {
-      if (f.players.length) return f;
-      const id = f.receiver || "P1";
-      return {
-        ...f,
-        receiver: id,
-        players: [{ id, role: "球員", zone: f.ball_zone ?? 14 }],
-      };
-    });
+  document.getElementById("mode-run").addEventListener("click", () => {
+    state.gradingMode = "run_tactic";
+    state.mode = "pass_points";
     renderAll();
+    scheduleTranslate();
   });
 
   const ex = await api("/api/examples");

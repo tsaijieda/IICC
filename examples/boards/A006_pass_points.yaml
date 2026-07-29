@@ -1,0 +1,10 @@
+play_id: "A006"
+title: "題型 A006：邊路起腳射門（左路）"
+mode: pass_points
+
+frames:
+  - {zone: 7, place: 後場中路, label: CM, receiver: CM}
+  - {zone: 13, place: 左肋, label: AM, passer: CM, receiver: AM, pass_action: 傳球}
+  - {zone: 5, place: 左邊路（中段）, label: LW, passer: AM, receiver: LW, pass_action: 傳球}
+  - {zone: 14, place: 弧頂前緣, label: AM, passer: LW, receiver: AM, pass_action: 傳球}
+  - {zone: 12, place: 左邊路（前段）, label: LW, passer: AM, receiver: LW, pass_action: 傳球, outcome: 射正}

@@ -1,0 +1,93 @@
+# 戰術語言依 1st_half_rules.md（傳球點評分）
+play_id: "A004"
+title: "題型 A004：第三人破高位壓迫"
+description: "中後衛（CB）在後場禁區接球（遭高位壓迫）。中後衛傳球給後腰（DM），後腰在後場中路接球。後腰傳球給邊後衛（FB），邊後衛在右邊路（後段）接球（第三人出球脫困）。邊後衛直塞給前腰（AM），前腰在禁區中央射正。"
+scoring_mode: pass_points
+
+evaluation_points:
+  傳球 (後場): "傳球人：中後衛（CB）→ 後腰（DM）；邊：傳球；接球點：後場中路。"
+  第三人出球: "傳球人：後腰（DM）→ 邊後衛（FB）；邊：第三人出球；接球點：右邊路（後段）。"
+  直塞: "傳球人：邊後衛（FB）→ 前腰（AM）；邊：直塞；接球點：禁區中央；射正。"
+
+pass_points:
+  - {zone: 2, place: 後場禁區, receiver: CB}
+  - {zone: 7, place: 後場中路, passer: CB, receiver: DM, pass_action: 傳球}
+  - {zone: 9, place: 右邊路（後段）, passer: DM, receiver: FB, pass_action: 第三人出球}
+  - {zone: 20, place: 禁區中央, passer: FB, receiver: AM, pass_action: 直塞, outcome: 射正}
+
+run_tactic:
+  reception_radius_m: 1.0
+  score_touches:
+    - {touch: 0, zone: 2, receiver: CB, label: "評分①"}
+    - {touch: 1, zone: 7, receiver: DM, label: "評分②"}
+    - {touch: 2, zone: 9, receiver: FB, label: "評分③"}
+    - {touch: 3, zone: 20, receiver: AM, label: "評分④"}
+  defenders:
+    - {zone: 14, note: "擋禁區直連前場捷徑"}
+    - {between: [9, 20], note: "擋邊路貼線直塞"}
+
+y_label: "Field Depth (m)"
+x_label: "Time (seconds)"
+x_limits: [0.0, 6.0]
+y_limits: [10, 80]
+
+entities:
+  - id: "CB"
+    label: "Centre Back (CB)"
+    color: "#9E9E9E"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 15]
+      - [1.0, 15]
+      - [2.0, 20]
+      - [6.0, 25]
+
+  - id: "DM"
+    label: "Def. Mid (DM)"
+    color: "#B48EAD"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 25]
+      - [1.5, 25]
+      - [2.5, 30]
+      - [6.0, 35]
+
+  - id: "FB"
+    label: "Fullback (FB)"
+    color: "#F6B746"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 20]
+      - [2.0, 22]
+      - [3.5, 35]
+      - [6.0, 45]
+
+  - id: "AM"
+    label: "Attacker (AM)"
+    color: "#74DB7A"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 45]
+      - [3.0, 48]
+      - [4.5, 65]
+      - [6.0, 70]
+
+  - id: "Ball"
+    label: "Ball"
+    color: "#F26974"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 15]
+      - [1.5, 25]
+      - [3.0, 35]
+      - [4.5, 70]
+
+  - id: "Press"
+    label: "High Press Line"
+    color: "#EAC2CE"
+    linestyle: "--"
+    trajectory:
+      - [0.0, 30]
+      - [2.0, 32]
+      - [4.0, 38]
+      - [6.0, 42]

@@ -1,0 +1,13 @@
+play_id: "A005"
+title: "題型 A005：RW／FB／CM 倒腳推進射門"
+mode: pass_points
+
+frames:
+  - {zone: 10, place: 右邊路（中段）, label: RW, receiver: RW}
+  - {zone: 3, place: 後場右角, label: FB, passer: RW, receiver: FB, pass_action: 傳球}
+  - {zone: 7, place: 後場中路, label: CM, passer: FB, receiver: CM, pass_action: 傳球}
+  - {zone: 16, place: 右路中路, label: RW, passer: CM, receiver: RW, pass_action: 傳球}
+  - {zone: 14, place: 弧頂前緣, label: CM, passer: RW, receiver: CM, pass_action: 傳球}
+  - {zone: 7, place: 後場中路, label: FB, passer: CM, receiver: FB, pass_action: 回做球}
+  - {zone: 17, place: 右邊路, label: CM, passer: FB, receiver: CM, pass_action: 傳球}
+  - {zone: 14, place: 弧頂前緣, label: RW, passer: CM, receiver: RW, pass_action: 傳球, outcome: 射正}

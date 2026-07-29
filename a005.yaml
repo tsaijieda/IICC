@@ -1,0 +1,128 @@
+# 戰術語言依 1st_half_rules.md（傳球點評分）
+play_id: "A005"
+title: "題型 A005：RW／FB／CM 倒腳推進射門"
+description: "右邊鋒（RW）在右邊路（中段）接球。右邊鋒傳球給邊後衛（FB），邊後衛在後場右角接球。邊後衛傳球給中場（CM），中場在後場中路接球。中場傳球給右邊鋒（RW），右邊鋒在右路中路接球。右邊鋒傳球給中場（CM），中場在弧頂前緣接球。中場回做球給邊後衛（FB），邊後衛在後場中路接球。邊後衛傳球給中場（CM），中場在右邊路接球。中場傳球給右邊鋒（RW），右邊鋒在弧頂前緣射正。"
+scoring_mode: pass_points
+
+evaluation_points:
+  傳球 (後場): "RW@10 → FB@3 → CM@7。"
+  傳球 (推進): "RW@16 → CM@14 → FB@7 → CM@17。"
+  射正: "CM → RW@14 弧頂射正。"
+
+run_movement:
+  opening: "開球前：RW 在右邊路中段(10)持球，FB 在後場右角(3)要球，CM 在後場中路(7)策應。"
+  steps:
+    - beat: "① RW@10 接球"
+      RW: "右邊路中段持球"
+      FB: "後場右角(3)拉開接回傳"
+      CM: "後場中路(7)轉身要球"
+    - beat: "② RW→FB@3"
+      RW: "傳出後向內收至右路中路(16)"
+      FB: "右角接球；傳出後前壓至中路(7)"
+      CM: "中路(7)準備接刀"
+    - beat: "③ FB→CM@7"
+      FB: "已傳出；向後場支援"
+      CM: "中路接球"
+      RW: "由(10)跑向(16)"
+    - beat: "④ CM→RW@16"
+      CM: "傳出後上插弧頂(14)"
+      RW: "右路中路接球"
+      FB: "由(3)收到後場中路(7)"
+    - beat: "⑤ RW→CM@14"
+      RW: "傳出後跑向弧頂(14)"
+      CM: "弧頂接球"
+      FB: "站穩後場中路(7)"
+    - beat: "⑥ CM→FB@7"
+      CM: "傳出後跑向右邊路(17)"
+      FB: "後場中路接球"
+      RW: "由(16)收到弧頂(14)"
+    - beat: "⑦ FB→CM@17"
+      FB: "傳出後留在後場"
+      CM: "右邊路接球"
+      RW: "弧頂(14)要球"
+    - beat: "⑧ CM→RW@14 射正"
+      CM: "傳出後弧頂外策應"
+      RW: "弧頂(14)接球射正"
+      FB: "後場支援"
+
+pass_points:
+  - {zone: 10, place: 右邊路（中段）, receiver: RW}
+  - {zone: 3, place: 後場右角, passer: RW, receiver: FB, pass_action: 傳球}
+  - {zone: 7, place: 後場中路, passer: FB, receiver: CM, pass_action: 傳球}
+  - {zone: 16, place: 右路中路, passer: CM, receiver: RW, pass_action: 傳球}
+  - {zone: 14, place: 弧頂前緣, passer: RW, receiver: CM, pass_action: 傳球}
+  - {zone: 7, place: 後場中路, passer: CM, receiver: FB, pass_action: 回做球}
+  - {zone: 17, place: 右邊路, passer: FB, receiver: CM, pass_action: 傳球}
+  - {zone: 14, place: 弧頂前緣, passer: CM, receiver: RW, pass_action: 傳球, outcome: 射正}
+
+run_tactic:
+  reception_radius_m: 1.0
+  score_touches:
+    - {touch: 0, zone: 10, receiver: RW, label: "評分①"}
+    - {touch: 1, zone: 3, receiver: FB, label: "評分②"}
+    - {touch: 2, zone: 7, receiver: CM, label: "評分③"}
+    - {touch: 3, zone: 16, receiver: RW, label: "評分④"}
+    - {touch: 4, zone: 14, receiver: CM, label: "評分⑤"}
+    - {touch: 5, zone: 7, receiver: FB, label: "評分⑥"}
+    - {touch: 6, zone: 17, receiver: CM, label: "評分⑦"}
+    - {touch: 7, zone: 14, receiver: RW, label: "評分⑧"}
+  defenders:
+    - {between: [10, 14], note: "擋邊路直連弧頂"}
+    - {between: [7, 14], note: "擋後場直連弧頂（逼倒腳）"}
+
+y_label: "Field Depth (m)"
+x_label: "Time (seconds)"
+x_limits: [0.0, 10.0]
+y_limits: [10, 110]
+
+entities:
+  - id: "RW"
+    label: "Winger (RW)"
+    color: "#F6B746"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 35]
+      - [1.5, 35]
+      - [3.0, 42]
+      - [4.5, 48]
+      - [6.0, 58]
+      - [7.5, 58]
+      - [9.0, 58]
+
+  - id: "FB"
+    label: "Fullback (FB)"
+    color: "#9E9E9E"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 18]
+      - [1.5, 18]
+      - [3.0, 25]
+      - [5.0, 25]
+      - [6.5, 22]
+      - [10.0, 25]
+
+  - id: "CM"
+    label: "Midfielder (CM)"
+    color: "#4A85F6"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 25]
+      - [3.0, 25]
+      - [4.5, 58]
+      - [6.0, 25]
+      - [7.0, 52]
+      - [8.5, 55]
+
+  - id: "Ball"
+    label: "Ball"
+    color: "#F26974"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 35]
+      - [1.5, 18]
+      - [3.0, 25]
+      - [4.5, 42]
+      - [6.0, 58]
+      - [7.0, 25]
+      - [8.0, 52]
+      - [8.5, 58]

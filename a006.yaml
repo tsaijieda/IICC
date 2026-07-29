@@ -1,0 +1,101 @@
+# 戰術語言依 1st_half_rules.md（傳球點評分）
+# 右路原型：CM@7 → AM@15 → RW@10 → AM@14 → RW@17；鏡像為左路
+play_id: "A006"
+title: "題型 A006：邊路起腳射門（左路）"
+description: "中場（CM）在後場中路接球。中場傳球給前腰（AM），前腰在左肋接球。前腰傳球給左邊鋒（LW），左邊鋒在左邊路（中段）接球。左邊鋒傳球給前腰（AM），前腰在弧頂前緣接球。前腰傳球給左邊鋒（LW），左邊鋒在左邊路（前段）射正。"
+scoring_mode: pass_points
+
+evaluation_points:
+  傳球 (後場): "CM@7 → AM@13。"
+  傳球 (肋部): "AM@13 → LW@5 → AM@14。"
+  射正: "AM → LW@12 邊路射正。"
+
+run_movement:
+  opening: "開球前：CM 在後場中路(7)，AM 在左肋(13)要球，LW 在左邊路中段(5)拉開。（右路鏡像：AM@15、RW@10）"
+  steps:
+    - beat: "① CM@7 接球"
+      CM: "後場中路持球"
+      AM: "左肋(13)轉身要球"
+      LW: "左邊路中段(5)拉開寬度"
+    - beat: "② CM→AM@13"
+      CM: "傳出後留在後場策應"
+      AM: "左肋接球"
+      LW: "向邊路(12)移動準備"
+    - beat: "③ AM→LW@5（評分③）"
+      AM: "傳出後回撤弧頂(14)"
+      LW: "左邊路中段(5)接球"
+      CM: "後場支援"
+    - beat: "④ LW→AM@14"
+      LW: "傳出後**全速拉邊至(12)**"
+      AM: "弧頂接球"
+      CM: "不跟進"
+    - beat: "⑤ AM→LW@12 射正"
+      AM: "弧頂傳邊後策應"
+      LW: "**左邊路前段(12)接球起腳射正**"
+      CM: "後場防守站位"
+
+pass_points:
+  - {zone: 7, place: 後場中路, receiver: CM}
+  - {zone: 13, place: 左肋, passer: CM, receiver: AM, pass_action: 傳球}
+  - {zone: 5, place: 左邊路（中段）, passer: AM, receiver: LW, pass_action: 傳球}
+  - {zone: 14, place: 弧頂前緣, passer: LW, receiver: AM, pass_action: 傳球}
+  - {zone: 12, place: 左邊路（前段）, passer: AM, receiver: LW, pass_action: 傳球, outcome: 射正}
+
+run_tactic:
+  reception_radius_m: 1.0
+  score_touches:
+    - {touch: 0, zone: 7, receiver: CM, label: "評分①"}
+    - {touch: 1, zone: 13, receiver: AM, label: "評分②"}
+    - {touch: 2, zone: 5, receiver: LW, label: "評分③"}
+    - {touch: 3, zone: 14, receiver: AM, label: "評分④"}
+    - {touch: 4, zone: 12, receiver: LW, label: "評分⑤"}
+  defenders:
+    - {between: [7, 12], note: "擋後場直連邊路射門"}
+    - {between: [14, 12], note: "擋弧頂貼線傳邊"}
+
+y_label: "Field Depth (m)"
+x_label: "Time (seconds)"
+x_limits: [0.0, 6.0]
+y_limits: [15, 85]
+
+entities:
+  - id: "CM"
+    label: "Midfielder (CM)"
+    color: "#4A85F6"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 25]
+      - [2.0, 25]
+      - [6.0, 28]
+
+  - id: "AM"
+    label: "Attacker (AM)"
+    color: "#74DB7A"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 52]
+      - [2.0, 52]
+      - [3.5, 58]
+      - [4.5, 58]
+      - [6.0, 55]
+
+  - id: "LW"
+    label: "Winger (LW)"
+    color: "#F6B746"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 48]
+      - [3.0, 48]
+      - [4.0, 52]
+      - [5.5, 68]
+
+  - id: "Ball"
+    label: "Ball"
+    color: "#F26974"
+    linestyle: "-"
+    trajectory:
+      - [0.0, 25]
+      - [1.5, 52]
+      - [3.0, 48]
+      - [4.0, 58]
+      - [5.5, 68]

@@ -1,16 +1,26 @@
 play_id: "T005"
 title: "題型 5：華麗的空間魔術"
-description: "邊鋒（W）在右路底線接球。邊鋒倒三角傳球給中場（CM），中場在弧頂前緣接球（前鋒未觸球）。中場盤帶推進至禁區中央得分。"
+description: "邊鋒（W）在右路底線接球。邊鋒倒三角傳球給中場（CM），中場在弧頂前緣接球。中場傳球給跑進禁區的邊鋒（W），邊鋒在禁區中央得分。"
 scoring_mode: pass_points
 
 evaluation_points:
-  倒三角傳球: "傳球人：邊鋒（W）→ 中場（CM）；邊：倒三角傳球；接球點：弧頂前緣。（前鋒不在傳球點序列中，視為漏球）"
-  盤帶推進: "接球人：中場（CM）；邊：盤帶推進；弧頂前緣 → 禁區中央；得分。"
+  倒三角傳球: "傳球人：邊鋒（W）→ 中場（CM）；邊：倒三角傳球；接球點：弧頂前緣。"
+  傳球: "傳球人：中場（CM）→ 邊鋒（W）；邊：傳球；接球點：禁區中央；得分。"
 
 pass_points:
   - {zone: 19, place: 右路底線, receiver: W}
   - {zone: 14, place: 弧頂前緣, passer: W, receiver: CM, pass_action: 倒三角傳球}
-  - {zone: 20, place: 禁區中央, receiver: CM, pass_action: 盤帶推進, outcome: 得分}
+  - {zone: 20, place: 禁區中央, passer: CM, receiver: W, pass_action: 傳球, outcome: 得分}
+
+run_tactic:
+  reception_radius_m: 1.0
+  score_touches:
+    - {touch: 0, zone: 19, receiver: W, label: "評分①"}
+    - {touch: 1, zone: 14, receiver: CM, label: "評分②"}
+    - {touch: 2, zone: 20, receiver: W, label: "評分③"}
+  defenders:
+    - {between: [19, 14], note: "擋底線貼線倒三角"}
+    - {between: [14, 20], note: "擋弧頂貼線傳球"}
 
 y_label: "Field Depth (m)"
 x_label: "Time (seconds)"

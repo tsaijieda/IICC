@@ -1,10 +1,11 @@
-play_id: "T001"
-title: "題型 1：邊路經典爆破"
-description: "前腰（AM）在右肋接球。前腰傳球給邊後衛（FB），邊後衛在右路底線接球。邊後衛傳中給前鋒（ST），前鋒在禁區中央得分。"
+play_id: "A001"
+title: "題型 A001：邊路經典爆破"
+description: "邊後衛（FB）在右邊路（後段）接球。邊後衛傳球給前腰（AM），前腰在右肋接球。前腰傳球給邊後衛（FB），邊後衛在右路底線接球。邊後衛傳中給前鋒（ST），前鋒在禁區中央得分。"
 scoring_mode: pass_points
 
 evaluation_points:
-  傳球: "傳球人：前腰（AM）→ 邊後衛（FB）；邊：傳球；接球點：右路底線。"
+  傳球 (肋部): "傳球人：邊後衛（FB）→ 前腰（AM）；邊：傳球；接球點：右肋。"
+  傳球 (底線): "傳球人：前腰（AM）→ 邊後衛（FB）；邊：傳球；接球點：右路底線。"
   傳中: "傳球人：邊後衛（FB）→ 前鋒（ST）；邊：傳中；接球點：禁區中央；得分。"
 
 scoring:
@@ -14,17 +15,25 @@ scoring:
     action: 0.5
     place: 0.2
   items:
-    - name: 傳球
-      points: 7.5
+    - name: 傳球 (肋部)
+      points: 5
       touch: 1
+      check:
+        passer: FB
+        receiver: AM
+        action: 傳球
+        place: 右肋
+    - name: 傳球 (底線)
+      points: 5
+      touch: 2
       check:
         passer: AM
         receiver: FB
         action: 傳球
         place: 右路底線
     - name: 傳中
-      points: 7.5
-      touch: 2
+      points: 5
+      touch: 3
       check:
         passer: FB
         receiver: ST
@@ -33,9 +42,21 @@ scoring:
         outcome: 得分
 
 pass_points:
-  - {zone: 15, place: 右肋, receiver: AM, pass_action: 傳球}
+  - {zone: 9, place: 右邊路（後段）, receiver: FB}
+  - {zone: 15, place: 右肋, passer: FB, receiver: AM, pass_action: 傳球}
   - {zone: 19, place: 右路底線, passer: AM, receiver: FB, pass_action: 傳球}
   - {zone: 20, place: 禁區中央, passer: FB, receiver: ST, pass_action: 傳中, outcome: 得分}
+
+run_tactic:
+  reception_radius_m: 1.0
+  score_touches:
+    - {touch: 0, zone: 9, receiver: FB, label: "評分①"}
+    - {touch: 1, zone: 15, receiver: AM, label: "評分②"}
+    - {touch: 2, zone: 19, receiver: FB, label: "評分③"}
+    - {touch: 3, zone: 20, receiver: ST, label: "評分④"}
+  defenders:
+    - {between: [9, 15], note: "擋邊後衛貼線傳肋部"}
+    - {between: [19, 20], note: "擋底線橫傳進禁區"}
 
 y_label: "Field Depth (m)"
 x_label: "Time (seconds)"

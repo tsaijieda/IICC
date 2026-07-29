@@ -1,18 +1,29 @@
 play_id: "T012"
 title: "題型 12：倒三角撕裂大巴"
-description: "左邊鋒（LW）在左路底線接球。左邊鋒倒三角傳球給前腰（AM），前腰在弧頂前緣接球。前腰強弱邊轉移給右邊鋒（RW），右邊鋒在右邊路接球。右邊鋒盤帶推進至禁區中央得分。"
+description: "左邊鋒（LW）在左路底線接球。左邊鋒倒三角傳球給前腰（AM），前腰在弧頂前緣接球。前腰強弱邊轉移給右邊鋒（RW），右邊鋒在右邊路接球。前腰傳球給跑進禁區的右邊鋒（RW），右邊鋒在禁區中央得分。"
 scoring_mode: pass_points
 
 evaluation_points:
   倒三角傳球: "傳球人：左邊鋒（LW）→ 前腰（AM）；邊：倒三角傳球；接球點：弧頂前緣。"
   強弱邊轉移: "傳球人：前腰（AM）→ 右邊鋒（RW）；邊：強弱邊轉移；接球點：右邊路。"
-  盤帶推進: "接球人：右邊鋒（RW）；邊：盤帶推進；右邊路 → 禁區中央；得分。"
+  傳球: "傳球人：前腰（AM）→ 右邊鋒（RW）；邊：傳球；接球點：禁區中央；得分。"
 
 pass_points:
   - {zone: 18, place: 左路底線, receiver: LW}
   - {zone: 14, place: 弧頂前緣, passer: LW, receiver: AM, pass_action: 倒三角傳球}
   - {zone: 17, place: 右邊路, passer: AM, receiver: RW, pass_action: 強弱邊轉移}
-  - {zone: 20, place: 禁區中央, receiver: RW, pass_action: 盤帶推進, outcome: 得分}
+  - {zone: 20, place: 禁區中央, passer: AM, receiver: RW, pass_action: 傳球, outcome: 得分}
+
+run_tactic:
+  reception_radius_m: 1.0
+  score_touches:
+    - {touch: 0, zone: 18, receiver: LW, label: "評分①"}
+    - {touch: 1, zone: 14, receiver: AM, label: "評分②"}
+    - {touch: 2, zone: 17, receiver: RW, label: "評分③"}
+    - {touch: 3, zone: 20, receiver: RW, label: "評分④"}
+  defenders:
+    - {between: [18, 14], note: "擋底線貼線倒三角"}
+    - {between: [17, 20], note: "擋邊路貼線傳球"}
 
 y_label: "Field Depth (m)"
 x_label: "Time (seconds)"

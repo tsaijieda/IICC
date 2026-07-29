@@ -1,0 +1,9 @@
+play_id: "A004"
+title: "題型 A004：第三人破高位壓迫"
+mode: pass_points
+
+frames:
+  - {zone: 2, place: 後場禁區, label: CB, receiver: CB}
+  - {zone: 7, place: 後場中路, label: DM, passer: CB, receiver: DM, pass_action: 傳球}
+  - {zone: 9, place: 右邊路（後段）, label: FB, passer: DM, receiver: FB, pass_action: 第三人出球}
+  - {zone: 20, place: 禁區中央, label: AM, passer: FB, receiver: AM, pass_action: 直塞, outcome: 射正}

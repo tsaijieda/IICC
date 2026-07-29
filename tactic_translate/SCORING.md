@@ -16,7 +16,7 @@ BoardInput（frames[]）
     ├─ build_touches()             每 frame → TouchRecord
     │     （推斷 passer、邊、結果）
     │
-    ├─ load_rubric_for_play_id()  讀 001.yaml 等 scoring: 區塊
+    ├─ load_rubric_for_play_id()  讀 a001.yaml 等 scoring: 區塊
     │
     └─ score_touches()           逐項比對 → ScoringResult
 ```
@@ -56,11 +56,18 @@ BoardInput（frames[]）
 
 ---
 
-## 第二步：載入 Rubric
+## 評分模式
 
-`load_rubric_for_play_id(play_id)` 依 `play_id` 找題目檔，例如 `T001` → `001.yaml`。
+| 模式 | `grading_mode` | 滿分 |
+|------|----------------|------|
+| 畫跑位 | `draw_runs`（預設） | 15 |
+| 跑戰術 | `run_tactic` | 30 |
 
-`scoring:` 區塊範例（`001.yaml`）：
+題目 YAML 的 `scoring:` 以 **畫跑位 15 分** 為基準撰寫；選跑戰術時各項配分自動加倍（滿分 30）。Web UI 左側可切換模式；API 請求 body 帶 `grading_mode`。
+
+`load_rubric_for_play_id(play_id)` 依 `play_id` 找題目檔，例如 `A001` → `a001.yaml`。
+
+`scoring:` 區塊範例（`a001.yaml`）：
 
 ```yaml
 scoring:
@@ -115,7 +122,7 @@ scoring:
 - **多畫的拍**：不影響已指定 index 的評分（不扣分）
 - **少畫的拍**：該 index 不存在 → 該項 0 分，細項顯示「缺少此拍」
 
-例：T001 三拍（index 0/1/2）只評 touch 1 與 touch 2；index 0（AM 接球）不計分。
+例：A001 三拍（index 0/1/2）只評 touch 1 與 touch 2；index 0（AM 接球）不計分。
 
 ### 部分給分（partial credit）
 
@@ -131,7 +138,7 @@ scoring:
 
 單條件錯只扣對應比例，其餘條件仍給分。
 
-### T001 滿分範例
+### A001 滿分範例
 
 ```yaml
 frames:
@@ -176,7 +183,7 @@ frames:
 
 | 題目 | `scoring:` rubric |
 |------|-------------------|
-| T001 (`001.yaml`) | 有（15 分，傳球 + 傳中） |
+| A001 (`a001.yaml`) | 有（15 分，傳球 + 傳中） |
 | T002–T012 | 尚無；需在各題 YAML 補 `scoring:` 才會自動評分 |
 
 `evaluation_points` 文字說明來自 `build_evaluation_points()`，與 rubric 評分獨立；有 rubric 時以 `scoring` 數字為準。
@@ -203,5 +210,6 @@ python3 -m unittest tactic_translate.test_scoring -v
 | `touches.py` | `build_touches`、邊／結果推斷 |
 | `patterns.py` | 戰術 pattern 偵測（影響邊推斷） |
 | `zones.py` | 20 區定義、`zone_name()` |
+| `zone_map.svg` | 區域示意圖（Zone 編號 + 中文名）；重產：`python -m tactic_translate.plot_zone_map` |
 | `translator.py` | `translate_board()` 串接驗證、觸碰軸、評分 |
-| `001.yaml` | 第一題 rubric 範本 |
+| `a001.yaml` | 第一題 rubric 範本 |

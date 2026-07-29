@@ -1,0 +1,9 @@
+play_id: "A001"
+title: "題型 A001：邊路經典爆破"
+mode: pass_points
+
+frames:
+  - {zone: 9, place: 右邊路（後段）, label: FB, receiver: FB}
+  - {zone: 15, place: 右肋, label: AM, passer: FB, receiver: AM, pass_action: 傳球}
+  - {zone: 19, place: 右路底線, label: FB, passer: AM, receiver: FB, pass_action: 傳球}
+  - {zone: 20, place: 禁區中央, label: ST, passer: FB, receiver: ST, pass_action: 傳中, outcome: 得分}

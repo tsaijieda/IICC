@@ -1,18 +1,29 @@
 play_id: "T008"
 title: "題型 8：極限壓迫破解"
-description: "中場（CM）在左肋深處接球。中場盤帶推進至弧頂前緣。中場傳球給右後衛（RB），右後衛在右路底線接球。右後衛傳中給前鋒（ST），前鋒在禁區中央得分。"
+description: "中場（CM）在左肋深處接球。中場傳球給前腰（AM），前腰在弧頂前緣接球。前腰傳球給右後衛（RB），右後衛在右路底線接球。右後衛傳中給前鋒（ST），前鋒在禁區中央得分。"
 scoring_mode: pass_points
 
 evaluation_points:
-  盤帶推進: "接球人：中場（CM）；邊：盤帶推進；左肋深處 → 弧頂前緣。"
-  傳球: "傳球人：中場（CM）→ 右後衛（RB）；邊：傳球；接球點：右路底線。"
+  傳球: "傳球人：中場（CM）→ 前腰（AM）；邊：傳球；接球點：弧頂前緣。"
+  傳球 (套邊): "傳球人：前腰（AM）→ 右後衛（RB）；邊：傳球；接球點：右路底線。"
   傳中: "傳球人：右後衛（RB）→ 前鋒（ST）；邊：傳中；接球點：禁區中央；得分。"
 
 pass_points:
   - {zone: 11, place: 左肋深處, receiver: CM}
-  - {zone: 14, place: 弧頂前緣, receiver: CM, pass_action: 盤帶推進}
-  - {zone: 19, place: 右路底線, passer: CM, receiver: RB, pass_action: 傳球}
+  - {zone: 14, place: 弧頂前緣, passer: CM, receiver: AM, pass_action: 傳球}
+  - {zone: 19, place: 右路底線, passer: AM, receiver: RB, pass_action: 傳球}
   - {zone: 20, place: 禁區中央, passer: RB, receiver: ST, pass_action: 傳中, outcome: 得分}
+
+run_tactic:
+  reception_radius_m: 1.0
+  score_touches:
+    - {touch: 0, zone: 11, receiver: CM, label: "評分①"}
+    - {touch: 1, zone: 14, receiver: AM, label: "評分②"}
+    - {touch: 2, zone: 19, receiver: RB, label: "評分③"}
+    - {touch: 3, zone: 20, receiver: ST, label: "評分④"}
+  defenders:
+    - {between: [11, 14], note: "擋肋部貼線傳球"}
+    - {between: [19, 20], note: "擋底線貼線傳中"}
 
 y_label: "Field Depth (m)"
 x_label: "Time (seconds)"

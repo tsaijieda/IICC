@@ -1,0 +1,9 @@
+play_id: "A002"
+title: "題型 A002：大範圍撕裂與倒三角"
+mode: pass_points
+
+frames:
+  - {zone: 16, place: 右路中路, label: CM, receiver: CM}
+  - {zone: 18, place: 左路底線, label: LW, receiver: LW, passer: CM, pass_action: 強弱邊轉移}
+  - {zone: 14, place: 弧頂前緣, label: ST, receiver: ST, passer: LW, pass_action: 倒三角傳球}
+  - {zone: 20, place: 禁區中央, label: LW, receiver: LW, passer: ST, pass_action: 傳球, outcome: 得分}

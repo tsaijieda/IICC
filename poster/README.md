@@ -1,18 +1,31 @@
 # 足球相對論 · 關卡海報（LaTeX）
 
-**A1 直式**（594×841 mm）雙欄海報。
+**A1 直式**（594×841 mm）雙欄海報，以及 **A4 關卡說明**（`poster.md`）。
 
 ## 檔案
 
-- `football_relativity.tex` — 原始碼（編這個）
-- `football_relativity.pdf` — 編譯結果
+- `football_relativity.tex` — A1 海報原始碼
+- `football_relativity.pdf` — A1 編譯結果
+- `poster.tex` — 由 repo 根目錄 `poster.md` 同步的 A4 說明（含 `1.png`、`2.png`）
+- `poster.pdf` — A4 編譯結果（亦複製至 `../poster.pdf`）
 
-## 編譯
+## 編譯 A1 海報
 
 ```bash
 cd poster
 xelatex football_relativity.tex
 xelatex football_relativity.tex
+```
+
+## 編譯 A4 關卡說明（poster.md）
+
+圖片請放在 repo 根目錄：`1.png`（關卡流程）、`2.png`（場地圖）。
+
+```bash
+cd poster
+xelatex poster.tex
+xelatex poster.tex
+cp poster.pdf ../poster.pdf
 ```
 
 ## 縮排規則（已寫進 tex）

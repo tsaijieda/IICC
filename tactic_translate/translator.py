@@ -191,7 +191,11 @@ def translate_board(board: BoardInput, *, rubric=None) -> TranslationResult:
     if rubric is None:
         rubric = load_rubric_for_play_id(board.play_id)
 
-    scoring = score_touches(touches, rubric) if rubric else None
+    scoring = (
+        score_touches(touches, rubric, grading_mode=board.grading_mode)
+        if rubric
+        else None
+    )
 
     return TranslationResult(
         play_id=board.play_id,

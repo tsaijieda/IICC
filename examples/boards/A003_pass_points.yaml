@@ -1,0 +1,9 @@
+play_id: "A003"
+title: "題型 A003：中路三人過度"
+mode: pass_points
+
+frames:
+  - {zone: 2, place: 後場禁區, label: DM, receiver: DM}
+  - {zone: 14, place: 弧頂前緣, label: ST1, passer: DM, receiver: ST1, pass_action: 直塞}
+  - {zone: 11, place: 左肋深處, label: AM, passer: ST1, receiver: AM, pass_action: 回做球}
+  - {zone: 20, place: 禁區中央, label: ST2, passer: AM, receiver: ST2, pass_action: 直塞, outcome: 射正}

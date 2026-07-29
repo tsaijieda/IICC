@@ -13,6 +13,16 @@ pass_points:
   - {zone: 11, place: 左肋深處, passer: ST, receiver: AM, pass_action: 回做球}
   - {zone: 20, place: 禁區中央, passer: AM, receiver: ST, pass_action: 傳球, outcome: 得分}
 
+run_tactic:
+  reception_radius_m: 1.0
+  score_touches:
+    - {touch: 0, zone: 14, receiver: ST, label: "評分①"}
+    - {touch: 1, zone: 11, receiver: AM, label: "評分②"}
+    - {touch: 2, zone: 20, receiver: ST, label: "評分③"}
+  defenders:
+    - {between: [14, 11], note: "擋回做貼線"}
+    - {between: [11, 20], note: "擋肋部貼線傳球"}
+
 y_label: "Field Depth (m)"
 x_label: "Time (seconds)"
 x_limits: [0.0, 5.5]

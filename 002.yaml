@@ -11,6 +11,15 @@ pass_points:
   - {zone: 19, place: 右路底線, receiver: RW}
   - {zone: 20, place: 禁區中央, passer: RW, receiver: AM, pass_action: 直塞, outcome: 射正}
 
+run_tactic:
+  reception_radius_m: 1.0
+  score_touches:
+    - {touch: 0, zone: 19, receiver: RW, label: "評分①"}
+    - {touch: 1, zone: 20, receiver: AM, label: "評分②"}
+  defenders:
+    - {between: [19, 20], note: "擋底線貼線直塞"}
+    - {zone: 14, note: "擋弧頂捷徑接球"}
+
 y_label: "Field Depth (m)"
 x_label: "Time (seconds)"
 x_limits: [0.0, 4.2]

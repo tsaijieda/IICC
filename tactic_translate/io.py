@@ -104,6 +104,7 @@ def board_from_dict(data: dict[str, Any]) -> BoardInput:
         title=str(data.get("title", "")),
         frames=frames,
         mode=mode,
+        grading_mode=str(data.get("grading_mode", "draw_runs")),
     )
 
 
