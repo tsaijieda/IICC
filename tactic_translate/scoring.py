@@ -117,6 +117,8 @@ def load_rubric_for_play_id(play_id: str) -> ScoringRubric | None:
         return None
     num = pid.upper().removeprefix("T").removeprefix("A")
     candidates = [
+        ROOT / "final_document" / f"a{num}.yaml",
+        ROOT / "final_document" / f"{pid.lower()}.yaml",
         ROOT / f"{pid}.yaml",
         ROOT / f"{pid.lower()}.yaml",
         ROOT / f"a{num}.yaml",

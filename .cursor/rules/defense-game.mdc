@@ -23,7 +23,7 @@ alwaysApply: false
 - Shadow：永遠門側（mark→goal 之間），不站 mark 本人格／球側
 - GK：每拍朝球的 x 在球門線滑 1 格（無「太遠就不動」）
 - Presser：2 格逼近；`press_linger` 貼身可斷
-- **重疊結算（硬性）**：全體非定點先離格 → 門將→大閘→逼搶員→攔截者→影子（同角色按 id）依序佔格；替代格必須在本次步數與角色區域內，禁止瞬移跨區。細節見 `GAME_RULES.md` / `PHYSICAL_GAME_RULES.md` 第八章。
+- **重疊結算（硬性）**：全體非定點先離格 → 門將→大閘→逼搶員→攔截者→影子（同角色按 id）依序佔格；替代格必須在本次步數與角色區域內，禁止瞬移跨區。細節見 `GAME_RULES.md` / `final_document/PHYSICAL_GAME_RULES.md` 第八章。
 
 ## 關卡／示範
 - 改佈局後必須更新 `solutions.py`（actions **與** labels 等長），並跑通 `solution_actions` + `/api/solution` frames

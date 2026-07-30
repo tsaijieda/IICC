@@ -210,6 +210,6 @@ python3 -m unittest tactic_translate.test_scoring -v
 | `touches.py` | `build_touches`、邊／結果推斷 |
 | `patterns.py` | 戰術 pattern 偵測（影響邊推斷） |
 | `zones.py` | 20 區定義、`zone_name()` |
-| `zone_map.svg` | 區域示意圖（Zone 編號 + 中文名）；重產：`python -m tactic_translate.plot_zone_map` |
+| `final_document/zone_map.svg` | 區域示意圖（Zone 編號 + 中文名）；重產：`python -m tactic_translate.plot_zone_map` |
 | `translator.py` | `translate_board()` 串接驗證、觸碰軸、評分 |
 | `a001.yaml` | 第一題 rubric 範本 |

@@ -1,0 +1,279 @@
+% 編譯：cd docs && xelatex recreate.tex
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{verbatim}
+
+\setmainfont{Times New Roman}
+\IfFontExistsTF{Songti TC}{
+  \setCJKmainfont{Songti TC}
+  \setCJKsansfont{Heiti TC}
+}{
+  \setCJKmainfont{FandolSong}
+  \setCJKsansfont{FandolHei}
+}
+
+\setlist{nosep,leftmargin=1.8em}
+\pagestyle{empty}
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue}
+
+\newcommand{\term}[1]{\textbf{#1}}
+
+\begin{document}
+
+{\LARGE\bfseries 戰術復刻評分說明\par}
+\vspace{0.8em}
+
+\section*{1.\ 總分結構}
+
+本關共 \term{6 題戰術}，每一題共20秒。每題分為兩項子分：
+
+\vspace{0.4em}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{項目} & \textbf{每題滿分} & \textbf{評分內容} \\
+\midrule
+畫跑位 & 15 & 於戰術板標示各次接球之角色、位置及傳球方式 \\
+跑戰術 & 30 & 於場地實際執行戰術，依評分點判定 \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.4em}
+\noindent
+\textbf{合計：270 分}（45 分／題 $\times$ 6 題）。
+
+\section*{2.\ 評分要素：「點」與「邊」}
+
+戰術復刻採 \term{傳球點模式}：僅記錄各次接球，無須標示全員跑位。關主將作答轉譯為下列要素：
+
+\vspace{0.4em}
+\begin{tabular}{@{}p{2.2cm}p{4.2cm}p{6.8cm}@{}}
+\toprule
+\textbf{要素} & \textbf{定義} & \textbf{範例} \\
+\midrule
+點 & 接球者及其接球位置 & 前腰（AM）於 \term{右肋} 接球 \\
+邊 & 該拍之前之傳球方式 & \term{傳球}、\term{直塞}、\term{傳中}、\term{倒三角傳球} 等 \\
+結果（若有） & 該拍終點狀態 & \term{射正}、\term{得分} \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.6em}
+\noindent\textbf{戰術描述格式：}
+
+\begin{quote}
+邊後衛將球 \term{傳球} 給前腰，前腰於 \term{右肋} 接球。前腰將球 \term{傳球} 給邊後衛，邊後衛於 \term{右路底線} 接球。邊後衛 \term{傳中} 給前鋒，前鋒於 \term{禁區中央} \term{得分}。
+\end{quote}
+
+各評分項目採 \term{部分給分}：傳球人、接球人、邊、接球點等要素分別計分，單一要素錯誤不致使該段全數扣分。
+
+\section*{3.\ 位置判定}
+
+畫跑位與跑戰術均依 \term{20 個戰術區（zone 1--20）} 對應場地格子判定（見 \texttt{zone\_map.pdf}）。
+
+\vspace{0.4em}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{項目} & \textbf{判定標準} \\
+\midrule
+畫跑位 & 標記之球須落於該 zone 對應格子內；須標示接球角色 \\
+跑戰術 & 觸球瞬間 \term{球心} 須位於該 zone 對應格子內（不要求位於格子幾何中心） \\
+\bottomrule
+\end{tabular}
+
+\section*{4.\ 場上防守球員}
+
+\begin{itemize}
+  \item 場上配置約 \term{9 名} 靜止防守球員（圓柱體）。
+  \item 防守球員 \term{全程不移動}；其連線構成防線。
+\end{itemize}
+
+\section*{5.\ 畫跑位（15 分／題）}
+
+\subsection*{作答要求}
+
+\begin{enumerate}
+  \item 依戰術區所載 \term{戰術文字描述} 作答。
+  \item 於戰術板依序標示 \term{每一次接球}：
+  \begin{itemize}
+    \item \textbf{接球者}（須標示角色，如 FB、AM、ST）
+    \item \textbf{接球位置}（球落於該 zone 格子內）
+    \item \textbf{該拍前之傳球方式}（邊；第一拍可僅標示接球者與位置）
+  \end{itemize}
+\end{enumerate}
+
+\noindent
+無須標示全員跑位及防守球員。
+
+\subsection*{扣分情形}
+
+\vspace{0.3em}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{情形} & \textbf{處置} \\
+\midrule
+邊標示錯誤 & 扣除邊對應分數；點仍可能得分 \\
+區域名稱或接球者錯誤 & 扣除對應要素分數 \\
+無相符戰術語言 & 該段邊記為「無」 \\
+\bottomrule
+\end{tabular}
+
+\section*{6.\ 跑戰術（30 分／題）}
+
+跑戰術之戰術內容與畫跑位相同（同一套點與邊），改於場地執行。
+
+\vspace{0.4em}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{規則} & \textbf{說明} \\
+\midrule
+球心進格 & 觸球瞬間球心須位於該 zone 格子內 \\
+轉譯評分 & 執行完成後轉譯為點與邊，採與畫跑位相同之評分邏輯（滿分 30，各項配分加倍） \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.4em}
+\noindent
+畫跑位與跑戰術分項獨立計分，互不影響。
+
+\section*{7.\ 違例情形}
+
+發生以下違例裁判會響哨並需重新開始。
+
+\begin{itemize}
+  \item 接球 zone 與傳球 zone 不同
+  \item 球離開足球場區
+  \item 撞倒防守員
+\end{itemize}
+
+\section*{8.\ 給分範例：邊路經典爆破}
+
+以下示範一題 \term{4 次接球} 戰術之拆項給分。第一拍（邊後衛開球接球）不列入評分；自第二拍起評 \term{3 個傳球段}。
+
+\vspace{0.4em}
+\noindent\textbf{標準傳球鏈}
+
+\begin{verbatim}
+FB@右邊路後段 → AM@右肋 → FB@右路底線 → ST@禁區中央（傳中得分）
+\end{verbatim}
+
+\subsection*{畫跑位（滿分 15）}
+
+每傳球段 \term{5 分}，依下列權重分配：
+
+\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{評分要素} & \textbf{配分} & \textbf{權重} & \textbf{判定內容} \\
+\midrule
+傳球人＋接球人 & 1.5 分 & 30\% & 角色是否正確 \\
+邊（傳球方式） & 2.5 分 & 50\% & 戰術語言是否正確 \\
+接球點 & 1.0 分 & 20\% & 區域名稱是否正確 \\
+\bottomrule
+\end{tabular}
+\normalsize
+
+\vspace{0.5em}
+\begin{tabular}{@{}clc@{}}
+\toprule
+\textbf{段次} & \textbf{內容} & \textbf{滿分} \\
+\midrule
+（1）肋部傳球 & FB $\rightarrow$ AM；邊：傳球；接球點：右肋 & 5 \\
+（2）底線傳球 & AM $\rightarrow$ FB；邊：傳球；接球點：右路底線 & 5 \\
+（3）傳中得分 & FB $\rightarrow$ ST；邊：傳中；接球點：禁區中央；結果：得分 & 5 \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.6em}
+\noindent\textbf{部分給分範例（畫跑位）}
+
+\small
+\begin{tabular}{@{}p{4.8cm}cp{4.5cm}@{}}
+\toprule
+\textbf{作答內容} & \textbf{得分} & \textbf{說明} \\
+\midrule
+（1）全部正確 & 5.0 & — \\
+（1）人員與邊正確，地點標為「右邊路」 & 4.0 & 接球點扣 1.0 分 \\
+（1）人員與地點正確，邊標為「直塞」 & 3.5 & 邊扣 2.5 分 \\
+（1）接球人標為 CM，其餘正確 & 3.5 & 傳球人＋接球人扣 1.5 分 \\
+（1）球標於格子外 & 0 & 該拍不予計分 \\
+（3）邊標為「傳球」而非「傳中」 & 3.5 & 邊扣 2.5 分；結果「得分」若正確則不另扣 \\
+\bottomrule
+\end{tabular}
+\normalsize
+
+\vspace{0.4em}
+\noindent
+三段均正確者，得 \textbf{15 / 15}。
+
+\subsection*{跑戰術（滿分 30）}
+
+評分邏輯與畫跑位相同，每段配分 \term{加倍}（各 \term{10 分}）：
+
+\vspace{0.3em}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{評分要素} & \textbf{配分（每段）} & \textbf{權重} \\
+\midrule
+傳球人＋接球人 & 3.0 分 & 30\% \\
+邊 & 5.0 分 & 50\% \\
+接球點 & 2.0 分 & 20\% \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.5em}
+\begin{tabular}{@{}lc@{}}
+\toprule
+\textbf{段次} & \textbf{滿分} \\
+\midrule
+（1）肋部傳球 & 10 \\
+（2）底線傳球 & 10 \\
+（3）傳中得分 & 10 \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.6em}
+\noindent\textbf{部分給分範例（跑戰術）}
+
+\small
+\begin{tabular}{@{}p{7.5cm}c@{}}
+\toprule
+\textbf{情形} & \textbf{得分} \\
+\midrule
+（1）球心進入右肋格，人員與邊均正確 & 10.0 \\
+（2）球心進入底線格，傳球碰柱後重試成功 & 依最終成功之觸球評分 \\
+（3）傳中進入禁區，前鋒射門得分 & 10.0 \\
+（3）球進入禁區格，邊被記為「傳球」 & 5.0（人員與接球點共 5.0 分；邊扣 5.0 分） \\
+\bottomrule
+\end{tabular}
+\normalsize
+
+\vspace{0.4em}
+\noindent
+三段均正確者，得 \textbf{30 / 30}。
+
+\section*{9.\ 越位（30 分／題）}
+
+同一傳球事件於不同 \term{參考系（世界線）} 下，越位判決可能不同。教練須依戰術選定正確世界線，裁判據以判定越位與否。此項與畫跑位、跑戰術分項獨立計分。
+
+\section*{10.\ 相關文件}
+
+\vspace{0.3em}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{檔案} & \textbf{內容} \\
+\midrule
+\texttt{zone\_map.pdf} & 20 戰術區編號與中文名稱 \\
+\texttt{戰術語言.pdf} & 戰術語言（邊）定義 \\
+\texttt{1st\_half\_rules.md} & 關主正式規則 \\
+\bottomrule
+\end{tabular}
+
+\vspace{1em}
+\noindent
+爭議以現場關主依本規則之判定為準。
+
+\end{document}

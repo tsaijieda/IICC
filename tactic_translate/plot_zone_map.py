@@ -164,8 +164,17 @@ def build_zone_map_svg() -> str:
     return "\n".join(lines)
 
 
+ROOT = Path(__file__).resolve().parent.parent
+FINAL_DOC = ROOT / "final_document"
+
+
+def _output_dir(out_dir: Path | None) -> Path:
+    return out_dir or FINAL_DOC
+
+
 def write_zone_map(out_dir: Path | None = None) -> Path:
-    root = out_dir or Path(__file__).resolve().parent
+    root = _output_dir(out_dir)
+    root.mkdir(parents=True, exist_ok=True)
     svg_path = root / "zone_map.svg"
     svg_path.write_text(build_zone_map_svg(), encoding="utf-8")
     return svg_path
@@ -177,7 +186,8 @@ def write_zone_map_pdf(out_dir: Path | None = None) -> Path:
     from matplotlib import font_manager
     from matplotlib.patches import Rectangle
 
-    root = out_dir or Path(__file__).resolve().parent
+    root = _output_dir(out_dir)
+    root.mkdir(parents=True, exist_ok=True)
     pdf_path = root / "zone_map.pdf"
 
     for family in ("PingFang TC", "Heiti TC", "Songti SC", "Arial Unicode MS"):
@@ -232,7 +242,13 @@ def write_zone_map_pdf(out_dir: Path | None = None) -> Path:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Draw zone map SVG with numbers and names.")
-    parser.add_argument("-o", "--out-dir", type=Path, default=None, help="Output directory")
+    parser.add_argument(
+        "-o",
+        "--out-dir",
+        type=Path,
+        default=FINAL_DOC,
+        help="Output directory (default: final_document/)",
+    )
     parser.add_argument("--pdf", action="store_true", help="Also write zone_map.pdf")
     args = parser.parse_args()
     path = write_zone_map(args.out_dir)

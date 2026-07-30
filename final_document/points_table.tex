@@ -1,0 +1,33 @@
+% 編譯：cd final_document && xelatex points_table.tex
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{booktabs}
+
+\setmainfont{Times New Roman}
+\IfFontExistsTF{Songti TC}{
+  \setCJKmainfont{Songti TC}
+  \setCJKsansfont{Heiti TC}
+}{
+  \setCJKmainfont{FandolSong}
+  \setCJKsansfont{FandolHei}
+}
+
+\pagestyle{empty}
+
+\begin{document}
+
+{\LARGE\bfseries 點數兌換表\par}
+\vspace{1em}
+
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{卡片} & \textbf{點數} & \textbf{作用} \\
+\midrule
+迴轉卡 & 30分 & 抵銷一張紅牌 \\
+Undo卡 & 30分 & 恢復上一動 \\
+\bottomrule
+\end{tabular}
+
+\end{document}

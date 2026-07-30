@@ -5,7 +5,7 @@ from __future__ import annotations
 import unittest
 
 from tactic_translate.io import board_from_dict
-from tactic_translate.scoring import load_rubric
+from tactic_translate.scoring import load_rubric_for_play_id
 from tactic_translate.translator import translate_board
 
 
@@ -69,7 +69,7 @@ class ScoringTests(unittest.TestCase):
         self.assertEqual(result.scoring.grading_mode, "run_tactic")
 
     def test_rubric_loads_from_a001_yaml(self) -> None:
-        rubric = load_rubric("a001.yaml")
+        rubric = load_rubric_for_play_id("A001")
         self.assertIsNotNone(rubric)
         assert rubric is not None
         self.assertEqual(rubric.total, 15.0)

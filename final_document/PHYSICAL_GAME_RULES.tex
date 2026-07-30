@@ -1,11 +1,10 @@
-% 編譯：cd docs && xelatex PHYSICAL_GAME_RULES.tex
+% 由 final_document/PHYSICAL_GAME_RULES.md 同步；編譯：cd final_document && xelatex PHYSICAL_GAME_RULES.tex
 \documentclass[11pt]{article}
 \usepackage[a4paper,margin=2cm]{geometry}
 \usepackage{fontspec}
 \usepackage{xeCJK}
 \usepackage{booktabs}
 \usepackage{enumitem}
-\usepackage{hyperref}
 \usepackage{graphicx}
 
 \graphicspath{{../}}
@@ -22,7 +21,6 @@
 \setlist{nosep,leftmargin=1.8em}
 \setlist[enumerate,1]{label=\arabic*., leftmargin=2em}
 \setlist[enumerate,2]{label=\arabic{enumi}.\arabic*., leftmargin=2.2em}
-\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue}
 
 \newcommand{\term}[1]{\textbf{#1}}
 \newcommand{\coord}[1]{\texttt{#1}}
@@ -31,6 +29,10 @@
 
 {\LARGE\bfseries 防守題評分方式\par}
 \vspace{0.8em}
+
+\section*{零、重點內容}
+
+本題的重點為第一大點至第四大點，第五大點後僅是防守球員移動方法，不需細看。
 
 \section*{一、遊戲目的}
 
@@ -109,7 +111,7 @@
 
 \subsection*{4.3 移動階段}
 
-在此階段所有隊員皆可移動，每位小隊員僅能移動一次。持球者移動定義為盤帶，非持球者移動定義為無球跑位。兩者合法操作須符合：
+在此階段所有隊員皆可移動，每位小隊員僅能移動一次。持球者移動定義為盤帶，非持球者移動定義為無球跑位。兩者合法操作分別如下：
 
 \begin{itemize}
   \item 目標在棋盤內；
@@ -125,10 +127,7 @@
 
 \subsubsection*{4.4.1 傳球程序}
 
-\begin{enumerate}
-  \item 持球者宣告接球隊友；
-  \item 若關卡區分傳球種類，宣告地滾或高空；
-\end{enumerate}
+持球者宣告接球隊友。
 
 \subsubsection*{4.4.2 傳球結束}
 

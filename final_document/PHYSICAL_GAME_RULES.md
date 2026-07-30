@@ -1,5 +1,6 @@
 # 防守題評分方式
-
+## 零、重點內容
+本題的重點為第一大點至第四大點，第五大點後僅是防守球員移動方法，不需細看。
 
 ## 一、遊戲目的
 
@@ -80,8 +81,7 @@
 
 #### 4.3.1 傳球程序
 
-1. 持球者宣告接球隊友；
-2. 若關卡區分傳球種類，宣告地滾或高空；
+持球者宣告接球隊友；
 
 #### 4.3.2 傳球結束
 
@@ -168,7 +168,7 @@
 
 逼搶員在傳球／射門時，只能在自己的格內實際攔截或封堵，不自動截斷。
 
-![瘋狗逼搶員移動示意](./defender_figures/presser.png)
+![瘋狗逼搶員移動示意](../defender_figures/presser.png)
 
 ### 6.2 區域大閘（Block）
 
@@ -183,7 +183,7 @@
 - 完全不移動，全程留在關卡指定格；
 - 傳球／射門時仍可在該格內實際攔截或封堵。
 
-![區域大閘移動示意](./defender_figures/block.png)
+![區域大閘移動示意](../defender_figures/block.png)
 
 ### 6.3 影子盯人者（Shadow）
 
@@ -198,7 +198,7 @@
 
 影子在跑位或盤帶的軟階段不動，只會在傳球或結束回合後跟上。
 
-![影子盯人移動示意](./defender_figures/shadow.png)
+![影子盯人移動示意](../defender_figures/shadow.png)
 
 ### 6.4 路線攔截者（Interceptor）
 
@@ -211,7 +211,7 @@
 
 攔截者站在預判路線上**不**自動令傳球失敗；必須在場上實際碰到或控制球。
 
-![路線攔截者移動示意](./defender_figures/interceptor.png)
+![路線攔截者移動示意](../defender_figures/interceptor.png)
 
 ### 6.5 守門員（Goalkeeper）
 
@@ -224,5 +224,5 @@
 
 門將站在某一球門格**不**自動撲出；射門時必須實際完成撲救或漏球。
 
-![守門員移動示意](./defender_figures/goalkeeper.png)
+![守門員移動示意](../defender_figures/goalkeeper.png)
 

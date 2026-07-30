@@ -100,7 +100,7 @@ class TranslateBoardTests(unittest.TestCase):
         self.assertIn("傳球", result.evaluation_points)
 
     def test_load_question_yaml_pass_points(self) -> None:
-        board = load_board("a002.yaml")
+        board = load_board("final_document/a002.yaml")
         self.assertEqual(board.mode, "pass_points")
         self.assertEqual(len(board.frames), 4)
         self.assertEqual(board.frames[2].pass_action, "倒三角傳球")

@@ -93,7 +93,7 @@
 
 **傳球點**：① RW@10 → ② FB@3 → ③ CM@7 → ④ RW@16 → ⑤ CM@14 → ⑥ FB@7 → ⑦ CM@17 → ⑧ **RW@14 射正**
 
-**三人跑位（同一組 RW／FB／CM）** — 詳見 `a005.yaml` 的 `run_movement`
+**三人跑位（同一組 RW／FB／CM）** — 詳見 `final_document/a005.yaml` 的 `run_movement`
 
 | 時刻 | RW | FB | CM |
 |------|----|----|-----|
@@ -150,7 +150,7 @@
 
 各題圓柱位置見對應 `a00x.yaml`（A 組）或 `00x.yaml`（T 組練習題）的 `run_tactic.defenders` 或示意圖紅點。
 
-每次戰術描述的給分如下，6次戰術描述共450分。小隊可讀 [`戰術復刻評分說明.md`](戰術復刻評分說明.md)；場地圖見 [`zone_map.pdf`](zone_map.pdf)；戰術語言見 [`戰術語言.pdf`](戰術語言.pdf)。
+每次戰術描述的給分如下，6次戰術描述共450分。小隊可讀 [`戰術復刻評分說明.md`](戰術復刻評分說明.md)；場地圖見 [`zone_map.pdf`](final_document/zone_map.pdf)；戰術語言見 [`戰術語言.pdf`](戰術語言.pdf)。
 
 
 | 畫跑位 | 跑戰術| 越位 |

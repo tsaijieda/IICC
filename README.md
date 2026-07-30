@@ -7,7 +7,7 @@ First-half tactical templates and a turn-based **解防守題** board game.
 文字規則：
 
 - 電腦模擬版（格線自動截傳／擋射）：[`GAME_RULES.md`](GAME_RULES.md)
-- 實體棋盤版（傳球／射門由場上真人執行）：[`PHYSICAL_GAME_RULES.md`](PHYSICAL_GAME_RULES.md)
+- 實體棋盤版（傳球／射門由場上真人執行）：[`PHYSICAL_GAME_RULES.md`](final_document/PHYSICAL_GAME_RULES.md)
 
 ```bash
 python play_web.py
@@ -81,12 +81,12 @@ python play_defense.py S2 --demo
 
 ```bash
 pip install -r requirements.txt
-python plot.py a001.yaml
+python plot.py final_document/a001.yaml
 ```
 
 ## 戰術板 → 戰術語言轉譯（畫跑位評分）
 
-將**每次接球傳球點**（接球者 + zone + 傳球名詞）轉成與 `a001.yaml` 相同風格的 `description` / `evaluation_points`。戰術名詞見 `1st_half_rules.md`（傳球、直塞、回做球、盤帶推進、強弱邊轉移、倒三角傳球、傳中、過頂長傳、射正、得分）。
+將**每次接球傳球點**（接球者 + zone + 傳球名詞）轉成與 `final_document/a001.yaml` 相同風格的 `description` / `evaluation_points`。戰術名詞見 `1st_half_rules.md`（傳球、直塞、回做球、盤帶推進、強弱邊轉移、倒三角傳球、傳中、過頂長傳、射正、得分）。
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
