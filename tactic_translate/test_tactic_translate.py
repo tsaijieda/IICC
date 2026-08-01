@@ -174,6 +174,15 @@ class TranslateBoardTests(unittest.TestCase):
         self.assertEqual(result.touches[-1].outcome, "射正")
         self.assertIn("LW在左邊路（前段）射正", result.description)
 
+    def test_a000_example_wing_cross(self) -> None:
+        board = load_board("examples/boards/A000_pass_points.yaml")
+        result = translate_board(board)
+        self.assertTrue(result.valid, result.invalid_reason)
+        self.assertEqual([t.zone for t in result.touches], [9, 15, 20])
+        names = {t.name for it in result.intervals for t in it.tactics if t.score >= 0.67}
+        self.assertIn("傳球", names)
+        self.assertIn("傳中", names)
+
 
 if __name__ == "__main__":
     unittest.main()

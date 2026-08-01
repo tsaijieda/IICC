@@ -1,0 +1,8 @@
+play_id: "A000"
+title: "題型 A000：範例題（邊路傳中射門）"
+mode: pass_points
+
+frames:
+  - {zone: 9, place: 右邊路（後段）, label: FB, receiver: FB}
+  - {zone: 15, place: 右肋, label: AM, passer: FB, receiver: AM, pass_action: 傳球}
+  - {zone: 20, place: 禁區中央, label: ST, passer: AM, receiver: ST, pass_action: 傳中, outcome: 得分}
