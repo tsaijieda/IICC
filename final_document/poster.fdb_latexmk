@@ -1,0 +1,12 @@
+# Fdb version 4
+["pdflatex"] 1785582221.53405 "/Users/stanley/Desktop/2026 IICC/IICC/final_document/poster.tex" "poster.pdf" "poster" 1785582221.65126 2
+  "/Users/stanley/Desktop/2026 IICC/IICC/final_document/poster.tex" 1785582218.24019 102 47b05ad40b7ce3ceca3b9cacce71f459 ""
+  "/opt/homebrew/Cellar/texlive/20240312_2/share/texmf-dist/web2c/texmf.cnf" 1710106625 41652 e14926ab86fde7902cad99d9eeaa5ca5 ""
+  "/opt/homebrew/Cellar/texlive/20240312_2/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1710106625 8221849 5af4c39204c9d878b02f0380fcd41794 ""
+  "poster.aux" 1785582221.53361 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "poster.tex" 1785582218.24019 102 47b05ad40b7ce3ceca3b9cacce71f459 ""
+  (generated)
+  "poster.aux"
+  "poster.log"
+  "poster.pdf"
+  (rewritten before read)

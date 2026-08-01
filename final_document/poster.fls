@@ -1,0 +1,5 @@
+PWD /Users/stanley/Desktop/2026 IICC/IICC/final_document
+INPUT /opt/homebrew/Cellar/texlive/20240312_2/share/texmf-dist/web2c/texmf.cnf
+INPUT /opt/homebrew/Cellar/texlive/20240312_2/share/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT /Users/stanley/Desktop/2026 IICC/IICC/final_document/poster.tex
+OUTPUT poster.log
