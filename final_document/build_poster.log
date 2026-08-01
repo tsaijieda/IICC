@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.11.20)  1 AUG 2026 12:40
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.11.20)  1 AUG 2026 12:46
 entering extended mode
- restricted \write18 enabled.
+ \write18 enabled.
  %&-line parsing enabled.
-**poster.tex
-(./poster.tex
+**build_poster.tex
+(./build_poster.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-06>
 (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/base/article.cls
@@ -240,14 +240,128 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count322
 \@lastruleclass=\count323
 \@thisrulewidth=\dimen266
-) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/enumitem/enumitem.sty
-Package: enumitem 2025/02/06 v3.11 Customized lists
-\labelindent=\skip61
-\enit@outerparindent=\dimen267
-\enit@toks=\toks24
-\enit@inbox=\box57
-\enit@count@id=\count324
-\enitdp@description=\count325
+) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
+\LTleft=\skip61
+\LTright=\skip62
+\LTpre=\skip63
+\LTpost=\skip64
+\LTchunksize=\count324
+\LTcapwidth=\dimen267
+\LT@head=\box57
+\LT@firsthead=\box58
+\LT@foot=\box59
+\LT@lastfoot=\box60
+\LT@gbox=\box61
+\LT@cols=\count325
+\LT@rows=\count326
+\c@LT@tables=\count327
+\c@LT@chunks=\count328
+\LT@p@ftn=\toks24
+) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/markdown/markdown.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/markdown/markdown.tex (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/lt3luabridge/lt3luabridge.tex
+\g_luabridge_method_int=\count329
+
+Package luabridge Info: Using shell escape as the bridging method
+
+)
+\markdownInputFileStream=\read2
+\markdownOutputFileStream=\write3
+)
+\markdownOptionFrozenCacheCounter=\count330
+\g_tmpa_iow=\write4
+\openout4 = `build_poster.luabridge.lua'.
+
+
+Package luabridge Info: Writing a helper Lua script to file
+(luabridge)             build_poster.luabridge.lua
+
+
+Package luabridge Info: Executing a helper Lua script from file
+(luabridge)             build_poster.luabridge.lua
+
+ (|TEXMF_OUTPUT_DIRECTORY=${TEXMF_OUTPUT_DIRECTORY:-.}
+texlua $TEXMF_OUTPUT_DIRECTORY/build_poster.luabridge.lua)
+Package: markdown 2025-10-31 v3.12.0-0-g746cfc56 markdown renderer
+)
+
+Package markdown Info: Loading version latest of LaTeX Markdown theme
+(markdown)             witiko/markdown/defaults
+
+ (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/markdown/markdownthemewitiko_markdown_defaults.sty
+
+Package markdown Info: Loading version latest of plain TeX Markdown theme
+(markdown)             witiko/markdown/defaults
+
+ (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/markdown/markdownthemewitiko_markdown_defaults.tex) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/paralist/paralist.sty
+Package: paralist 2017/01/22 v2.7 Extended list environments
+\pltopsep=\skip65
+\plpartopsep=\skip66
+\plitemsep=\skip67
+\plparsep=\skip68
+\pl@lab=\toks25
+) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/csvsimple/csvsimple.sty
+Package: csvsimple 2024/09/27 v2.7.0 LaTeX CSV file processing
+) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/csvsimple/csvsimple-legacy.sty
+Package: csvsimple-legacy 2024/09/27 version 2.7.0 LaTeX2e CSV file processing
+ (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks26
+\pgfutil@tempdima=\dimen268
+\pgfutil@tempdimb=\dimen269
+) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box62
+) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
+)) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks27
+\pgfkeys@temptoks=\toks28
+ (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks29
+))) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count331
+) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/tools/shellesc.sty
+Package: shellesc 2023/07/08 v1.0d unified shell escape interface for LaTeX
+Package shellesc Info: Unrestricted shell escape enabled on input line 75.
+)
+\csv@file=\read3
+\c@csvinputline=\count332
+\c@csvrow=\count333
+\c@csvcol=\count334
+\csv@out=\write5
+) (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2025/07/28 4.6 verbatim text (tvz,hv)
+\FV@CodeLineNo=\count335
+\FV@InFile=\read4
+\FV@TabBox=\box63
+\c@FancyVerbLine=\count336
+\FV@StepNumber=\count337
+\FV@OutFile=\write6
+) (/Users/ethan/Library/TinyTex/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+\markdownLaTeXCitationsCounter=\count338
+ (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+\markdownLaTeXRowCounter=\count339
+\markdownLaTeXRowTotal=\count340
+\markdownLaTeXColumnCounter=\count341
+\markdownLaTeXColumnTotal=\count342
+\markdownLaTeXTable=\toks30
+\markdownLaTeXTableAlignment=\toks31
+\markdownLaTeXTableEnd=\toks32
 )
 
 Package fontspec Info: 
@@ -293,8 +407,8 @@ Package fontspec Info:
 (fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"Songti
 (fontspec)             TC/BI/OT:script=hani;language=dflt;"
 
- (./poster.aux)
-\openout1 = `poster.aux'.
+ (./build_poster.aux)
+\openout1 = `build_poster.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
 LaTeX Font Info:    ... okay on input line 26.
@@ -352,7 +466,7 @@ Package fontspec Info:
 (fontspec)             Adjusting the maths setup (use [no-math] to avoid
 (fontspec)             this).
 
-\symlegacymaths=\mathgroup4
+\symlegacymaths=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
 (Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 26.
 LaTeX Font Info:    Redeclaring math accent \acute on input line 26.
@@ -404,28 +518,75 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 26.
+
+Package markdown Info: Including markdown document "poster.md"
+
+\openout4 = `build_poster.luabridge.lua'.
+
+
+Package luabridge Info: Writing a helper Lua script to file
+(luabridge)             build_poster.luabridge.lua
+
+
+Package luabridge Info: Executing a helper Lua script from file
+(luabridge)             build_poster.luabridge.lua
+
+(|texlua ./build_poster.luabridge.lua) (./_markdown_build_poster/dbfe21d0f96290d04cdd1a8b2cd97cca.md.tex
+
+Package markdown Warning: The `hybrid` option has been soft-deprecated.
+(markdown)                Consider using one of the following better options
+(markdown)                for mixing TeX and markdown: `contentBlocks`,
+(markdown)                `rawAttribute`, `texComments`, `texMathDollars`,
+(markdown)                `texMathSingleBackslash`, and
+(markdown)                `texMathDoubleBackslash`. For more information, see
+(markdown)                the user manual at
+(markdown)                <https://witiko.github.io/markdown/>.
+
 File: ../relativiskick_flowchart.png Graphic file (type bmp)
 <../relativiskick_flowchart.png>
+
+Overfull \hbox (425.08049pt too wide) in paragraph at lines 10--10
+ [] 
+ []
+
 File: ../relativiskick_layout.png Graphic file (type bmp)
 <../relativiskick_layout.png>
+
+Overfull \hbox (231.34726pt too wide) in paragraph at lines 11--11
+ [] 
+ []
+
 [1
 
 ] [2]
 File: ../2nd_half_round_fig_v3.png Graphic file (type bmp)
 <../2nd_half_round_fig_v3.png>
- [3] [4] [5] (./poster.aux)
+
+Overfull \hbox (262.46504pt too wide) in paragraph at lines 68--68
+ [] 
+ []
+
+[3] [4]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 109.
+ (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 109.
+ (/Users/ethan/Library/TinyTex/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)) [5] (./build_poster.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2022/08/05>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 6739 strings out of 468179
- 184752 string characters out of 5430911
- 629137 words of memory out of 5000000
- 35386 multiletter control sequences out of 15000+600000
- 631953 words of font info for 87 fonts, out of 8000000 for 9000
+ 10854 strings out of 468179
+ 292095 string characters out of 5430911
+ 779149 words of memory out of 5000000
+ 39396 multiletter control sequences out of 15000+600000
+ 633164 words of font info for 90 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 73i,8n,94p,246b,253s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,5n,123p,800b,986s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on poster.pdf (5 pages).
+Output written on build_poster.pdf (5 pages).

@@ -1,0 +1,11 @@
+from: markdown
+to: pdf
+pdf-engine: xelatex
+filters:
+  - poster-heading-colors.lua
+variables:
+  mainfont: Times New Roman
+  geometry: margin=2.2cm
+  fontsize: 12pt
+  header-includes:
+    - \usepackage{xcolor}

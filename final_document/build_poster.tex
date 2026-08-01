@@ -1,0 +1,28 @@
+% !TEX program = xelatex
+% poster.md → PDF；編譯：cd final_document && xelatex build_poster.tex
+\documentclass[12pt]{article}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[hybrid]{markdown}
+
+\graphicspath{{../}}
+
+\setmainfont{Times New Roman}
+\IfFontExistsTF{Songti TC}{
+  \setCJKmainfont{Songti TC}
+  \setCJKsansfont{Heiti TC}
+}{
+  \setCJKmainfont{FandolSong}
+  \setCJKsansfont{FandolHei}
+}
+
+\pagestyle{empty}
+
+\begin{document}
+\markdownInput{poster.md}
+\end{document}
