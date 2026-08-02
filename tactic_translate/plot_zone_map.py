@@ -37,15 +37,28 @@ TOUCH_COLOR = "#1565c0"
 
 
 def _touch_anchor(zid: int) -> tuple[float, float]:
-    """Slightly offset touch markers from zone center to avoid base-map labels."""
+    """Place touch marker in the zone corner toward pitch centre (away from zone labels)."""
     x, y, w, h = zone_rect(zid)
     cx, cy = x + w / 2, y + h / 2
-    ox = w * 0.28 if cx < PITCH_W / 2 else -w * 0.28
-    oy = h * 0.22
-    return cx + ox, cy + oy
+    tx = x + w * 0.24 if cx > PITCH_W / 2 else x + w * 0.76
+    ty = y + h * 0.76 if cy < PITCH_L / 2 else y + h * 0.24
+    return tx, ty
 
 
-def _pass_label_offset(x1: float, y1: float, x2: float, y2: float, dist: float = 2.8) -> tuple[float, float]:
+def _touch_label_positions(
+    zid: int, ax: float, ay: float
+) -> tuple[tuple[float, float], tuple[float, float]]:
+    """Number and role label positions, pushed away from the zone centre labels."""
+    cx, cy = zone_center(zid)
+    dx, dy = ax - cx, ay - cy
+    length = (dx * dx + dy * dy) ** 0.5 or 1.0
+    ux, uy = dx / length, dy / length
+    num = (ax + ux * 3.0, ay + uy * 3.0)
+    role = (ax + ux * 1.2 - uy * 2.4, ay + uy * 1.2 + ux * 2.4)
+    return num, role
+
+
+def _pass_label_offset(x1: float, y1: float, x2: float, y2: float, dist: float = 4.2) -> tuple[float, float]:
     dx, dy = x2 - x1, y2 - y1
     length = (dx * dx + dy * dy) ** 0.5 or 1.0
     return -dy / length * dist, dx / length * dist
@@ -113,7 +126,9 @@ def _zone_border_toward(z_from: int, z_to: int) -> tuple[float, float]:
     return cx + dx * t, cy + dy * t
 
 
-def _append_zone_map_base(lines: list[str], *, title: str, extra_height: int = 0) -> None:
+def _append_zone_map_base(
+    lines: list[str], *, title: str, extra_height: int = 0, hide_zones: set[int] | None = None
+) -> None:
     total_h = SVG_H + extra_height
     lines.extend(
         [
@@ -130,6 +145,7 @@ def _append_zone_map_base(lines: list[str], *, title: str, extra_height: int = 0
         ]
     )
 
+    hidden = hide_zones or set()
     for rect in ZONE_RECTS:
         zid = int(rect["zone"])
         x, y, w, h = _pct_to_m(rect)
@@ -142,6 +158,8 @@ def _append_zone_map_base(lines: list[str], *, title: str, extra_height: int = 0
                 **{"stroke-width": "1", "opacity": "0.88"},
             )
         )
+        if zid in hidden:
+            continue
         cx, cy = x + w / 2, y + h / 2
         fs_num = _font_size_svg(w, h, 13)
         fs_name = _font_size_svg(w, h, 11)
@@ -229,7 +247,8 @@ def build_play_on_zone_map_svg(
 ) -> str:
     """Zone map with on-pitch route overlay (labels slightly offset from zone centers)."""
     lines: list[str] = []
-    _append_zone_map_base(lines, title=title, extra_height=40)
+    touched = {int(p["zone"]) for p in pass_points}
+    _append_zone_map_base(lines, title=title, extra_height=40, hide_zones=touched)
 
     pts = [_touch_anchor(int(p["zone"])) for p in pass_points]
     for i in range(len(pts) - 1):
@@ -265,6 +284,7 @@ def build_play_on_zone_map_svg(
         label = chr(0x2460 + i) if i < 20 else str(i + 1)
         role = p.get("receiver") or p.get("label", "")
         outcome = p.get("outcome", "")
+        (nx, ny), (rx, ry) = _touch_label_positions(zid, ax, ay)
         lines.append(
             _circle_svg(ax, ay, r_px, fill="none", stroke=TOUCH_COLOR, **{"stroke-width": "2.5"})
         )
@@ -273,7 +293,7 @@ def build_play_on_zone_map_svg(
         )
         lines.append(
             _text_svg(
-                ax, ay - 3.2,
+                nx, ny,
                 label,
                 **{
                     "text-anchor": "middle",
@@ -287,9 +307,9 @@ def build_play_on_zone_map_svg(
             sub = f"{role}{('·' + outcome) if outcome else ''}"
             lines.append(
                 _text_svg(
-                    ax, ay + 3.8,
+                    rx, ry,
                     sub,
-                    **{"text-anchor": "middle", "font-size": "13", "fill": "#0d47a1"},
+                    **{"text-anchor": "middle", "font-size": "12", "fill": "#0d47a1"},
                 )
             )
 
@@ -329,15 +349,9 @@ def write_zone_map(out_dir: Path | None = None) -> Path:
     return svg_path
 
 
-def write_zone_map_pdf(out_dir: Path | None = None) -> Path:
-    """Render zone map as PDF (matplotlib)."""
+def _configure_matplotlib_cjk() -> None:
     import matplotlib.pyplot as plt
     from matplotlib import font_manager
-    from matplotlib.patches import Rectangle
-
-    root = _output_dir(out_dir)
-    root.mkdir(parents=True, exist_ok=True)
-    pdf_path = root / "zone_map.pdf"
 
     for family in ("PingFang TC", "Heiti TC", "Songti SC", "Arial Unicode MS"):
         try:
@@ -348,7 +362,11 @@ def write_zone_map_pdf(out_dir: Path | None = None) -> Path:
             continue
     plt.rcParams["axes.unicode_minus"] = False
 
-    fig, ax = plt.subplots(figsize=(6.8, 10.5))
+
+def _draw_zone_map_base_matplotlib(ax, *, title: str, hide_zones: set[int] | None = None) -> None:
+    from matplotlib.patches import Rectangle
+
+    hidden = hide_zones or set()
     ax.set_xlim(0, PITCH_W)
     ax.set_ylim(PITCH_L, 0)
     ax.set_aspect("equal")
@@ -365,6 +383,8 @@ def write_zone_map_pdf(out_dir: Path | None = None) -> Path:
                 facecolor=color, edgecolor="#1b5e20", lw=1, alpha=0.88,
             )
         )
+        if zid in hidden:
+            continue
         cx, cy = x + w / 2, y + h / 2
         fs = max(6, min(9, min(w, h) * 0.35))
         ax.text(cx, cy - h * 0.05, f"Zone {zid}", ha="center", va="center",
@@ -381,8 +401,76 @@ def write_zone_map_pdf(out_dir: Path | None = None) -> Path:
     gx = (PITCH_W - goal_w) / 2
     ax.plot([gx, gx + goal_w], [0, 0], color="white", lw=2.5)
     ax.plot([gx, gx + goal_w], [PITCH_L, PITCH_L], color="white", lw=2.5)
-    ax.set_title("戰術區域圖（Zones 1–20）\n↑ 進攻方向（對手球門）", fontsize=12, pad=12)
+    ax.set_title(title, fontsize=12, pad=12)
 
+
+def _draw_play_overlay_matplotlib(ax, pass_points: list[dict[str, Any]], reception_radius_m: float) -> None:
+    from matplotlib.patches import Circle
+
+    pts = [_touch_anchor(int(p["zone"])) for p in pass_points]
+    for i in range(len(pts) - 1):
+        x1, y1 = pts[i]
+        x2, y2 = pts[i + 1]
+        ax.plot([x1, x2], [y1, y2], color=PASS_COLOR, lw=2.2, linestyle=(0, (6, 4)), alpha=0.9)
+        action = pass_points[i + 1].get("pass_action", "傳球")
+        mx, my = (x1 + x2) / 2, (y1 + y2) / 2
+        ox, oy = _pass_label_offset(x1, y1, x2, y2)
+        ax.text(mx + ox, my + oy, action, ha="center", va="center",
+                fontsize=10, fontweight="bold", color=PASS_COLOR)
+
+    for i, p in enumerate(pass_points):
+        zid = int(p["zone"])
+        px, py = _touch_anchor(zid)
+        label = chr(0x2460 + i) if i < 20 else str(i + 1)
+        role = p.get("receiver") or p.get("label", "")
+        outcome = p.get("outcome", "")
+        (nx, ny), (rx, ry) = _touch_label_positions(zid, px, py)
+        ax.add_patch(
+            Circle((px, py), reception_radius_m * 0.9, fill=False, edgecolor=TOUCH_COLOR, lw=2.2)
+        )
+        ax.add_patch(Circle((px, py), 0.55, facecolor=TOUCH_COLOR, edgecolor="white", lw=0.8))
+        ax.text(nx, ny, label, ha="center", va="center",
+                fontsize=12, fontweight="bold", color=TOUCH_COLOR)
+        if role:
+            sub = f"{role}{('·' + outcome) if outcome else ''}"
+            ax.text(rx, ry, sub, ha="center", va="center", fontsize=9, color="#0d47a1")
+
+
+def write_play_on_zone_map_pdf(yaml_path: Path, out_dir: Path | None = None) -> Path:
+    """Render play overlay zone map as PDF (matplotlib)."""
+    import matplotlib.pyplot as plt
+
+    spec = _load_play_yaml(yaml_path)
+    if not spec["pass_points"]:
+        raise ValueError(f"No pass_points in {yaml_path}")
+
+    root = _output_dir(out_dir)
+    root.mkdir(parents=True, exist_ok=True)
+    pdf_path = root / f"{spec['play_id']}_zone_map.pdf"
+
+    _configure_matplotlib_cjk()
+    fig, ax = plt.subplots(figsize=(6.8, 10.5))
+    title = f"{spec['play_id']} · {spec['title']}"
+    touched = {int(p["zone"]) for p in spec["pass_points"]}
+    _draw_zone_map_base_matplotlib(ax, title=title, hide_zones=touched)
+    _draw_play_overlay_matplotlib(ax, spec["pass_points"], spec["reception_radius_m"])
+    fig.tight_layout()
+    fig.savefig(pdf_path, bbox_inches="tight")
+    plt.close(fig)
+    return pdf_path
+
+
+def write_zone_map_pdf(out_dir: Path | None = None) -> Path:
+    """Render zone map as PDF (matplotlib)."""
+    import matplotlib.pyplot as plt
+
+    root = _output_dir(out_dir)
+    root.mkdir(parents=True, exist_ok=True)
+    pdf_path = root / "zone_map.pdf"
+
+    _configure_matplotlib_cjk()
+    fig, ax = plt.subplots(figsize=(6.8, 10.5))
+    _draw_zone_map_base_matplotlib(ax, title="戰術區域圖（Zones 1–20）\n↑ 進攻方向（對手球門）")
     fig.tight_layout()
     fig.savefig(pdf_path, bbox_inches="tight")
     plt.close(fig)
@@ -398,7 +486,7 @@ def main() -> None:
         default=FINAL_DOC,
         help="Output directory (default: final_document/)",
     )
-    parser.add_argument("--pdf", action="store_true", help="Also write zone_map.pdf")
+    parser.add_argument("--pdf", action="store_true", help="Also write PDF output")
     parser.add_argument(
         "--play",
         type=Path,
@@ -409,6 +497,9 @@ def main() -> None:
     if args.play:
         path = write_play_on_zone_map(args.play, args.out_dir)
         print(f"Wrote {path}")
+        if args.pdf:
+            pdf = write_play_on_zone_map_pdf(args.play, args.out_dir)
+            print(f"Wrote {pdf}")
         return
     path = write_zone_map(args.out_dir)
     print(f"Wrote {path}")
