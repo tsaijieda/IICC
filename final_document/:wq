@@ -1,0 +1,177 @@
+# Relativiskick
+
+## Background
+
+A black hole created by CERN has flung you into outer space, where the civilization of Sirius has taken you to compete in an interstellar soccer match. What makes interstellar soccer unique is its enormous scale, which means that relativistic effects must be taken into account. The match consists of two halves. In the first half, Tactical Replication and Tactical Analysis will test your technical skills as well as your knowledge of physics and mathematics. In the second half, you must design and execute different tactics against a variety of defensive formations. Your ultimate goal is to break through the Sirius defense and score.
+
+## Task Process and Layout
+
+![Task Process](../relativiskick_flowchart_v2.png)
+
+**English translation of the text in the image:**
+
+- **First Half (30 mins)**
+  - **Tactical Replication:** Plot the tactical movements on the tactics board, then replicate them on the soccer field. The final five minutes are reserved for evaluation. (Expertise: soccer and teamwork; number of team members on the field during evaluation: 3–4.)
+  - **Tactical Analysis:** Answer the Textual Questions in the Coaching Area to earn Football Points. (Expertise: physics and mathematics.)
+- **Halftime (5 mins)**
+  - **Tactical Upgrade:** If you derive the relativity rules for the Defense Puzzles during the first half, you may perform a Tactical Upgrade.
+- **Second Half (40 mins)**
+  - **Defense Puzzles:** Play a turn-based game on the soccer field with scoring a goal as the objective. There are five Defense Puzzles in total. (Expertise: soccer and teamwork; number of team members on the field: 4.)
+  - **Purchase Cards:** Spend Football Points to purchase a Reversal Card or Recovery Card for use when solving the Defense Puzzles.
+
+![Layout](../relativiskick_layout.png)
+
+**English translation of the labels in the image:**
+
+- Top center: **Goal**
+- Center: **Soccer Field**
+- Dashed area on the right: **Coaching Area**
+- Lower left: **Stadium Screen**
+- Boxed area at the bottom left: **Task Master Area**
+- Bottom center: **Poster**
+- Bottom right: **Door**
+
+The blue lines on the soccer field are for the first half. The white lines and sidelines are for the second half.
+
+## Task Rules
+
+1. This task lasts 80 minutes. The first five minutes are for poster reading; the remaining time is allocated as shown in the Process Chart.
+2. After the poster-reading period ends, Master Card or Magic Card may be played.
+3. Recommended division of labor at the start of the first half: 2–3 team members for Tactical Replication and 2–3 team members for Tactical Analysis.
+4. Damaging the Decoration results in zero Points for the entire task.
+
+## Tactical Replication
+
+Tactical Replication consists of two steps: Plotting Movements and Executing Tactics. There are six tactics, each worth 100 Points, for a total of 600 Points. Defenders will be positioned at designated locations on the field; each defender is a stack of cardboard boxes three boxes high.
+
+### Movements Plotting
+
+Tactical descriptions are provided in the Techinical Area. Read each description and, following the movement definitions, mark each receiver's position at the moment they receive the ball on the tactics board. Each Plotting Movements question is worth 25 Points.
+
+For the relevant rules, refer to “Tactical Replication Scoring Instructions” in the Coaching Area.
+
+### Tactics Execution
+
+The players must execute the tactic described in the prompt within 10 seconds. Each Executing Tactics question is worth 75 Points. For the detailed rules, refer to “Tactical Replication Scoring Instructions.”
+
+### Red Cards
+
+A red card will be issued for either of the following:
+
+- Violating the handball rules (see “Handball Rules” in the Coaching Area for details).
+- Knocking over a defender by bumping.
+
+Once a red card is issued, current tactic execution problem ends immediately. If the tactical description does not permit handball, the question receives 0 Points.
+
+## Tactical Analysis
+
+There are Textual Questions in the Techinical Area, which covers physics and mathematics. This part is worth 400 Points. The rules are as follows:
+
+1. Write down all answers to the Textual Questions on the answer sheets.
+2. Submit all answer sheets that you wish to be graded to the Task Master before the first half ends; otherwise, no Points will be awarded for them.
+3. You will receive Football Tokens equal to the Points earned on the Textual Questions. Football Tokens may be used to purchase Recovery Cards and Reversal Cards while solving the Defense Puzzles. Each card costs 100 Football tokens.
+
+The “Relativity of Simultaneity and Causality” question set is the most important among all. Its goal is to derive the “Relativity Rules” used in the Defense Puzzles. If you successfully figue them out before the first half ends, a "Tactical Upgrade" will be triggered. It reduces the difficulty of the Defense Puzzles in the second half.
+
+## Halftime
+
+After the first half, there will be a five-minute halftime break. During this time, the Task Master will calculate the Points earned in the first half, including the number of Football Tokens and the Tactical Upgrade status. You are encouraged to study the rules for the Defense Puzzles in the second half. The results will be announced once the calculation is complete.
+
+## Defense Puzzles
+
+This is a turn-based game consisting of 5 Defense Puzzles. Each puzzle is worth 180 Points, for a total of 900 Points. Based on the situation on the field, you must select a tactic and plan your movements to solve each problem. Several defenders with different characteristics will be positioned on the football field: the Presser, Blocker, Shadow, Interceptor, and Goalkeeper. The defensive configuration differs for each puzzle (see “Defense Puzzle Scoring Instructions” for details), and you may choose the order to attempt them.
+
+Before beginning each problem, tell the Task Master:
+
+1. Which four team members will play in the problem. Team members who are not playing are substitutes.
+2. Whether you wish to purchase a Recovery Card and/or a Reversal Card.
+
+Each round proceeds as shown below:
+
+![Defense Problem Process Chart](../2nd_half_round_fig_v3.png)
+
+**English translation of the text in the image:**
+
+Notify the Task Master before official start. You may begin only after the whistle is blown. Until then, you may practice freely.
+
+1. **Shooting Phase:** Decide whether to shoot. Once a shot is taken, the problem ends immediately.
+2. **Movement Phase:** Players may move within the nine-grid area.
+3. **Passing Phase:** The player in possession may pass the ball once.
+4. **Move the Defenders:** Move the defenders according to the players' positions.
+
+After the Task Master's inspection, the next round may begin.
+
+For detailed rules, refer to “Defense Puzzles Scoring Instructions.”
+
+### Substitutes
+
+Substitutes may enter the field only to help move the defenders. At all other times, they must remain inside the Techinical Area.
+
+### Red and Yellow Cards
+
+A yellow card will be issued for any of the following:
+
+- Causing the ball to go past the touchlines during the Passing Phase.
+- Knocking over a defender during the Passing Phase.
+- Failed to abide the move allowed during the Movement Phase.
+- Violating Section 3 of the Defense Puzzle Scoring Instructions.
+- A substitute touching the ball that is in play or leaving the Techinical Area violating the above rules.
+
+Once a yellow card is issued, the state of the field will be restored to what it was at the beginning of that phase. Yellow cards are counted separately for each Defense Puzzle.
+
+A red card will be issued for either of the following:
+
+- Violating the handball rules during the Shooting, Movement, or Passing Phase.
+- Accumulating two yellow cards in the same Defense Puzzle.
+
+Once a red card is issued, current Defense Puzzle ends immediately and receives 0 Points.
+
+### Card Functions
+
+- **Undo Card:** May be used during any phase of a round. The state of the field will be restored to the beginning of the current round.
+- **Reverse Card:** May be used upon receiving the second yellow card for a problem. The state of the field will be restored to the beginning of the current phase.
+
+## Scoring Criteria
+
+Total Points = Tactical Replication + Tactical Analysis + Defense Puzzle + Accomplishment Points. The maximum score is 2,000 Points.
+
+### Tactical Replication
+
+For each tactic, Plotting Movements is worth 25 Points and Executing Tactics is worth 75 Points, for a total of 100 Points. The six tactics are worth a combined total of 600 Points.
+
+### Tactical Analysis
+
+This section is worth a total of 400 Points. See the Textual Questions for the Points assigned to each sub-question.
+
+### Defense Puzzles
+
+When a goal is scored in a Defense Puzzle, the Points awarded are calculated as follows:
+
+$$180 \cdot R \cdot O \cdot C$$
+
+The Round Deduction Coefficient, $R$, is calculated as follows:
+
+- Successful Tactical Upgrade: $R = 1 - (n-4)\cdot 0.1$
+- Unsuccessful Tactical Upgrade: $R = 1 - (n-4)\cdot 0.2$
+- Values greater than 1 are treated as 1, and values less than 0 are treated as 0.
+- $n$ is the round number in which the goal is scored.
+
+The Offside Coefficient, $O$, is determined as follows:
+
+- All observer judges the player to be onside: $O = 1$
+- The stationary observer judges the player to be onside: $O = 0.6$
+- The player is offside: $O = 0.2$
+
+The Causality Coefficient, $C$, is determined as follows:
+
+- Every pass complies with causality: $C = 1$
+- At least one pass violates causality: $C = 0.5$
+
+### Accomplishment Points
+
+| Accomplishment | Description | Points |
+|---|---|---:|
+| Final Whistle Cleanup Crew | Assist the Task Master with Task Decoration Restore. | 50 Points |
+| Full Squad | Take a team photo arranged as a soccer starting lineup while holding the commemorative flag. You may ask the Task Master for an example photo. | 50 Points |
+
+Damaging the Decoration results in zero Points. Playing a Magic Card doubles the Points, while playing a Master Card sets the Points to 400.
